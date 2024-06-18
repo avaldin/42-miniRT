@@ -2,10 +2,9 @@
 #include "../HDRS/main.h"
 
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	(void) argc;
-	(void) argv;
-	printf("ok test\n");
+
+	t_parsing();
 	return (0);
 }

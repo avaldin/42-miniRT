@@ -13,8 +13,10 @@
 HDRS	:= main.h objects.h
 
 SRCS	:=	main.c\
+			parsing.c\
 
 TEST_S	:=	main.c\
+			parsing.c\
 
 SRCS_D	:= SRCS/
 TEST_D	:= TEST/
@@ -62,12 +64,15 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(TEST_NAME)
+	$(RM) $(TEST_EXE)
 	$(MAKE) -C $(INC_D)libft fclean
 
-test : $(TEST_D) $(TEST_OBJS) TEST/test.h
-	$(CC) $(CFLAGS) $(TEST_OBJS) -I$(INC_D)libft -L$(INC_D)libft -lft -o $(TEST_EXE)
+t : $(TEST_D) $(TEST_OBJS) TEST/test.h
+	$(MAKE)
+	$(CC) $(CFLAGS) $(TEST_OBJS) $(filter-out OBJS/main.o, $(OBJS)) -I$(INC_D)libft -L$(INC_D)libft -lft -o $(TEST_EXE)
 
 re: fclean all
 
 .PHONY: all clean fclean re libft
+
+test : all t
