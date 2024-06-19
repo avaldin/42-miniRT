@@ -3,20 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
+#    By: avaldin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/05/15 00:01:48 by tmouche          ###   ########.fr        #
+#    Updated: 2024/06/19 12:39:39 by avaldin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= main.h objects.h
+HDRS	:= structure.h\
 
 SRCS	:=	main.c\
 			parsing.c\
+			generation.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
+
 
 SRCS_D	:= SRCS/
 TEST_D	:= TEST/

@@ -2,7 +2,7 @@
 #ifndef TEST_H
 # define TEST_H
 
-# include "../HDRS/main.h"
+# include "../HDRS/structure.h"
 
 void	t_parsing(void);
 

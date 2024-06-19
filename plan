@@ -30,7 +30,7 @@ plan pour mini RT :
         -calcul des droites et intersection :: on verra ensemble mais y a moyen de mettre des methodes dans les struct
                                                des objets pour decrire leurs intersection ou quoi.
 
-        -affichage de l'ecran :: bien dimmenssionner.
+        -affichage de l'ecran :: bien dimenssionner.
 
         -affichage de l'image calcule ::
 

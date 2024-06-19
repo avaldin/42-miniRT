@@ -1,5 +1,5 @@
 #include "test.h"
-#include "../HDRS/main.h"
+#include "../HDRS/structure.h"
 
 
 int	main(void)

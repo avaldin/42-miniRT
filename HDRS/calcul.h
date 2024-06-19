@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   calcul.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 09:42:23 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 09:47:38 by avaldin          ###   ########.fr       */
+/*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
+/*   Updated: 2024/06/19 12:55:28 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HDRS/structure.h"
+#ifndef CALCUL_H
+# define CALCUL_H
 
-int	main(int argc, char **argv)
-{
-	if (_parsing(argc, argv) == FAIL)
-		return (1);
-	_generate_image()
-	return (0);
-}
+
+
+#endif
