@@ -40,9 +40,6 @@ t_scene	*_parsing(t_scene *scene)
 	scene->camera->fov = 70;
 	scene->x_screen = 1920;
 	scene->y_screen = 1080;
+	scene->axis = ft_calloc(1, sizeof(t_coord));
 	return (scene);
-
-
 }
-
-test
