@@ -6,13 +6,13 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 12:55:28 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/06/19 15:49:22 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CALCUL_H
 # define CALCUL_H
 
-
+float	*_eq_sec_deg(float a, float b, float c);
 
 #endif

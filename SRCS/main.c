@@ -6,16 +6,18 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:42:23 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 09:47:38 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:25:02 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	if (_parsing(argc, argv) == FAIL)
-		return (1);
-	_generate_image()
+	t_data	data;
+
+	_parsing(&data);
+
+//	_generate_image()
 	return (0);
 }

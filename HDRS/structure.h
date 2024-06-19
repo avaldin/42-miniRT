@@ -6,7 +6,7 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:50:15 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 12:55:25 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/06/19 13:02:40 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef enum
 	SUCCESS
 }				e_test;
 
-int	_parsing(t_data *data);
+void	_parsing(t_data *data);
 
 
 #endif
