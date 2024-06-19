@@ -1,3 +1,5 @@
 .vscode
-.idea
-
+.idea/
+OBJS/
+miniRT
+test
