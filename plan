@@ -1,0 +1,52 @@
+
+
+plan pour mini RT :
+
+    resume :
+
+        pour realiser le raytracing, il faut commencer par creer la scene (point de vue, ecran (ecart pdv et ecran correspond au fov),
+         resolution, places des objets, lumiere ambiante...).
+        en suite on peux calculer une droite partant du point de vue a chaque pixel de l'ecran,
+        si cette droite intersecte un des objets ou plus, on trouve l'intersection (on appel ce point I) la plus proche du point de vue.
+        on peut alors calculer des droites entre chaques sources lumineuse et cette intersection I, si elles ne sont pas coupe
+        par un objet on calcul l'angle (PDV, I, src de lumiere), l'intensitee du pixel et ca couleur depend de la somme
+        de ce calcul pour chaque source de lumiere.
+
+        pas sur :
+            pour faire la lumiere ambiante, tout pixel d'un objet a l'intensite et la couleur de celle ci de base, et on
+            y additionne les autres sources de lumiere.
+
+
+
+    idee :
+
+        on commence par realiser un programme qui affiche que des plans ou des sphere  et immobile. une foias fait
+        on rajoute les mouvement et les autres objets.
+
+    parties a realiser :
+
+        -parcing :: prendre les valeurs d'entree et les entrer dans des structures.
+
+        -calcul des droites et intersection :: on verra ensemble mais y a moyen de mettre des methodes dans les struct
+                                               des objets pour decrire leurs intersection ou quoi.
+
+        -affichage de l'ecran :: bien dimmenssionner.
+
+        -affichage de l'image calcule ::
+
+        -capture des hook :: faire en sorte de capturer les entrees des touches et d'actualiser l'image en fonction.
+
+        -faire un cleaner :: comme d'hab une fonction qui free tout.
+
+
+
+    structures a faire :
+
+        - objets :: plan, sphere, cylindre, (point et droite peuvent rentrer dans cette categorie)
+
+        - minilibx :: jsp comment mais je crois il en faut une.
+
+        - scene :: comprend tout les objets et informations, comme le pdv, lumiere ambiante, position ecran, et sphere/plan...
+
+        - data :: pas sur, peut etre on met tout dans scene jsp.
+
