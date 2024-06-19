@@ -1,11 +1,20 @@
-//header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/19 11:17:56 by tmouche           #+#    #+#             */
+/*   Updated: 2024/06/19 14:10:19 by tmouche          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "../HDRS/main.h"
+#include "parsing.h"
 
 int	main(int argc, char **argv)
 {
-	if (parsing(argc, argv) == FAIL)
-		return (1);
-
-	return (0);
+	_check_args(argc, argv);
+	_
+	return (1);
 }

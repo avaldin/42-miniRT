@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 13:05:00 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/19 13:07:40 by tmouche          ###   ########.fr       */
+/*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
+/*   Updated: 2024/06/19 13:03:22 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#ifndef PARSING_H
+# define PARSING_H
+#include "structure.h"
 
-int	main(void)
-{
-	t_check_args();
-	return (0);
-}
+t_check	_check_args(int	argc, char **argv);
+
+#endif

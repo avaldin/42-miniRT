@@ -6,17 +6,17 @@
 #    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/05/15 00:01:48 by tmouche          ###   ########.fr        #
+#    Updated: 2024/06/19 13:38:36 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= main.h objects.h
+HDRS	:= objects.h parsing.h structure.h
 
 SRCS	:=	main.c\
-			parsing.c\
+			parsing/parsing_check_args.c\
 
 TEST_S	:=	main.c\
-			parsing.c\
+			test_parsing.c\
 
 SRCS_D	:= SRCS/
 TEST_D	:= TEST/
@@ -39,18 +39,19 @@ TEST_OBJS	:= $(TEST_S:%.c=$(OBJS_D)test_%.o)
 all: libft $(NAME)
 
 $(NAME): $(OBJS_D) $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -I$(HDRS_D) -L$(INC_D)libft -lft -o $(NAME)
 
 
 $(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile
-	$(CC) $(CFLAGS) -I$(INC_D)libft -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(HDRS_D) -c $< -o $@
 
 
-$(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST/test.h
-	$(CC) $(CFLAGS) -I$(INC_D)libft -c $< -o $@
+$(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST/test.h TEST/colors.h
+	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(HDRS_D) -c $< -o $@
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
+	@mkdir -p $(OBJS_D)parsing
 
 $(TEST_D):
 	@mkdir -p $(TEST_D)
@@ -67,7 +68,7 @@ fclean: clean
 	$(RM) $(TEST_EXE)
 	$(MAKE) -C $(INC_D)libft fclean
 
-t : $(TEST_D) $(TEST_OBJS) TEST/test.h
+t : $(TEST_D) $(TEST_OBJS) TEST/test.h TEST/colors.h
 	$(MAKE)
 	$(CC) $(CFLAGS) $(TEST_OBJS) $(filter-out OBJS/main.o, $(OBJS)) -I$(INC_D)libft -L$(INC_D)libft -lft -o $(TEST_EXE)
 
