@@ -41,5 +41,4 @@ t_scene	*_parsing(t_scene *scene)
 	scene->x_screen = 1920;
 	scene->y_screen = 1080;
 	return (scene);
-
 }
