@@ -6,7 +6,7 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:50:15 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 13:02:40 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/06/19 17:57:22 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct	s_plane
 	float	pos[3];
 	float	vect[3];
 	int		color[3];
-	struct s_plane	*next;
 }				t_plane;
 
 typedef struct	s_sphere
@@ -28,7 +27,6 @@ typedef struct	s_sphere
 	float	pos[3];
 	float	rayon;
 	int		color[3];
-	struct s_sphere	*next;
 }				t_sphere;
 
 typedef struct	s_cylinder
@@ -38,19 +36,19 @@ typedef struct	s_cylinder
 	float	diameter;
 	float	height;
 	int		color[3];
-	struct s_cylinder	*next;
 }				t_cylinder;
 
 typedef struct	s_scene
 {
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder 	*cylinder;
-	float		pov[3];
-	float		dov[3];
-	float		fov;
-	int			x_screen;
-	int			y_screen;
+	t_sphere		**sphere;
+	t_plane			**plane;
+	t_cylinder 		**cylinder;
+	float			pov[3];
+	float			dov[3];
+	float			fov;
+	int				x_screen;
+	int				y_screen;
+	struct s_data	*data;
 }				t_scene;
 
 typedef struct	s_data

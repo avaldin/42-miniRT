@@ -6,7 +6,7 @@
 #    By: avaldin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/06/19 16:45:15 by avaldin          ###   ########.fr        #
+#    Updated: 2024/06/19 16:45:48 by avaldin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS	:=	main.c\
 			parsing.c\
 			generation.c\
 			calcul.c\
+			intersection.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
