@@ -14,10 +14,18 @@
 #include "../HDRS/structure.h"
 #include "../include/libft/libft.h"
 
-float	distance(float a[3], float b[3])
+float	_direct_axis(t_scene *scene, int i, int j, int axis)
 {
-	return (sqrtf(powf(b[2] - a[2], 2) + powf(b[2] - a[2], 2)
-			+ powf(b[2] - a[2], 2)));
+	float	norm;
+	float 	fov_angle;
+
+	norm = sqrtf(scene->dov[0] * scene->dov[0]
+			+ scene->dov[1] * scene->dov[1] + scene->dov[2] * scene->dov[2]);
+	if (axis == 0)
+		fov_angle = scene->fov / 2  * (scene->x_screen - i) / scene->x_screen;
+	else
+		fov_angle =  35  * (scene->y_screen - j) / scene->y_screen;
+	return(cosf(fov_angle + acosf(scene->dov[axis] / norm)));
 }
 
 float	_eq_sec_deg(float a, float b, float c)

@@ -12,12 +12,15 @@
 
 #include "../HDRS/structure.h"
 #include "../HDRS/calcul.h"
+#include <stdio.h>
+#include "../include/libft/libft.h"
 
 int	main(void)
 {
-	t_data	data;
+	t_data	*data;
 
-	_parsing(&data);
-	_generate_image(&data);
+	data = ft_calloc(1, sizeof(t_data));
+	data->scene = _parsing(data->scene);
+	_generate_image(data->scene);
 	return (0);
 }

@@ -13,20 +13,20 @@
 #include "../HDRS/structure.h"
 #include "../include/libft/libft.h"
 
-void	_parsing(t_data *data)
+t_scene	*_parsing(t_scene *scene)
 {
-	t_scene *scene = data->scene;
-	scene = ft_calloc(1, sizeof(t_scene *));
-	scene->sphere = ft_calloc(1, sizeof(t_sphere *));
-	t_sphere *sphere = data->scene->sphere[0];
-	sphere->pos[0] = 10;
-	sphere->pos[1] = 0;
-	sphere->pos[2] = 0;
-	sphere->rayon = 14.54;
-	sphere->color[1] = 255;
+	scene = ft_calloc(1, sizeof(t_scene));
+	scene->sphere = ft_calloc(2, sizeof(t_sphere *));
+	scene->sphere[0] = ft_calloc(1, sizeof(t_sphere ));
+	scene->sphere[0]->pos[0] = 10;
+	scene->sphere[0]->pos[1] = 0;
+	scene->sphere[0]->pos[2] = 0;
+	scene->sphere[0]->rayon = 2;
+	scene->sphere[0]->color[1] = 255;
 	scene->dov[0] = 1;
 	scene->fov = 70;
 	scene->x_screen = 1920;
 	scene->y_screen = 1080;
+	return (scene);
 
 }

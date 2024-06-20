@@ -38,6 +38,11 @@ typedef struct	s_cylinder
 	int		color[3];
 }				t_cylinder;
 
+//typedef struct	s_color
+//{
+//
+//};
+
 typedef struct	s_scene
 {
 	t_sphere		**sphere;
@@ -62,7 +67,7 @@ typedef enum
 	SUCCESS
 }				e_test;
 
-void	_parsing(t_data *data);
+t_scene	*_parsing(t_scene *scene);
 
 
 #endif
