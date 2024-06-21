@@ -49,7 +49,9 @@ typedef struct	s_scene
 	t_plane			**plane;
 	t_cylinder 		**cylinder;
 	float			pov[3];
-	float			dov[3];
+	float			dov_x[3];
+	float			dov_y[3];
+	float			dov_z[3];
 	float			fov;
 	int				x_screen;
 	int				y_screen;

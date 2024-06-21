@@ -6,7 +6,7 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:48:35 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 17:37:41 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/06/21 15:03:31 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,39 @@
 #include "../HDRS/structure.h"
 #include "../include/libft/libft.h"
 
+// si dov_z = 0 0 1, dov x y z = 1 1 1;
+
+float	*_matrix_var(t_scene *scene)
+{
+	float	*var;
+
+	var = ft_calloc(4, sizeof(float));
+	if (!var)
+		exit(50); // pas ok
+	var[0] = powf(scene->dov_z[1], 2)
+			/ sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[1], 2));
+	var[1] = powf(scene->dov_z[0], 2)
+			 / sqrtf(powf(scene->dov_z[0], 2) + powf(scene->dov_z[1], 2));
+	var[2] = scene->dov_z[2];
+	var[3] = sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[1], 2));
+	return (var);
+}
+
+void	_dov(t_scene *scene, float *var)
+{
+	scene->dov_x[0] = var[2];
+	scene->dov_x[1] = 0;
+	scene->dov_x[2] = -var[3];
+	scene->dov_y[0] = var[1] * var[3];
+	scene->dov_y[1] = var[0];
+	scene->dov_y[2] = var[1] * var[2];
+	free(var);
+}
+
 float	_direct_axis(t_scene *scene, int i, int j, int axis)
 {
-	float	norm;
 	float 	fov_angle;
 
-	norm = sqrtf(scene->dov[0] * scene->dov[0]
-			+ scene->dov[1] * scene->dov[1] + scene->dov[2] * scene->dov[2]);
 	if (axis == 0)
 		fov_angle = scene->fov / 2  * (scene->x_screen - i) / scene->x_screen;
 	else
