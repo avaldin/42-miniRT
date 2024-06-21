@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:17:56 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/19 14:10:19 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/22 00:54:25 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	_check_args(argc, argv);
+	if (_check_args(argc, argv) == FAILURE)
+		return (0);
+	
 	_
 	return (1);
 }
