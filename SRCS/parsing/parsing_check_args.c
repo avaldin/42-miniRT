@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check_args.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:23:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/19 13:49:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/22 16:53:34 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "structure.h"
+#include "parsing.h"
 #include <stdio.h>
 
 static inline t_check	_check_extention(char *arg)
