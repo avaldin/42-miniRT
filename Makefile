@@ -3,17 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/06/22 23:17:41 by thibaud          ###   ########.fr        #
+#    Updated: 2024/06/24 18:54:49 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HDRS	:= objects.h parsing.h structure.h
 
 SRCS	:=	main.c\
-			parsing/parsing_check_args.c parsing/parsing_get_next_line.c parsing/parsing_extract_data.c 
+			parsing/parsing_check_args.c\
+			parsing/parsing_extract.c\
+			parsing/parsing_extract_env.c\
+			parsing/parsing_extract_gnl.c\
+			parsing/utils_nums.c\
+			parsing/utils_strings.c\
 
 TEST_S	:=	main.c\
 			test_parsing.c\

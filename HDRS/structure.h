@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 16:24:29 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/24 13:22:24 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
-# define _NO_A "ARGUMENT NOT FOUND"
-# define _2BIG_A "TOO MUCH ARGUMENTS"
-# define _NOK_A "ARGUMENT NOT KNOWN"
 # include <stddef.h>
+# include <errno.h>
 
 typedef enum e_check
 {
@@ -93,12 +91,6 @@ typedef struct	s_cylinder
 	t_rgb	*color;
 }				t_cylinder;
 
-
-//typedef struct	s_color
-//{
-//
-//};
-
 typedef struct	s_scene
 {
 	t_sphere		**sphere;
@@ -109,7 +101,6 @@ typedef struct	s_scene
 	t_cam			*camera;
 	t_coord			*dov_x;
 	t_coord			*dov_y;
-	t_coord			*dov_z;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;
@@ -119,7 +110,5 @@ typedef struct	s_data
 {
 	t_scene	*scene;
 }				t_data;
-
-// t_scene	*_parsing(t_scene *scene);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:07:00 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 23:42:48 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:19:53 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include "structure.h"
 #include "colors.h"
 
-void	t_check_files(void)
-{
-	if (_)
-}
+// void	t_check_files(void)
+// {
+// 	if (_)
+// }
 
 void	t_check_args(void)
 {

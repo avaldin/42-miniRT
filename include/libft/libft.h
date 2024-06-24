@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 17:39:44 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:33:48 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void	*s, int c, size_t n);
+float	ft_atof(const char *nptr);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_bzero(void	*s, size_t n);
 void	ft_putchar_fd(char c, int fd);
@@ -54,6 +55,7 @@ int		ft_abs(int num);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s, char c);
+size_t	ft_atol(const char *nptr);
 
 typedef struct s_list
 {
