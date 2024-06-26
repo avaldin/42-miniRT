@@ -23,12 +23,30 @@ float	*_matrix_var(t_scene *scene)
 	var = ft_calloc(4, sizeof(float));
 	if (!var)
 		exit(50); // pas ok
-	var[0] = powf(scene->dov_z[1], 2)
-			/ sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[1], 2));
-	var[1] = powf(scene->dov_z[0], 2)
-			 / sqrtf(powf(scene->dov_z[0], 2) + powf(scene->dov_z[1], 2));
-	var[2] = scene->dov_z[2];
-	var[3] = sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[1], 2));
+	if (!scene->dov_z[2] && !scene->dov_z[1])
+	{
+		var[0] = 1;
+		var[1] = 0;
+	}
+	else
+	{
+		var[0] = powf(scene->dov_z[1], 2)
+				 / sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[2], 2));
+		var[1] = -powf(scene->dov_z[2], 2)
+				 / sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[2], 2));
+	}
+	if (!scene->dov_z[2] && !scene->dov_z[0])
+	{
+		var[2] = 1;
+		var[3] = 0;
+	}
+	else
+	{
+		var[2] = powf(scene->dov_z[2], 2)
+				 / sqrtf(powf(scene->dov_z[0], 2) + powf(scene->dov_z[2], 2));
+		var[3] = powf(scene->dov_z[0], 2)
+				 / sqrtf(powf(scene->dov_z[0], 2) + powf(scene->dov_z[2], 2));
+	}
 	return (var);
 }
 
@@ -43,15 +61,23 @@ void	_dov(t_scene *scene, float *var)
 	free(var);
 }
 
-float	_direct_axis(t_scene *scene, int i, int j, int axis)
+float	*_direct_axis(t_scene *scene, int i, int j, int axis)
 {
 	float 	fov_angle;
+	float	*axis_angle;
 
+	axis_angle = ft_calloc(2, sizeof(float));
+	if (!axis_angle)
+		exit(50); //pas ok
 	if (axis == 0)
-		fov_angle = scene->fov / 2  * (scene->x_screen - i) / scene->x_screen;
-	else
-		fov_angle =  35  * (scene->y_screen - j) / scene->y_screen;
-	return(cosf(fov_angle + acosf(scene->dov[axis] / norm)));
+		fov_angle = scene->fov / 2  * (scene->x_screen - 2 * i) / scene->x_screen;
+	axis_angle[0] = sinf(fov_angle);
+	fov_angle = 35  * (scene->y_screen - 2 * j) / scene->y_screen;
+	axis_angle[1] = sinf(fov_angle);
+	axis_angle[2] = 1 - powf(axis_angle[1], 2) - powf(axis_angle[0], 2);
+	if (axis = 0)
+		return (axis_angle[0] * scene->dov);
+	return (axis_angle);
 }
 
 float	_eq_sec_deg(float a, float b, float c)
