@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 17:58:03 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/26 20:55:02 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ t_check	_init_ambient(t_amb **ambient, char *line)
 		return (free((*ambient)), FAILURE);
 	if (_check_rgb((*ambient)->color) == FAILURE)
 		return (free((*ambient)), FAILURE);
+	line = _until_char(line, ' ');
+	line = _is_space(line);
+	if (line && *line != '\n' && *line)
+		return (free((*ambient)), FAILURE);
 	return (SUCCESS);
 }
 
@@ -45,6 +49,9 @@ t_check	_init_camera(t_cam **camera, char *line)
 	if (!*camera)
 		return (FAILURE);
 	line = _is_space(&line[2]);
+	if (check_line(line) == FAILURE)
+		return (free(*camera), FAILURE);
+	
 	return (SUCCESS);
 }
 

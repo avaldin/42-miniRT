@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 16:42:26 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/26 20:58:45 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,9 @@ t_rgb	*_set_rgb(char *line)
 			++line;
 	}
 	return (color);
+}
+
+t_coord	*_set_coord(char *line)
+{
+	
 }

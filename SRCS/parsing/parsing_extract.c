@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/26 16:52:09 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/26 19:15:42 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static t_scene *_pars_line(char **data)
 	{
 		temp = _is_space(data[i]);
 		if (temp && _data_loader(scene, temp) == FAILURE)
-			return (printf("%s\n", _NOK_ID) ,NULL);
+			return (printf("%s\n", _NOK_ID), NULL);
 		++i;
 	}
 	return (scene);	
@@ -112,12 +112,12 @@ t_scene	*_extract_data(char	*path_file)
 	if (!data)
 		return (NULL);
 	settings = _pars_line(data);
+	if (!settings)
+		return (NULL);
 	printf("%d\n", settings->ambient->color->red);
 	printf("%d\n", settings->ambient->color->green);
 	printf("%d\n", settings->ambient->color->blue);
 	printf("%f\n", settings->ambient->ratio);
-	if (!settings)
-		return (NULL);
 	_freetab(data);
 	return (settings);
 }

@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 17:59:28 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/26 19:28:12 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,18 @@ t_check	check_line(char *line)
 	while (line[i])
 	{
 		if (line[i] == ' ' || line[i] == '\n' || (line[i] >= '0' && line[i] <= '9'))
-			++line;
-		else if (line[i] == '.')
-		{
-			if (!(line[i + 1] >= '0' && line[i + 1] <= '9'))
+			;
+		else if (line[i] == '.' && !(line[i + 1] >= '0' && line[i + 1] <= '9'))
 				return (FAILURE);
-			
-		}
-		else if (line[i] == ',')
-		{
-			if (i == 0 || !(line[i + 1] >= '0' && line[i + 1] <= '9')
-				|| !(line[i - 1] >= '0' && line[i - 1] <= '9'))
+		else if (line[i] == ',' && (i == 0 
+				|| !(line[i + 1] >= '0' && line[i + 1] <= '9')
+				|| !(line[i - 1] >= '0' && line[i - 1] <= '9')))
 				return (FAILURE);
-		}
 		else if (line[i] == '-' && !(line[i + 1] >= '0' && line[i + 1] <= '9'))
 				return (FAILURE);
-		else
+		else if (line[i] != '-' && line[i] != ',' && line[i] != '.')
 				return (FAILURE);
+		++i;
 	}
 	return (SUCCESS);
 }
