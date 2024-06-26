@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:07:00 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/24 11:19:53 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 13:29:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@
 #include "structure.h"
 #include "colors.h"
 
-// void	t_check_files(void)
-// {
-// 	if (_)
-// }
+void	t_check_files_A(void)
+{
+	t_amb *amb;
+	
+	if (_init_ambient(&amb, "A") == SUCCESS)
+		printf("%stest number 1 failed%s\n", RED, RESET);
+	if (_init_ambient(&amb, "A") == SUCCESS)
+		printf("%stest number 1 failed%s\n", RED, RESET);
+}
 
 void	t_check_args(void)
 {

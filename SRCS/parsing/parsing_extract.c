@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/24 19:19:03 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 13:26:49 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ static t_check	_data_loader(t_scene *scene, char *line)
 
 	res = FAILURE;
 	if (!ft_strncmp(line, "A ", 2) && !scene->ambient)
-		res = _init_ambient(scene->ambient ,line);
-	// else if (!ft_strncmp(line, "C ", 2) && !scene->camera)
-	// 	res = _init_camera(scene->camera, line);
+		res = _init_ambient(&scene->ambient ,line);
+	else if (!ft_strncmp(line, "C ", 2) && !scene->camera)
+		res = _init_camera(&scene->camera, line);
 	// else if (!ft_strncmp(line, "L ", 2) && !scene->light)
 	// 	res = _init_light(scene->light, line);
 	// else if (!ft_strncmp(line, "sp ", 3))
@@ -114,10 +114,6 @@ t_scene	*_extract_data(char	*path_file)
 	settings = _pars_line(data);
 	if (!settings)
 		return (NULL);
-	printf("%f\n", settings->ambient->ratio);
-	printf("%d\n", settings->ambient->color->red);
-	printf("%d\n", settings->ambient->color->green);
-	printf("%d\n", settings->ambient->color->blue);
 	_freetab(data);
 	return (settings);
 }

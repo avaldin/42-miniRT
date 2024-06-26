@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/24 19:01:20 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 13:23:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,28 @@ t_check	_check_rgb(t_rgb *colors)
 
 t_rgb	*_set_rgb(char *line)
 {
-	t_rgb	*res;
-
-	res = malloc(sizeof(t_rgb));
-	if (!res)
+	t_rgb	*color;
+	int		*temp[3];
+	int		i;
+	
+	color = malloc(sizeof(t_rgb));
+	if (!color)
 		return (NULL);
-	res->red = 0;
-	res->green = 0;
-	res->blue = 0;
-	if (!line)
-		return (res);
-	res->red = ft_atoi(line);
-	line = _is_inrange(line, '0', '9');
-	if (!line)
-		return (res);
-	res->green = ft_atoi(line);
-	line = _is_inrange(line, '0', '9');
-	if (!line)
-		return (res);
-	res->blue = ft_atoi(line);
-	line = _is_space(_is_inrange(line, '0', '9'));
-	if (line && *line != '\n')
-		return (free(res), NULL);
-	return (res);
+	temp[0] = &color->red;
+	temp[1] = &color->green;
+	temp[2] = &color->blue;
+	i = -1;
+	while (++i < 3)
+		*temp[i] = 0;
+	i = -1;
+	while (++i < 3 && line && *line && *line != '\n')
+	{
+		*temp[i] = ft_atoi(line);
+		line = _is_inrange(line, '0', '9');
+		if (!line || !*line || *line == '\n')
+			return (color);
+		if (*line == ',')
+			++line;
+	}
+	return (color);
 }

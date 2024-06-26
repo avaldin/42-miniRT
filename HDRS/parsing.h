@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/24 18:51:56 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 13:11:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ char	*_is_inrange(char *line, char r_bot, char r_top);
 
 t_check	_check_rgb(t_rgb *colors);
 t_rgb	*_set_rgb(char *line);
-t_check	_init_ambient(t_amb *ambient, char *line);
+t_check	_init_ambient(t_amb **ambient, char *line);
+t_check	_init_camera(t_cam **camera, char *line);
 
 char	*get_next_line(int fd);
 t_scene	*_extract_data(char	*path_file);
