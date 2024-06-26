@@ -20,6 +20,6 @@ float	_eq_sec_deg(float a, float b, float c);
 //float	_inter_plane(t_scene *scene, t_plane *plane, int i, int j);
 float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j);
 //float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder , int i, int j);
-float	_direct_axis(t_scene *scene, int i, int j, int axis);
+float	*_direct_axis(t_scene *scene, int i, int j, int axis);
 
 #endif
