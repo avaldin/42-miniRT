@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_nums.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 13:23:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 16:42:26 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 
 t_check	_check_rgb(t_rgb *colors)
 {
-	if (!(colors->red >= 0 && colors->red <= 255)
-		|| !(colors->green >= 0 && colors->green <= 255)
-		|| !(colors->blue >= 0 && colors->blue <= 255))
-		return (FAILURE);
-	return (SUCCESS);
+	if ((colors->red >= 0 && colors->red <= 255)
+		&& (colors->green >= 0 && colors->green <= 255)
+		&& (colors->blue >= 0 && colors->blue <= 255))
+		return (SUCCESS);
+	free(colors);
+	return (FAILURE);
 }
 
 t_rgb	*_set_rgb(char *line)

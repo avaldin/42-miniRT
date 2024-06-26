@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_extract_env.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 13:11:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 17:58:03 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,21 @@ t_check	_init_ambient(t_amb **ambient, char *line)
 	if (!*ambient)
 		return (FAILURE);
 	line = _is_space(&line[2]);
-	(*ambient)->color = NULL;
+	if (check_line(line) == FAILURE)
+		return (free((*ambient)), FAILURE);
 	(*ambient)->ratio = ft_atof(line);
 	if ((*ambient)->ratio > 1 || (*ambient)->ratio < 0)
 		return (free((*ambient)), FAILURE);
 	line = _until_char(line, ' ');
 	line = _is_space(line);
+	if (!line)
+		return (free((*ambient)), FAILURE);
 	(*ambient)->color = _set_rgb(line);
 	if (!(*ambient)->color)
-		return (FAILURE);
-	return (_check_rgb((*ambient)->color));
+		return (free((*ambient)), FAILURE);
+	if (_check_rgb((*ambient)->color) == FAILURE)
+		return (free((*ambient)), FAILURE);
+	return (SUCCESS);
 }
 
 t_check	_init_camera(t_cam **camera, char *line)

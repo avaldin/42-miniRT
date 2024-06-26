@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_extract.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/26 13:26:49 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 16:52:09 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,10 @@ t_scene	*_extract_data(char	*path_file)
 	if (!data)
 		return (NULL);
 	settings = _pars_line(data);
+	printf("%d\n", settings->ambient->color->red);
+	printf("%d\n", settings->ambient->color->green);
+	printf("%d\n", settings->ambient->color->blue);
+	printf("%f\n", settings->ambient->ratio);
 	if (!settings)
 		return (NULL);
 	_freetab(data);

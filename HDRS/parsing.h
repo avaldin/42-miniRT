@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 13:11:32 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/26 17:57:43 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 void	_freetab(char **tab);
 void	_strerror(char *str);
 char	*_is_space(char *line);
+t_check	check_line(char *line);
 char	*_until_char(char *line, char c);
 char	*_is_inrange(char *line, char r_bot, char r_top);
 
