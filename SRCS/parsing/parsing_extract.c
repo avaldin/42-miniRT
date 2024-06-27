@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_extract.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/26 19:15:42 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/27 11:21:28 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,14 @@ t_scene	*_extract_data(char	*path_file)
 	printf("%d\n", settings->ambient->color->green);
 	printf("%d\n", settings->ambient->color->blue);
 	printf("%f\n", settings->ambient->ratio);
+	printf("------------------------------\n");
+	printf("%f\n", settings->camera->vect->x);
+	printf("%f\n", settings->camera->vect->y);
+	printf("%f\n", settings->camera->vect->z);
+	printf("%f\n", settings->camera->pos->x);
+	printf("%f\n", settings->camera->pos->y);
+	printf("%f\n", settings->camera->pos->z);
+	printf("%d\n", settings->camera->fov);
 	_freetab(data);
 	return (settings);
 }

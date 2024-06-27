@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/26 17:57:43 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/27 10:07:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ t_check	check_line(char *line);
 char	*_until_char(char *line, char c);
 char	*_is_inrange(char *line, char r_bot, char r_top);
 
+
+
 t_check	_check_rgb(t_rgb *colors);
 t_rgb	*_set_rgb(char *line);
+
+t_check	_check_coord(t_coord *coord, float range_min, float range_max);
+t_coord	*_set_coord(char *line);
+
 t_check	_init_ambient(t_amb **ambient, char *line);
 t_check	_init_camera(t_cam **camera, char *line);
 
