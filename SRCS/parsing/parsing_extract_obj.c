@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_check_args.c                               :+:      :+:    :+:   */
+/*   parsing_extract_obj.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 11:23:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 13:28:37 by tmouche          ###   ########.fr       */
+/*   Created: 2024/06/27 13:40:51 by tmouche           #+#    #+#             */
+/*   Updated: 2024/06/27 13:49:40 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "structure.h"
 #include "parsing.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-static inline t_check	_check_extention(char *arg)
+t_check	_init_plane(t_plane **plane, char *line)
 {
-	int	index;
+	line = _is_space(&line[3]);
+	if (check_line(line) == FAILURE)
+		return (FAILURE);
+	*plane = malloc(sizeof(t_plane));
+	if (!*plane)
+		return (FAILURE);
+	(*plane)->pos = _set_coord(line);
+	if (!(*plane)->pos)
+		return (free (*plane), FAILURE);
+	line = _is_space(_until_char(line, ' '));
+	
 
-	index = 0;
-	while (arg[index])
-		++index;
-	if (index < 4)
-		return (FAILURE);
-	if (ft_strncmp(&arg[index - 3], ".rt", 3))
-		return (FAILURE);
+		
 	return (SUCCESS);
-}
-
-t_check	_check_args(int argc, char **argv)
-{
-	if (argc < 2)
-		printf("%s\n", _NO_A);
-	else if (argc > 2)
-		printf("%s\n", _2BIG_A);
-	else if (_check_extention(argv[1]) == FAILURE)
-		printf("%s\n", _NOK_A);
-	else
-		return (SUCCESS);
-	return (FAILURE);
 }

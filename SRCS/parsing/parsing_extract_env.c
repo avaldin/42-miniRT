@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 12:51:06 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/27 13:45:59 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "structure.h"
 #include "parsing.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 t_check	_init_ambient(t_amb **ambient, char *line)
 {
@@ -73,7 +72,7 @@ t_check	_init_light(t_spot **light, char *line)
 	line = _is_space(&line[2]);
 	if (check_line(line) == FAILURE)
 		return (FAILURE);
-	*light = malloc(sizeof(t_cam));
+	*light = malloc(sizeof(t_spot));
 	if (!*light)
 		return (FAILURE);
 	(*light)->pos = _set_coord(line);

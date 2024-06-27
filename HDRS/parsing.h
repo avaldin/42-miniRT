@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 12:52:43 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/27 13:26:31 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@
 # include "structure.h"
 # define BUFFER_SIZE 100
 
-/* ***********************************UTILS*********************************** */
+/* **********************************UTILS********************************** */
 void	_freetab(char **tab);
 void	_strerror(char *str);
 char	*_is_space(char *line);
 t_check	check_line(char *line);
 char	*_until_char(char *line, char c);
 char	*_is_inrange(char *line, char r_bot, char r_top);
-
-
 
 t_check	_check_rgb(t_rgb *colors);
 t_rgb	*_set_rgb(char *line);

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 12:39:19 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/27 13:26:08 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ typedef enum e_check
 /*                                   TOOLS                                    */
 /* ************************************************************************** */
 
-typedef struct	s_coord
+typedef struct s_coord
 {
 	float	x;
 	float	y;
 	float	z;
 }				t_coord;
 
-typedef	struct	s_rgb
+typedef	struct s_rgb
 {
 	int	red;
 	int	green;
@@ -67,21 +67,21 @@ typedef struct s_spot
 /*                                   OBJET                                    */
 /* ************************************************************************** */
 
-typedef struct	s_plane
+typedef struct s_plane
 {
 	t_coord	*pos;
 	t_coord	*vect;
 	t_rgb	*color;
 }				t_plane;
 
-typedef struct	s_sphere
+typedef struct s_sphere
 {
 	float	diameter;
 	t_coord	*pos;
 	t_rgb	*color;
 }				t_sphere;
 
-typedef struct	s_cylinder
+typedef struct s_cylinder
 {
 	float	height;
 	float	diameter;
@@ -90,11 +90,11 @@ typedef struct	s_cylinder
 	t_rgb	*color;
 }				t_cylinder;
 
-typedef struct	s_scene
+typedef struct s_scene
 {
 	t_sphere		**sphere;
 	t_plane			**plane;
-	t_cylinder 		**cylinder;
+	t_cylinder		**cylinder;
 	t_amb			*ambient;
 	t_spot			*light;
 	t_cam			*camera;
@@ -105,7 +105,7 @@ typedef struct	s_scene
 	struct s_data	*data;
 }				t_scene;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_scene	*scene;
 }				t_data;
