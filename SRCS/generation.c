@@ -30,7 +30,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 	while (scene->sphere[++k])
 	{
 		length_temp = _inter_sphere(scene, scene->sphere[k], i, j);
-		if (length_temp >= 0 && length_temp < length)
+		if (length_temp >= 0 && (length_temp < length || length == -1))
 			length = length_temp;
 	}
 //	k = -1;
@@ -51,6 +51,9 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 
 	length = -1;
 	length = _find_length(length, scene, i, j);
+	if (length != -1)
+		write(1);
+		//printf("x = %d y = %d lenght = %lf\n", i, j, length);
 //	if (length == -1)
 //		black
 
@@ -61,7 +64,7 @@ void	_generate_image(t_scene *scene)
 	int	j;
 
 	i = 0;
-	// _dov(_matrix_var)
+	_dov(scene, _matrix_var(scene));
 	while (i < scene->x_screen)
 	{
 		j = 0;

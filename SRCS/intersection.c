@@ -24,14 +24,14 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 	float		a;
 	float		b;
 	float		c;
+	float		*axis_angle;
 
+	axis_angle = _direct_axis(scene, i, j, scene->var);
 	a = 1;
-	b = 2 * ((scene->pov[0] - sphere->pos[0]) * _direct_axis(scene, i, j, 0)
-			+ (scene->pov[1] - sphere->pos[1]) * _direct_axis(scene, i, j, 1)
-			+ (scene->pov[2] - sphere->pos[2]) * sqrtf(1
-			- powf(_direct_axis(scene, i, j, 0), 2)
-			- powf(_direct_axis(scene, i, j, 1), 2)));
-	c = powf(scene->pov[0] - sphere->pos[0], 2)\
+	b = 2 * ((scene->pov[0] - sphere->pos[0]) * axis_angle[0]
+			+ (scene->pov[1] - sphere->pos[1]) * axis_angle[1]
+			+ (scene->pov[2] - sphere->pos[2]) * axis_angle[2]);
+	c = powf(scene->pov[0] - sphere->pos[0], 2)
 		+ powf(scene->pov[1] - sphere->pos[1], 2)
 		+ powf(scene->pov[2] - sphere->pos[2], 2) - powf(sphere->rayon, 2);
 	return (_eq_sec_deg(a, b, c));

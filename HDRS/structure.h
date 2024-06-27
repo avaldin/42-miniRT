@@ -53,6 +53,7 @@ typedef struct	s_scene
 	float			dov_y[3];
 	float			dov_z[3];
 	float			fov;
+	float			*var;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;
