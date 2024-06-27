@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 10:07:37 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:52:43 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_coord	*_set_coord(char *line);
 
 t_check	_init_ambient(t_amb **ambient, char *line);
 t_check	_init_camera(t_cam **camera, char *line);
+t_check	_init_light(t_spot **light, char *line);
 
 char	*get_next_line(int fd);
 t_scene	*_extract_data(char	*path_file);

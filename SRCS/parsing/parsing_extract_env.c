@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 11:36:01 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:51:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,30 @@ t_check	_init_camera(t_cam **camera, char *line)
 	return (SUCCESS);
 }
 
-// t_check	_init_light(t_spot *light, char *line)
-// {
-	
-// }
+t_check	_init_light(t_spot **light, char *line)
+{
+	line = _is_space(&line[2]);
+	if (check_line(line) == FAILURE)
+		return (FAILURE);
+	*light = malloc(sizeof(t_cam));
+	if (!*light)
+		return (FAILURE);
+	(*light)->pos = _set_coord(line);
+	if (!(*light)->pos)
+		return (free(*light), FAILURE);
+	line = _is_space(_until_char(line, ' '));
+	(*light)->ratio = ft_atof(line);
+	line = _is_space(_until_char(line, ' '));
+	if (!line)
+		return (free((*light)->pos), free(*light), FAILURE);
+	(*light)->color = _set_rgb(line);
+	if (!(*light)->color)
+		return (free((*light)->pos), free(*light), FAILURE);
+	line = _is_space(_until_char(line, ' '));
+	if (!((*light)->ratio >= 0. && (*light)->ratio <= 1.)
+		|| _check_coord((*light)->pos, -100, 100)					//EN FONCTION DE LA TAILLE DE LA GRILLE ???
+		|| _check_rgb((*light)->color) || (line && *line != '\n' && *line))
+		return (free((*light)->pos), free((*light)->color), free(*light), 
+				FAILURE);
+	return (SUCCESS);
+}
