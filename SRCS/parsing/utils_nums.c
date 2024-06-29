@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_nums.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 11:39:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/30 00:28:32 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 t_check	_check_coord(t_coord *coord, float range_min, float range_max)
 {
-	if ((coord->x >= range_min && coord->x <= range_max)
+	if (coord && (coord->x >= range_min && coord->x <= range_max)
 		&& (coord->y >= range_min && coord->y <= range_max)
 		&& (coord->z >= range_min && coord->z <= range_max))
 		return (SUCCESS);
@@ -25,12 +25,13 @@ t_check	_check_coord(t_coord *coord, float range_min, float range_max)
 
 t_check	_check_rgb(t_rgb *colors)
 {
-	if ((colors->red >= 0 && colors->red <= 255)
+	if (colors && (colors->red >= 0 && colors->red <= 255)
 		&& (colors->green >= 0 && colors->green <= 255)
 		&& (colors->blue >= 0 && colors->blue <= 255))
 		return (SUCCESS);
 	return (FAILURE);
 }
+
 
 t_rgb	*_set_rgb(char *line)
 {
@@ -38,8 +39,6 @@ t_rgb	*_set_rgb(char *line)
 	int		*temp[3];
 	int		i;
 	
-	if (!line)
-		return (NULL);
 	color = malloc(sizeof(t_rgb));
 	if (!color)
 		return (NULL);
@@ -68,8 +67,6 @@ t_coord	*_set_coord(char *line)
 	float	*temp[3];
 	int		i;
 	
-	if (!line)
-		return (NULL);
 	vec = malloc(sizeof(t_rgb));
 	if (!vec)
 		return (NULL);

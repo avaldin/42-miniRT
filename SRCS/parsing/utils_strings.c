@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_strings.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 11:20:26 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/29 23:40:36 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*_until_char(char *line, char c)
 	int	i;
 
 	i = 0;
+	if (!line || !*line)
+		return (NULL);
 	while (line[i] && line[i] != c)
 		++i;
 	return (&line[i]);
@@ -51,7 +53,7 @@ char	*_is_inrange(char *line, char r_bot, char r_top)
 {
 	int	i;
 
-	if (!line)
+	if (!line || !*line)
 		return (NULL);
 	i = 0;
 	while (line[i] && line[i] >= r_bot && line[i] <= r_top)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_extract.c                                  :+:      :+:    :+:   */
+/*   extract.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/27 12:53:08 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/30 01:30:05 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ static t_check	_data_loader(t_scene *scene, char *line)
 		res = _init_camera(&scene->camera, line);
 	else if (!ft_strncmp(line, "L ", 2) && !scene->light)
 		res = _init_light(&scene->light, line);
-	// else if (!ft_strncmp(line, "sp ", 3))
-	// 	res = _init_sphere(scene->sphere, line);
-	// else if (!ft_strncmp(line, "pl ", 3))
-	// 	res = _init_plane(scene->plane, line);
-	// else if (!ft_strncmp(line, "cy ", 3))
-	// 	res = _init_cylinder(scene->cylinder, line);
+	else if (!ft_strncmp(line, "sp ", 3))
+		res = _init_sphere(scene->sphere, line);
+	else if (!ft_strncmp(line, "pl ", 3))
+		res = _init_plane(scene->plane, line);
+	else if (!ft_strncmp(line, "cy ", 3))
+		res = _init_cylinder(scene->cylinder, line);
 	return (res);
 }
 
