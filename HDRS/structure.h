@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 13:26:08 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/30 14:25:47 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ typedef enum e_check
 	FAILURE
 }			t_check;
 
+typedef enum e_type
+{
+	OBJ_PLA,
+	OBJ_SPH,
+	OBJ_CYL,
+	ENV_AMB,
+	ENV_CAM,
+	ENV_SPT
+}			t_type;
+
 /* ************************************************************************** */
 /*                                   TOOLS                                    */
 /* ************************************************************************** */
@@ -29,7 +39,7 @@ typedef struct s_coord
 {
 	float	x;
 	float	y;
-	float	z;
+	float	z; 
 }				t_coord;
 
 typedef	struct s_rgb

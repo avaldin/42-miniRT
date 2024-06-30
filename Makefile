@@ -6,7 +6,7 @@
 #    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/06/30 01:25:44 by thibaud          ###   ########.fr        #
+#    Updated: 2024/06/30 15:55:51 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,18 @@ HDRS	:= objects.h parsing.h structure.h
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
+			parsing/extract_check_line.c\
 			parsing/extract_check_env.c\
 			parsing/extract_check_obj.c\
-			parsing/extract_env.c\
+			parsing/extract_env_init.c\
 			parsing/extract_gnl.c\
-			parsing/extract_obj.c\
+			parsing/extract_obj_init.c\
+			parsing/extract_obj_table.c\
 			parsing/extract.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
+			parsing/free_obj.c\
+			parsing/free_env.c\
 
 TEST_S	:=	main.c\
 			test_parsing.c\

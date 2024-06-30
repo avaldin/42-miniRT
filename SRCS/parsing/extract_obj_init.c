@@ -6,12 +6,11 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:40:51 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/30 01:31:45 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/30 15:42:35 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "structure.h"
 #include "parsing.h"
 #include <stdlib.h>
 
