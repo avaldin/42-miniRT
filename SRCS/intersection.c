@@ -18,23 +18,22 @@
 //{
 //
 //}
-
+#include <stdio.h>
 float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 {
-	float		a;
-	float		b;
-	float		c;
-	float		*axis_angle;
+	float	*axis_angle;
+	float	result_a;
+	float	result_b;
 
 	axis_angle = _direct_axis(scene, i, j, scene->var);
-	a = 1;
-	b = 2 * ((scene->pov[0] - sphere->pos[0]) * axis_angle[0]
-			+ (scene->pov[1] - sphere->pos[1]) * axis_angle[1]
-			+ (scene->pov[2] - sphere->pos[2]) * axis_angle[2]);
-	c = powf(scene->pov[0] - sphere->pos[0], 2)
-		+ powf(scene->pov[1] - sphere->pos[1], 2)
-		+ powf(scene->pov[2] - sphere->pos[2], 2) - powf(sphere->rayon, 2);
-	return (_eq_sec_deg(a, b, c));
+	if ((scene->pov[0] - sphere->pos[0]) * (exp2f(axis_angle[0]) - 4) + exp2f(scene->pov[1] - sphere->pos[1]) * (exp2f(axis_angle[1]) - 4) + exp2f(scene->pov[2] - sphere->pos[2]) * (exp2f(axis_angle[2]) - 4) - 2 * (scene->pov[0] - sphere->pos[0]) * axis_angle[0] * ((scene->pov[1] - sphere->pos[1]) * axis_angle[1] + (scene->pov[2] - sphere->pos[2]) * axis_angle[2]) - (scene->pov[1] - sphere->pos[1]) * axis_angle[1] * (scene->pov[2] - sphere->pos[2]) * axis_angle[2] + 8 * exp2f(sphere->rayon) < 0)
+		return (-1);
+	result_a = 0 - (scene->pov[0] - sphere->pos[0]) * axis_angle[0] - (scene->pov[1] - sphere->pos[1]) * axis_angle[1] - (scene->pov[2] - sphere->pos[2]) * axis_angle[2] + sqrtf(exp2f(scene->pov[0] - sphere->pos[0]) * (exp2f(axis_angle[0]) - 4) + exp2f(scene->pov[1] - sphere->pos[1]) * (exp2f(axis_angle[1]) - 4) + exp2f(scene->pov[2] - sphere->pos[2]) * (exp2f(axis_angle[2]) - 4) - 2 * (scene->pov[0] - sphere->pos[0]) * axis_angle[0] * ((scene->pov[1] - sphere->pos[1]) * axis_angle[1] + (scene->pov[2] - sphere->pos[2]) * axis_angle[2]) - (scene->pov[1] - sphere->pos[1]) * axis_angle[1] * (scene->pov[2] - sphere->pos[2]) * axis_angle[2] + 8 * exp2f(sphere->rayon)) / 2;
+	result_b = 0 - (scene->pov[0] - sphere->pos[0]) * axis_angle[0] - (scene->pov[1] - sphere->pos[1]) * axis_angle[1] - (scene->pov[2] - sphere->pos[2]) * axis_angle[2] - sqrtf(exp2f(scene->pov[0] - sphere->pos[0]) * (exp2f(axis_angle[0]) - 4) + exp2f(scene->pov[1] - sphere->pos[1]) * (exp2f(axis_angle[1]) - 4) + exp2f(scene->pov[2] - sphere->pos[2]) * (exp2f(axis_angle[2]) - 4) - 2 * (scene->pov[0] - sphere->pos[0]) * axis_angle[0] * ((scene->pov[1] - sphere->pos[1]) * axis_angle[1] + (scene->pov[2] - sphere->pos[2]) * axis_angle[2]) - (scene->pov[1] - sphere->pos[1]) * axis_angle[1] * (scene->pov[2] - sphere->pos[2]) * axis_angle[2] + 8 * exp2f(sphere->rayon)) / 2;
+	printf("a = %lf, b = %lf\n", result_a, result_b);
+	if ((result_a >= 0 && result_a < result_b) || result_b < 0)
+		return (result_a);
+	return (result_b);
 }
 
 //void	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, int i, int j)

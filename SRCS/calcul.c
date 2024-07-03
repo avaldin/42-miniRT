@@ -13,6 +13,7 @@
 #include <math.h>
 #include "../HDRS/structure.h"
 #include "../include/libft/libft.h"
+#include "../HDRS/calcul.h"
 
 // si dov_z = 0 0 1, dov x y z = 1 1 1;
 
@@ -31,9 +32,9 @@ float	*_matrix_var(t_scene *scene)
 	else
 	{
 		var[0] = powf(scene->dov_z[1], 2)
-				 / sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[2], 2));
+				 / sqrtf(powf(scene->dov_z[1], 2) + _sq(scene->dov_z[2], 2));
 		var[1] = -powf(scene->dov_z[2], 2)
-				 / sqrtf(powf(scene->dov_z[1], 2) + powf(scene->dov_z[2], 2));
+				 / sqrtf(powf(scene->dov_z[1], 2) + _sq(scene->dov_z[2], 2));
 	}
 	if (!scene->dov_z[2] && !scene->dov_z[0])
 	{
@@ -59,40 +60,29 @@ void	_dov(t_scene *scene, float *var)
 	scene->dov_y[0] = var[1] * var[3];
 	scene->dov_y[1] = var[0];
 	scene->dov_y[2] = var[1] * var[2];
+	//printf("xx = %lf")
 }
 
 float	*_direct_axis(t_scene *scene, int i, int j, float *var)
 {
-	float 	fov_angle;
 	float	temp[3];
 	float	*axis_angle;
 
 	axis_angle = ft_calloc(3, sizeof(float));
 	if (!axis_angle)
 		exit(50); //pas ok
-	fov_angle = scene->fov / 2  * (scene->x_screen - 2 * i) / scene->x_screen;
-	temp[0] = sinf(fov_angle * 3.141592 / 180);
-	fov_angle = 35  * (scene->y_screen - 2 * j) / scene->y_screen;
-	temp[1] = sinf(fov_angle * 3.141592 / 180);
-	temp[2] = 1 - powf(temp[1], 2) - powf(temp[0], 2);
+	temp[0] = sinf((0.0087266462599f * scene->fov)  * (float)(2 * i - scene->x_screen) / (float)scene->x_screen);
+	temp[1] = sinf(0.6108652381980f * (float)(2 * j - scene->y_screen) / (float)scene->y_screen);
+	temp[2] = sqrtf(1.0f - exp2f(temp[1]) - exp2f(temp[0]));
 	axis_angle[0] = temp[0] * var[2] - temp[2] * var[3];
-	axis_angle[1] = var[0] * temp[2] + var[1] * (temp[0] * var[3]
-			+ temp[3] * var[2]);
+	axis_angle[1] = var[0] * temp[1] + var[1] * (temp[0] * var[3]
+			+ temp[2] * var[2]);
 	axis_angle[2] = var[0] * (temp[0] * var[3] + temp[2] * var[2])
-			- temp[2] * var[2];
+			- temp[2] * var[1];
 	return (axis_angle);
 }
 
-float	_eq_sec_deg(float a, float b, float c)
+float	_sq(float x)
 {
-	float	result_a;
-	float	result_b;
-
-	if (powf(b, 2) - 4 * a * c < 0 || !a)
-		return (-1);
-	result_a = (-b - sqrtf(powf(b, 2) - 4 * a * c)) / (2 * a);
-	result_b = (-b + sqrtf((powf(b, 2) - 4 * a * c))) / (2 * a);
-	if ((result_a >= 0 && result_a < result_b) || result_b < 0)
-		return (result_a);
-	return (result_b);
+	return (x * x);
 }
