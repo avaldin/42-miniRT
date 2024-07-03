@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HDRS/structure.h"
+#include "../HDRS/pixel.h"
 #include "../HDRS/calcul.h"
 #include "../include/libft/libft.h"
 
@@ -46,16 +46,12 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 static void	_generate_pixel(t_scene *scene, int i, int j)
 {
 	float		length;
-	//float		inter[3];
 
 
 	length = -1;
 	length = _find_length(length, scene, i, j);
 	if (length != -1)
-		write(1);
-		//printf("x = %d y = %d lenght = %lf\n", i, j, length);
-//	if (length == -1)
-//		black
+		_mlx_pixel_put(scene->data, i, j, 255);
 
 }
 void	_generate_image(t_scene *scene)

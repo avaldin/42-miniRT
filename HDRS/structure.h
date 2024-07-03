@@ -38,10 +38,6 @@ typedef struct	s_cylinder
 	int		color[3];
 }				t_cylinder;
 
-//typedef struct	s_color
-//{
-//
-//};
 
 typedef struct	s_scene
 {
@@ -54,15 +50,12 @@ typedef struct	s_scene
 	float			dov_z[3];
 	float			fov;
 	float			*var;
+	int				fd;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;
 }				t_scene;
 
-typedef struct	s_data
-{
-	t_scene	*scene;
-}				t_data;
 
 typedef enum
 {

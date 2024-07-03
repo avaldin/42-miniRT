@@ -17,6 +17,7 @@ SRCS	:=	main.c\
 			generation.c\
 			calcul.c\
 			intersection.c\
+			tools_pixel.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
@@ -41,18 +42,18 @@ OBJS	:= $(SRCS:%.c=$(OBJS_D)%.o)
 TEST_EXE	:= test
 TEST_OBJS	:= $(TEST_S:%.c=$(OBJS_D)test_%.o)
 
-all: libft $(NAME)
+all: libft minilibx-linux $(NAME)
 
 $(NAME): $(OBJS_D) $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft -lft -o $(NAME) -lm
+	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
 
 
-$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile
+$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft $(INC_D)minilibx-linux Makefile
 	$(CC) $(CFLAGS) -I$(INC_D)libft -c $< -o $@
 
 
 $(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST/test.h
-	$(CC) $(CFLAGS) -I$(INC_D)libft -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(INC_D)minilibx-linux -c $< -o $@
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
@@ -64,6 +65,9 @@ libft:
 	$(MAKE) -C $(INC_D)libft
 	$(MAKE) bonus -C $(INC_D)libft
 
+minilibx-linux:
+	$(MAKE) -C $(INC_D)minilibx-linux
+
 clean:
 	$(RM) -r $(OBJS_D)
 
@@ -71,6 +75,7 @@ fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(TEST_EXE)
 	$(MAKE) -C $(INC_D)libft fclean
+	$(MAKE) -C $(INC_D)minilibx-linux clean
 
 t : $(TEST_D) $(TEST_OBJS) TEST/test.h
 	$(MAKE)
