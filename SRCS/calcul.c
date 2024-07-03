@@ -31,10 +31,10 @@ float	*_matrix_var(t_scene *scene)
 	}
 	else
 	{
-		var[0] = powf(scene->dov_z[1], 2)
-				 / sqrtf(powf(scene->dov_z[1], 2) + _sq(scene->dov_z[2], 2));
-		var[1] = -powf(scene->dov_z[2], 2)
-				 / sqrtf(powf(scene->dov_z[1], 2) + _sq(scene->dov_z[2], 2));
+		var[0] = _sq(scene->dov_z[1])
+				 / sqrtf(_sq(scene->dov_z[1]) + _sq(scene->dov_z[2]));
+		var[1] = -_sq(scene->dov_z[2])
+				 / sqrtf(_sq(scene->dov_z[1]) + _sq(scene->dov_z[2]));
 	}
 	if (!scene->dov_z[2] && !scene->dov_z[0])
 	{
@@ -43,10 +43,10 @@ float	*_matrix_var(t_scene *scene)
 	}
 	else
 	{
-		var[2] = powf(scene->dov_z[2], 2)
-				 / sqrtf(powf(scene->dov_z[0], 2) + powf(scene->dov_z[2], 2));
-		var[3] = powf(scene->dov_z[0], 2)
-				 / sqrtf(powf(scene->dov_z[0], 2) + powf(scene->dov_z[2], 2));
+		var[2] = _sq(scene->dov_z[2])
+				 / sqrtf(_sq(scene->dov_z[0]) + _sq(scene->dov_z[2]));
+		var[3] = _sq(scene->dov_z[0])
+				 / sqrtf(_sq(scene->dov_z[0]) + _sq(scene->dov_z[2]));
 	}
 	scene->var = var;
 	return (var);
@@ -73,16 +73,18 @@ float	*_direct_axis(t_scene *scene, int i, int j, float *var)
 		exit(50); //pas ok
 	temp[0] = sinf((0.0087266462599f * scene->fov)  * (float)(2 * i - scene->x_screen) / (float)scene->x_screen);
 	temp[1] = sinf(0.6108652381980f * (float)(2 * j - scene->y_screen) / (float)scene->y_screen);
-	temp[2] = sqrtf(1.0f - exp2f(temp[1]) - exp2f(temp[0]));
-	axis_angle[0] = temp[0] * var[2] - temp[2] * var[3];
-	axis_angle[1] = var[0] * temp[1] + var[1] * (temp[0] * var[3]
-			+ temp[2] * var[2]);
-	axis_angle[2] = var[0] * (temp[0] * var[3] + temp[2] * var[2])
-			- temp[2] * var[1];
+	//temp[2] = sqrtf(1.0f - _sq(temp[1]) - _sq(temp[0]));
+	axis_angle[0] = temp[0] * var[2] + scene->dov_z[0];
+	axis_angle[1] = var[0] * temp[1] + var[1] * temp[0] * var[3] + scene->dov_z[1];
+	axis_angle[2] = var[0] * temp[0] * var[3] - temp[1] * var[1] + scene->dov_z[2];
+	temp[0] = sqrtf(_sq(axis_angle[0]) + _sq(axis_angle[1]) + _sq(axis_angle[2]));
+	axis_angle[0] = axis_angle[0] / temp[0];
+	axis_angle[1] = axis_angle[1] / temp[0];
+	axis_angle[2] = axis_angle[2] / temp[0];
 	return (axis_angle);
 }
 
 float	_sq(float x)
 {
-	return (x * x);
+return (x * x);
 }

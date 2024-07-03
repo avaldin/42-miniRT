@@ -59,17 +59,16 @@ void	_generate_image(t_scene *scene)
 	int	i;
 	int	j;
 
-	i = 960;
-	j = 540;
+	i = 0;
 	_dov(scene, _matrix_var(scene));
-	_generate_pixel(scene, i, j);
-//	while (i < scene->x_screen)
-//	{
-//		j = 0;
-//		while (j < scene->y_screen)
-//		{
-//			j++;
-//		}
-//		i++;
-//	}
+	while (i < scene->x_screen)
+	{
+		j = 0;
+		while (j < scene->y_screen)
+		{
+			_generate_pixel(scene, i, j);
+			j++;
+		}
+		i++;
+	}
 }
