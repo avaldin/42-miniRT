@@ -24,29 +24,32 @@ float	*_matrix_var(t_scene *scene)
 	var = ft_calloc(4, sizeof(float));
 	if (!var)
 		exit(50); // pas ok
-	if (!scene->dov_z[2] && !scene->dov_z[1])
+	if (!scene->dov_z[2] && !scene->dov_z[0])
 	{
-		var[0] = 1;
-		var[1] = 0;
+		var[0] = 0;
+		var[1] = 1;
 	}
 	else
 	{
-		var[0] = _sq(scene->dov_z[1])
-				 / sqrtf(_sq(scene->dov_z[1]) + _sq(scene->dov_z[2]));
-		var[1] = -_sq(scene->dov_z[2])
-				 / sqrtf(_sq(scene->dov_z[1]) + _sq(scene->dov_z[2]));
+		var[0] = 1 / sqrtf(1 + _sq(scene->dov_z[1]) / (_sq(scene->dov_z[0]) + _sq(scene->dov_z[2])));
+		var[1] = scene->dov_z[1] / (_sq(scene->dov_z[0])  + _sq(scene->dov_z[1])  + _sq(scene->dov_z[2]) );
 	}
-	if (!scene->dov_z[2] && !scene->dov_z[0])
+	if (!scene->dov_z[2] && scene->dov_z[0])
+	{
+		var[2] = 0;
+		var[3] = 1;
+		if (scene->dov_z[0] < 0)
+			var[3] = -1;
+	}
+	else if (!scene->dov_z[2] && !scene->dov_z[0])
 	{
 		var[2] = 1;
 		var[3] = 0;
 	}
 	else
 	{
-		var[2] = _sq(scene->dov_z[2])
-				 / sqrtf(_sq(scene->dov_z[0]) + _sq(scene->dov_z[2]));
-		var[3] = _sq(scene->dov_z[0])
-				 / sqrtf(_sq(scene->dov_z[0]) + _sq(scene->dov_z[2]));
+		var[2] = 1 / sqrtf(1 + _sq(scene->dov_z[0]) / _sq(scene->dov_z[2]));
+		var[3] = (scene->dov_z[0] / scene->dov_z[2]) / sqrtf(1 + _sq(scene->dov_z[0]) / _sq(scene->dov_z[2]));
 	}
 	scene->var = var;
 	return (var);
@@ -81,7 +84,7 @@ float	*_direct_axis(t_scene *scene, int i, int j, float *var)
 	axis_angle[0] = axis_angle[0] / temp[0];
 	axis_angle[1] = axis_angle[1] / temp[0];
 	axis_angle[2] = axis_angle[2] / temp[0];
-	return (axis_angle);
+ 	return (axis_angle);
 }
 
 float	_sq(float x)
