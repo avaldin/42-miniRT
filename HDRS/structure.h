@@ -39,7 +39,7 @@ typedef struct s_coord
 {
 	float	x;
 	float	y;
-	float	z; 
+	float	z;
 }				t_coord;
 
 typedef	struct s_rgb

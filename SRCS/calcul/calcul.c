@@ -69,14 +69,11 @@ float	*_matrix_var(t_scene *scene)
 	//printf("xx = %lf")
 //}
 
-float	*_direct_axis(t_scene *scene, int i, int j, float *var)
+t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 {
 	float	temp[3];
-	float	*axis_angle;
+	float	axis_angle[3];
 
-	axis_angle = ft_calloc(3, sizeof(float));
-	if (!axis_angle)
-		exit(50); //pas ok
 	temp[0] = sinf((0.0087266462599f * scene->camera->fov)
 			* (float)(2 * i - scene->x_screen) / (float)scene->x_screen)
 					* ((float)scene->x_screen / (float)scene->y_screen);
@@ -90,10 +87,10 @@ float	*_direct_axis(t_scene *scene, int i, int j, float *var)
 			+ scene->camera->vect->z;
 	temp[0] = sqrtf(_sq(axis_angle[0]) + _sq(axis_angle[1])
 			+ _sq(axis_angle[2]));
-	axis_angle[0] = axis_angle[0] / temp[0];
-	axis_angle[1] = axis_angle[1] / temp[0];
-	axis_angle[2] = axis_angle[2] / temp[0];
- 	return (axis_angle);
+	scene->axis->x = axis_angle[0] / temp[0];
+	scene->axis->y = axis_angle[1] / temp[0];
+	scene->axis->z = axis_angle[2] / temp[0];
+ 	return (scene->axis);
 }
 
 float	_sq(float x)
