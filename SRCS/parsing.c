@@ -42,4 +42,5 @@ t_scene	*_parsing(t_scene *scene)
 	scene->y_screen = 1080;
 	return (scene);
 
+
 }
