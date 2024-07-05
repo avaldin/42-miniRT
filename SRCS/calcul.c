@@ -15,8 +15,6 @@
 #include "../include/libft/libft.h"
 #include "../HDRS/calcul.h"
 
-// si dov_z = 0 0 1, dov x y z = 1 1 1;
-
 float	*_matrix_var(t_scene *scene)
 {
 	float	*var;
@@ -31,8 +29,11 @@ float	*_matrix_var(t_scene *scene)
 	}
 	else
 	{
-		var[0] = 1 / sqrtf(1 + _sq(scene->camera->vect->y) / (_sq(scene->camera->vect->x) + _sq(scene->camera->vect->z)));
-		var[1] = scene->camera->vect->y / (_sq(scene->camera->vect->x)  + _sq(scene->camera->vect->y) + _sq(scene->camera->vect->z));
+		var[0] = 1 / sqrtf(1
+				+ _sq(scene->camera->vect->y) / (_sq(scene->camera->vect->x)
+				+ _sq(scene->camera->vect->z)));
+		var[1] = scene->camera->vect->y / (_sq(scene->camera->vect->x)
+				+ _sq(scene->camera->vect->y) + _sq(scene->camera->vect->z));
 	}
 	if (!scene->camera->vect->z && scene->camera->vect->x)
 	{
@@ -48,8 +49,10 @@ float	*_matrix_var(t_scene *scene)
 	}
 	else
 	{
-		var[2] = 1 / sqrtf(1 + _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
-		var[3] = (scene->camera->vect->x / scene->camera->vect->z) / sqrtf(1 + _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
+		var[2] = 1 / sqrtf(1
+				+ _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
+		var[3] = (scene->camera->vect->x / scene->camera->vect->z) / sqrtf(1
+				+ _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
 	}
 	scene->var = var;
 	return (var);
@@ -74,13 +77,19 @@ float	*_direct_axis(t_scene *scene, int i, int j, float *var)
 	axis_angle = ft_calloc(3, sizeof(float));
 	if (!axis_angle)
 		exit(50); //pas ok
-	temp[0] = sinf((0.0087266462599f * scene->camera->fov)  * (float)(2 * i - scene->x_screen) / (float)scene->x_screen) * ((float)scene->x_screen / (float)scene->y_screen);
-	temp[1] = sinf(0.6108652381980f * (float)(2 * j - scene->y_screen) / (float)scene->y_screen);
+	temp[0] = sinf((0.0087266462599f * scene->camera->fov)
+			* (float)(2 * i - scene->x_screen) / (float)scene->x_screen)
+					* ((float)scene->x_screen / (float)scene->y_screen);
+	temp[1] = sinf(0.6108652381980f
+			* (float)(2 * j - scene->y_screen) / (float)scene->y_screen);
 	//temp[2] = sqrtf(1.0f - _sq(temp[1]) - _sq(temp[0]));
 	axis_angle[0] = temp[0] * var[2] + scene->camera->vect->x;
-	axis_angle[1] = var[0] * temp[1] + var[1] * temp[0] * var[3] + scene->camera->vect->y;
-	axis_angle[2] = var[0] * temp[0] * var[3] - temp[1] * var[1] + scene->camera->vect->z;
-	temp[0] = sqrtf(_sq(axis_angle[0]) + _sq(axis_angle[1]) + _sq(axis_angle[2]));
+	axis_angle[1] = var[0] * temp[1] + var[1] * temp[0] * var[3]
+			+ scene->camera->vect->y;
+	axis_angle[2] = var[0] * temp[0] * var[3] - temp[1] * var[1]
+			+ scene->camera->vect->z;
+	temp[0] = sqrtf(_sq(axis_angle[0]) + _sq(axis_angle[1])
+			+ _sq(axis_angle[2]));
 	axis_angle[0] = axis_angle[0] / temp[0];
 	axis_angle[1] = axis_angle[1] / temp[0];
 	axis_angle[2] = axis_angle[2] / temp[0];

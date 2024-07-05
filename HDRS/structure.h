@@ -45,24 +45,6 @@ typedef struct	s_cylinder
 	int		color[3];
 }				t_cylinder;
 
-
-//typedef struct	s_scene
-//{
-//	t_sphere		**sphere;
-//	t_plane			**plane;
-//	t_cylinder 		**cylinder;
-//	float			pov[3];
-//	float			dov_x[3];
-//	float			dov_y[3];
-//	float			dov_z[3];
-//	float			fov;
-//	float			*var;
-//	int				fd;
-//	int				x_screen;
-//	int				y_screen;
-//	struct s_data	*data;
-//}				t_scene;
-
 typedef struct s_cam
 {
 	int		fov;
@@ -85,12 +67,6 @@ typedef struct s_scene
 	int				y_screen;
 	struct s_data	*data;
 }				t_scene;
-
-typedef enum
-{
-	FAIL,
-	SUCCESS
-}				e_test;
 
 t_scene	*_parsing(t_scene *scene);
 
