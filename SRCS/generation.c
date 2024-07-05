@@ -60,7 +60,7 @@ void	_generate_image(t_scene *scene)
 	int	j;
 
 	i = 0;
-	_dov(scene, _matrix_var(scene));
+	_matrix_var(scene);
 	while (i < scene->x_screen)
 	{
 		j = 0;

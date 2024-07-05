@@ -15,6 +15,13 @@
 
 # include <stddef.h>
 
+typedef struct s_coord
+{
+	float	x;
+	float	y;
+	float	z;
+}				t_coord;
+
 typedef struct	s_plane
 {
 	float	pos[3];
@@ -22,11 +29,11 @@ typedef struct	s_plane
 	int		color[3];
 }				t_plane;
 
-typedef struct	s_sphere
+typedef struct s_sphere
 {
-	float	pos[3];
-	float	rayon;
-	int		color[3];
+	float	radius;
+	t_coord	*pos;
+//	t_rgb	*color;
 }				t_sphere;
 
 typedef struct	s_cylinder
@@ -39,23 +46,45 @@ typedef struct	s_cylinder
 }				t_cylinder;
 
 
-typedef struct	s_scene
+//typedef struct	s_scene
+//{
+//	t_sphere		**sphere;
+//	t_plane			**plane;
+//	t_cylinder 		**cylinder;
+//	float			pov[3];
+//	float			dov_x[3];
+//	float			dov_y[3];
+//	float			dov_z[3];
+//	float			fov;
+//	float			*var;
+//	int				fd;
+//	int				x_screen;
+//	int				y_screen;
+//	struct s_data	*data;
+//}				t_scene;
+
+typedef struct s_cam
+{
+	int		fov;
+	t_coord	*pos;
+	t_coord	*vect;
+}				t_cam;
+
+typedef struct s_scene
 {
 	t_sphere		**sphere;
-	t_plane			**plane;
-	t_cylinder 		**cylinder;
-	float			pov[3];
-	float			dov_x[3];
-	float			dov_y[3];
-	float			dov_z[3];
-	float			fov;
+//	t_plane			**plane;
+//	t_cylinder		**cylinder;
+//	t_amb			*ambient;
+//	t_spot			*light;
+	t_cam			*camera;
+//	t_coord			*dov_x;
+//	t_coord			*dov_y;
 	float			*var;
-	int				fd;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;
 }				t_scene;
-
 
 typedef enum
 {
