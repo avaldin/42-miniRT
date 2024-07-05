@@ -44,3 +44,5 @@ t_scene	*_parsing(t_scene *scene)
 
 
 }
+
+test
