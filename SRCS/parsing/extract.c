@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/05 21:38:01 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/07 01:30:49 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,20 @@ static char **_read_file(int fd)
 
 static void	_init_scene(t_scene *scene)
 {
-	static t_rescam	reset;
+	// static t_rescam	reset;
 	static t_coord	axis;
+	static float	var[4] = {0., 0., 0., 0.};
 	
-	reset.cos_x = 0.;
-	reset.cos_y = 0.;
-	reset.sin_x = 0.;
-	reset.sin_y = 0.;
+	// reset.cos_x = 0.;
+	// reset.cos_y = 0.;
+	// reset.sin_x = 0.;
+	// reset.sin_y = 0.;
 	axis.x = 0.;
 	axis.y = 0.;
 	axis.z = 0.;
 	scene->axis = &axis;
-	scene->reset = &reset;
+	// scene->var = &reset;
+	scene->var = var;
 	scene->ambient = NULL;
 	scene->light = NULL;
 	scene->camera = NULL;

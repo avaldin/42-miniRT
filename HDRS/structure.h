@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/05 21:36:51 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/07 01:29:23 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,17 @@ typedef struct s_scene
 	t_amb			*ambient;
 	t_spot			*light;
 	t_cam			*camera;
-	t_rescam		*reset;
+	//t_rescam		*var;
 	t_coord			*axis;
+	float			*var;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;
 }				t_scene;
 
-typedef struct s_data
+typedef struct s_glob
 {
 	t_scene	*scene;
-}				t_data;
+}				t_glob;
 
 #endif

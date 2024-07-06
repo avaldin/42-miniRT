@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:48:35 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/21 15:03:31 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/07/07 00:14:34 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../HDRS/structure.h"
-#include "../include/libft/libft.h"
-#include "../HDRS/calcul.h"
+#include "structure.h"
+#include "libft.h"
+#include "calcul.h"
 
 float	*_matrix_var(t_scene *scene)
 {

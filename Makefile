@@ -6,11 +6,11 @@
 #    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/06 23:07:28 by thibaud          ###   ########.fr        #
+#    Updated: 2024/07/07 01:18:20 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= structure.h\
+HDRS	:= structure.h parsing.h pixel.h calcul.h\
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
@@ -57,18 +57,20 @@ TEST_OBJS	:= $(TEST_S:%.c=$(OBJS_D)test_%.o)
 all: libft minilibx-linux $(NAME)
 
 $(NAME): $(OBJS_D) $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -I$(HDRS_D) -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
 
 
 $(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft $(INC_D)minilibx-linux Makefile
-	$(CC) $(CFLAGS) -I$(INC_D)libft -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(HDRS_D)  -c $< -o $@
 
 
 $(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST/test.h
-	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(INC_D)minilibx-linux -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(INC_D)minilibx-linux -I$(HDRS_D) -c $< -o $@
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
+	@mkdir -p $(OBJS_D)parsing
+	@mkdir -p $(OBJS_D)calcul
 
 $(TEST_D):
 	@mkdir -p $(TEST_D)

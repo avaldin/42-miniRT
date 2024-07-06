@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:45:42 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/30 16:10:46 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/07 01:36:41 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	_set_vars_img(t_struct *g, int x, int y)
 {
+	static t_vars	vars;
+	static t_data	img;
+
+	g->vars = &vars;
+	g->img = &img;
 	g->vars->mlx = mlx_init();
 	g->vars->win = mlx_new_window(g->vars->mlx, x, y, "test miniRT");
 	g->img->img = mlx_new_image(g->vars->mlx, x, y);

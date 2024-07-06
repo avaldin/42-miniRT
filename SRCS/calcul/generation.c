@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   generation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 18:24:16 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/07/07 00:14:46 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HDRS/pixel.h"
-#include "../HDRS/calcul.h"
-#include "../include/libft/libft.h"
+#include "pixel.h"
+#include "calcul.h"
+#include "libft.h"
 
 static float	_find_length(float length, t_scene *scene, int i, int j)
 {
