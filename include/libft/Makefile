@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 13:32:16 by tmouche           #+#    #+#              #
-#    Updated: 2024/04/02 19:22:17 by tmouche          ###   ########.fr        #
+#    Updated: 2024/06/24 19:34:04 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_toupper.c ft_tolower.c ft_atoi.c ft_strncmp.c ft_memcmp.c ft_calloc.c\
 		ft_bzero.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strdup.c ft_memchr.c ft_strlen.c ft_strlcpy.c ft_strlcat.c\
 		ft_strjoin.c ft_substr.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
-		ft_abs.c ft_strfull.c ft_stradd.c
+		ft_abs.c ft_strfull.c ft_stradd.c ft_atof.c ft_atol.c
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c\
 
@@ -23,7 +23,7 @@ B_OBJS	:=	$(BONUS:.c=.o)
 
 HEAD	:=	libft.h
 
-CFLAGS	:=	-Wall -Wextra -Werror
+CFLAGS	:=	-Wall -Wextra -Werror -g
 
 #LFLAGS	:=	-fsanitize=leak,address
 

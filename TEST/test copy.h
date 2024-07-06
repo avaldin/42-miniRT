@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strfull.c                                       :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:26:01 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 17:35:12 by thibaud          ###   ########.fr       */
+/*   Created: 2024/06/19 13:06:07 by tmouche           #+#    #+#             */
+/*   Updated: 2024/07/05 00:30:41 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef TEST_H
+# define TEST_H
 
-char	*ft_strfull(const char *s, int lower, int upper)
-{
-	size_t	i;
+void	_t_check_args(void);
+void	_t_compare_set(void);
 
-	i = -1;
-	while (s[++i])
-		if (s[i] < (unsigned char)lower || s[i] > (unsigned char)upper)
-			return (&((char *)s)[i]);
-	return (0);
-}
+#endif

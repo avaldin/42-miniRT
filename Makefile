@@ -3,26 +3,38 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avaldin <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/06/19 16:45:48 by avaldin          ###   ########.fr        #
+#    Updated: 2024/07/06 23:07:28 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HDRS	:= structure.h\
 
 SRCS	:=	main.c\
-			parsing.c\
-			generation.c\
-			calcul.c\
-			intersection.c\
-			tools_pixel.c\
+			parsing/extract_check_args.c\
+			parsing/extract_check_line.c\
+			parsing/extract_check_env.c\
+			parsing/extract_check_obj.c\
+			parsing/extract_env_init.c\
+			parsing/extract_gnl.c\
+			parsing/extract_obj_init.c\
+			parsing/extract_obj_table.c\
+			parsing/extract.c\
+			parsing/utils_nums.c\
+			parsing/utils_strings.c\
+			parsing/free_obj.c\
+			parsing/free_env.c\
+			calcul/generation.c\
+			calcul/calcul.c\
+			calcul/intersection.c\
+			calcul/tools_pixel.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
 			calcul.c\
-
+			test_parsing.c\
 
 SRCS_D	:= SRCS/
 TEST_D	:= TEST/

@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strfull.c                                       :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:26:01 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 17:35:12 by thibaud          ###   ########.fr       */
+/*   Created: 2024/06/24 18:40:56 by tmouche           #+#    #+#             */
+/*   Updated: 2024/07/05 01:01:13 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strfull(const char *s, int lower, int upper)
+float	ft_atof(const char *nptr)
 {
-	size_t	i;
+	int		i;
+	float	pre;
+	float	post;
 
-	i = -1;
-	while (s[++i])
-		if (s[i] < (unsigned char)lower || s[i] > (unsigned char)upper)
-			return (&((char *)s)[i]);
-	return (0);
+	if (!nptr)
+		return (0.);
+	i = 0;
+	pre = (float)ft_atoi(nptr);
+	while (nptr[i] && nptr[i] != '.')
+		++i;
+	if (!nptr)
+		return (pre);
+	++i;
+	post = (float)ft_atoi(&nptr[i]);
+	while (post > 1)
+		post /= 10.;
+	if (pre < 0)
+		return (pre - post);
+	return (pre + post);
 }

@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 12:23:50 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/24 19:33:05 by tmouche          ###   ########.fr       */
+/*   Created: 2024/06/24 19:32:56 by tmouche           #+#    #+#             */
+/*   Updated: 2024/06/24 19:33:21 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
-int	ft_atoi(const char *nptr)
+size_t	ft_atol(const char *nptr)
 {
-	return ((int)(ft_atol(nptr)));
+	size_t	i;
+	size_t	result;
+	int		sign;
+
+	i = -1;
+	sign = 1;
+	result = 0;
+	while ((nptr[++i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		;
+	if (nptr[i] == 45 || nptr[i] == 43)
+		if (nptr[i++] == 45)
+			sign *= -1;
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+		result = result * 10 + (nptr[i++] - 48);
+	return (result * sign);
 }
