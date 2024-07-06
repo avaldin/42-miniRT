@@ -20,6 +20,7 @@
 # define BUFFER_SIZE 100
 # define X_SCREEN_SIZE 1920
 # define Y_SCREEN_SIZE 1080
+
 /* *********************UTILS*********************************************** */
 void	_freetab(char **tab);
 void	_strerror(char *str);

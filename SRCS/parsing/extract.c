@@ -49,7 +49,7 @@ static void	_init_scene(t_scene *scene)
 	// static t_rescam	reset;
 	static t_coord	axis;
 	static float	var[4] = {0., 0., 0., 0.};
-	
+
 	// reset.cos_x = 0.;
 	// reset.cos_y = 0.;
 	// reset.sin_x = 0.;
