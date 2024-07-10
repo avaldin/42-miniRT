@@ -59,7 +59,7 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 	return (result_b);
 }
 
-//void	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, int i, int j)
-//{
+// void	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, int i, int j)
+// {
 //
-//}
+// }

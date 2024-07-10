@@ -127,5 +127,7 @@ t_scene	*_extract_data(char	*path_file)
 	if (!settings)
 		return (NULL);
 	_freetab(data);
+	settings->x_screen = X_SCREEN_SIZE;
+	settings->y_screen = Y_SCREEN_SIZE;
 	return (settings);
 }
