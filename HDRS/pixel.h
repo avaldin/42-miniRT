@@ -12,8 +12,7 @@
 
 #ifndef PIXEL_H
 # define PIXEL_H
-# define SCREEN_X 1920
-# define SCREEN_Y 1080
+
 # include "structure.h"
 
 typedef struct s_data
