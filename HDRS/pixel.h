@@ -12,7 +12,6 @@
 
 #ifndef PIXEL_H
 # define PIXEL_H
-
 # include "structure.h"
 
 typedef struct s_data

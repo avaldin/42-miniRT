@@ -47,21 +47,25 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 static void	_generate_pixel(t_scene *scene, int i, int j)
 {
 	float		length;
-//	float		intensity;
+	float		intensity;
+	float		temp;
+	int			color;
 
 	length = -1;
 	length = _find_length(length, scene, i, j);
 	if (length == -1)
 	{
-		_mlx_pixel_put(scene->data, i, j, 255);
 		return ;
 	}
-//	intensity = _find_intensity(scene, length);
-
-
-
-	//_mlx_pixel_put(scene->data, i, j, 255);
-
+	// if light == 0 (p[ixel put lumiere ambiante)
+	intensity = _find_intensity(scene, length);
+	if (intensity < 0)
+		return ;
+	temp = 255.0 * intensity / scene->light->ratio;
+	color = (int)temp;
+	if ((float)((int)temp) + 0.5 < temp)
+		color++;
+	_mlx_pixel_put(scene->data, i, j, color << 16);
 }
 void	_generate_image(t_scene *scene)
 {

@@ -27,7 +27,7 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 	t_coord	*axis;
 
 	axis = _direct_axis(scene, i, j, scene->var);
-	if (4 * _sq((scene->camera->pos->x - sphere->pos->x) * axis->z
+	if (4 * _sq((scene->camera->pos->x - sphere->pos->x) * axis->x
 		+ (scene->camera->pos->y - sphere->pos->y) * axis->y
 		+ (scene->camera->pos->z - sphere->pos->z) * axis->z)
 		- 4 * (_sq(scene->camera->pos->x - sphere->pos->x)
@@ -35,7 +35,7 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 		+ _sq(scene->camera->pos->z - sphere->pos->z))
 		+ 4 * _sq(sphere->radius) < 0)
 		return (-1);
-	result_a = -(2 * ((scene->camera->pos->x - sphere->pos->x)* axis->x
+	result_a = -(2 * ((scene->camera->pos->x - sphere->pos->x) * axis->x
 			+ (scene->camera->pos->y - sphere->pos->y) * axis->y
 			+ (scene->camera->pos->z - sphere->pos->z) * axis->z)
 			+ sqrtf(4 * _sq((scene->camera->pos->x - sphere->pos->x)
@@ -45,7 +45,7 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 			+ _sq(scene->camera->pos->y - sphere->pos->y)
 			+ _sq(scene->camera->pos->z - sphere->pos->z))
 			+ 4 * _sq(sphere->radius))) / 2;
-	result_b = -(2 * ((scene->camera->pos->x - sphere->pos->x) * axis->z
+	result_b = -(2 * ((scene->camera->pos->x - sphere->pos->x) * axis->x
 			+ (scene->camera->pos->y - sphere->pos->y) * axis->y
 			+ (scene->camera->pos->z - sphere->pos->z) * axis->z)
 			- sqrtf(4 * _sq((scene->camera->pos->x - sphere->pos->x)
