@@ -12,7 +12,8 @@
 
 HDRS	:= structure.h parsing.h pixel.h calcul.h\
 
-SRCS	:=	parsing/extract_check_args.c\
+SRCS	:=	main.c\
+			parsing/extract_check_args.c\
 			parsing/extract_check_line.c\
 			parsing/extract_check_env.c\
 			parsing/extract_check_obj.c\
