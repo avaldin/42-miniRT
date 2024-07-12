@@ -25,5 +25,6 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j);
 t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var);
 float	_sq(float x);
 float	_find_intensity(t_scene *scene, float length);
+int		*_rgb_render(t_scene *scene, float intensity);
 
 #endif

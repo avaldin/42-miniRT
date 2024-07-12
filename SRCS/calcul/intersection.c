@@ -14,10 +14,10 @@
 #include "../HDRS/calcul.h"
 #include <math.h>
 
-//float	_inter_plane(t_scene *scene, t_plane *plane, int i, int j)
-//{
+// float	_inter_plane(t_scene *scene, t_plane *plane, int i, int j)
+// {
 //
-//}
+// }
 
 float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
 {
