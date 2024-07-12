@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:45:46 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/30 15:45:02 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:40:05 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	_free_scene(t_scene *scene, char *err)
 	_free_light(scene->light);
 	if (err)
 		write (2, err, ft_strlen(err, 0));
+	free (scene);
 }

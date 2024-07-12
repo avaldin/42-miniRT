@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/07 01:30:49 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:51:22 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ static char **_read_file(int fd)
 			t_map = ft_stradd(res, t_str);
 			if (!t_map)
 				return (_freetab(res), free (t_str), perror(NULL), NULL);
+			free (res);
 		}
 		else
 			free (t_str);
 		res = t_map;
 	}
-	return (t_map);
+	return (res);
 }
 
 static void	_init_scene(t_scene *scene)
@@ -124,9 +125,9 @@ t_scene	*_extract_data(char	*path_file)
 	if (!data)
 		return (NULL);
 	settings = _pars_line(data);
+	_freetab(data);
 	if (!settings)
 		return (NULL);
-	_freetab(data);
 	settings->x_screen = X_SCREEN_SIZE;
 	settings->y_screen = Y_SCREEN_SIZE;
 	return (settings);

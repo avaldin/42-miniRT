@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:32:56 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/24 19:33:21 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/12 17:13:00 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <unistd.h>
 
-size_t	ft_atol(const char *nptr)
+ssize_t	ft_atol(const char *nptr)
 {
 	size_t	i;
-	size_t	result;
+	ssize_t	result;
 	int		sign;
 
 	i = -1;

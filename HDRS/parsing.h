@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/30 15:43:59 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:26:10 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ t_coord	*_set_coord(char *line);
 
 /* *********************OBJS************************************************ */
 void	_free_sphere(t_sphere **sph);
-t_check	_check_sphere(t_sphere *sphere, char *line);
+t_check	_check_sphere(t_sphere **sphere, char *line);
 t_check	_init_sphere(t_sphere **sphere, char *line);
 t_check	_sphere_table(t_sphere ***map, char *line);
 void	_free_plane(t_plane **pla);
-t_check	_check_plane(t_plane *plane, char *line);
+t_check	_check_plane(t_plane **plane, char *line);
 t_check	_init_plane(t_plane **plane, char *line);
 t_check	_plane_table(t_plane ***map, char *line);
 void	_free_cylinder(t_cylinder **cyl);
-t_check	_check_cylinder(t_cylinder *cylinder, char *line);
+t_check	_check_cylinder(t_cylinder **cylinder, char *line);
 t_check	_init_cylinder(t_cylinder **cylinder, char *line);
 t_check	_cylinder_table(t_cylinder ***map, char *line);
 
 /* *********************ENVS************************************************ */
-t_check	_check_ambient(t_amb *ambient, char *line);
+t_check	_check_ambient(t_amb **ambient, char *line);
 t_check	_init_ambient(t_amb **ambient, char *line);
-t_check	_check_camera(t_cam *camera, char *line);
+t_check	_check_camera(t_cam **camera, char *line);
 t_check	_init_camera(t_cam **camera, char *line);
-t_check	_check_light(t_spot *light, char *line);
+t_check	_check_light(t_spot **light, char *line);
 t_check	_init_light(t_spot **light, char *line);
 void	_free_scene(t_scene *scene, char *err);
 
