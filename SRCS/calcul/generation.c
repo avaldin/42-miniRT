@@ -12,7 +12,6 @@
 
 #include "pixel.h"
 #include "calcul.h"
-#include "libft.h"
 
 static float	_find_length(float length, t_scene *scene, int i, int j)
 {
@@ -62,6 +61,7 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	rgb = _rgb_render(scene, intensity);
 	_mlx_pixel_put(scene->data, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
+
 void	_generate_image(t_scene *scene)
 {
 	int	i;

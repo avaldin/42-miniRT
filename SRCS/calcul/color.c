@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
-
 #include "../../HDRS/calcul.h"
 #include <math.h>
-#include <stdio.h>
+
 float	_find_intensity(t_scene *scene, float length)
 {
 	float	i;
@@ -63,4 +62,3 @@ int	*_rgb_render(t_scene *scene, float intensity)
 		rgb[2]++;
 	return (rgb);
 }
-// x0 + length * direction
