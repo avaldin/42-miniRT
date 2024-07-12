@@ -48,7 +48,7 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 {
 	float		length;
 	float		intensity;
-	int			*color;
+	int			*rgb;
 
 	length = -1;
 	length = _find_length(length, scene, i, j);
@@ -56,12 +56,11 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	{
 		return ;
 	}
-	// if light == 0 (p[ixel put lumiere ambiante)
 	intensity = _find_intensity(scene, length);
 	if (intensity < 0)
 		intensity = 0;
-	color = _rgb_render(scene, intensity);
-	_mlx_pixel_put(scene->data, i, j, color[0] << 16 | color[1] << 8 | color[2]);
+	rgb = _rgb_render(scene, intensity);
+	_mlx_pixel_put(scene->data, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 void	_generate_image(t_scene *scene)
 {
