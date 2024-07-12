@@ -14,19 +14,20 @@
 #include "../HDRS/calcul.h"
 #include <math.h>
 
-// float	_inter_plane(t_scene *scene, t_plane *plane, int i, int j)
-// {
-//
-// }
-
-float	_inter_sphere(t_scene *scene, t_sphere *sphere, int i, int j)
+float	_inter_plane(t_scene *scene, t_plane *plane, t_coord *axis)
 {
+	return ((plane->vect->x * plane->pos->x + plane->vect->y * plane->pos->y
+		+ plane->vect->z * plane->pos->z - axis->x - axis->y - axis->z)
+		/ (plane->vect->x * scene->camera->pos->x
+		+ plane->vect->y * scene->camera->pos->y
+		+ plane->vect->z * scene->camera->pos->z));
+}
 
+float	_inter_sphere(t_scene *scene, t_sphere *sphere, t_coord *axis)
+{
 	float	result_a;
 	float	result_b;
-	t_coord	*axis;
 
-	axis = _direct_axis(scene, i, j, scene->var);
 	if (4 * _sq((scene->camera->pos->x - sphere->pos->x) * axis->x
 		+ (scene->camera->pos->y - sphere->pos->y) * axis->y
 		+ (scene->camera->pos->z - sphere->pos->z) * axis->z)
