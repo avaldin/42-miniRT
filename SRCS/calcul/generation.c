@@ -22,18 +22,26 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 
 	k = -1;
 	axis = _direct_axis(scene, i, j, scene->var);
-//	while (scene->plane[++k])
-//	{
-//		length_temp = _inter_plane(scene, scene->plane[k], i, j);
-//		if (length_temp >= 0 && length_temp < length)
-//			length = length_temp;
-//	}
-//	k = -1;
+	while (scene->plane[++k])
+	{
+		length_temp = _inter_plane(scene, scene->plane[k], axis);
+		if (length_temp >= 0 && length_temp < length)
+		{
+			length = length_temp;
+			scene->object = scene->plane[k];
+			scene->fct = _intensity_of_plane;
+		}
+	}
+	k = -1;
 	while (scene->sphere[++k])
 	{
 		length_temp = _inter_sphere(scene, scene->sphere[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
+		{
 			length = length_temp;
+			scene->object = scene->sphere[k];
+			scene->fct = _intensity_of_sphere;
+		}
 	}
 //	k = -1;
 //	while (scene->cylinder[++k])
@@ -54,10 +62,8 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	length = -1;
 	length = _find_length(length, scene, i, j);
 	if (length == -1)
-	{
 		return ;
-	}
-	intensity = _find_intensity(scene, length);
+	intensity = scene->fct(scene, length, scene->object);
 	if (intensity < 0)
 		intensity = 0;
 	rgb = _rgb_render(scene, intensity);

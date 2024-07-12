@@ -95,5 +95,5 @@ t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 
 float	_sq(float x)
 {
-	return (x * x);
+	return (x * x); // proteger l'overflow
 }

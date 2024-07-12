@@ -15,6 +15,10 @@
 # include <stddef.h>
 # include <errno.h>
 
+struct s_scene;
+
+typedef float (*func_ptr)(struct s_scene *, float, void *);
+
 typedef enum e_check
 {
 	SUCCESS,
@@ -119,6 +123,8 @@ typedef struct s_scene
 	//t_rescam		*var;
 	t_coord			*axis;
 	float			*var;
+	func_ptr		fct;
+	void			*object;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;
@@ -128,5 +134,6 @@ typedef struct s_glob
 {
 	t_scene	*scene;
 }				t_glob;
+
 
 #endif

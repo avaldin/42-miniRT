@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	if (_check_args(argc, argv) == FAILURE)
 		return (0);
 	data.scene = _extract_data(argv[1]);
+	if (!data.scene)
+		return (printf("wtf?\n"), 1);
 	_set_vars_img(&g, X_SCREEN_SIZE, Y_SCREEN_SIZE);
 	data.scene->data = g.img;
 	_generate_image(data.scene);
