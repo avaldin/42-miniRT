@@ -6,7 +6,7 @@
 #    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/07 01:18:20 by thibaud          ###   ########.fr        #
+#    Updated: 2024/07/12 20:58:58 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ TEST_OBJS	:= $(TEST_S:%.c=$(OBJS_D)test_%.o)
 all: libft minilibx-linux $(NAME)
 
 $(NAME): $(OBJS_D) $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -I$(HDRS_D) -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft/HDRS -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -I$(HDRS_D) -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
 
 
 $(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft $(INC_D)minilibx-linux Makefile

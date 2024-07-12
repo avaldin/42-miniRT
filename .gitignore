@@ -3,3 +3,4 @@
 OBJS/
 miniRT
 test
+include/libft/OBJS/

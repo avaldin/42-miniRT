@@ -6,13 +6,13 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:42:23 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/12 17:24:36 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/12 20:56:53 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/pixel.h"
 #include "../HDRS/calcul.h"
-#include "../include/libft/libft.h"
+#include "libft.h"
 #include "../HDRS/parsing.h"
 #include <stdio.h>
 #include <fcntl.h>
