@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/12 18:26:10 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/14 03:28:25 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ t_coord	*_set_coord(char *line);
 void	_free_sphere(t_sphere **sph);
 t_check	_check_sphere(t_sphere **sphere, char *line);
 t_check	_init_sphere(t_sphere **sphere, char *line);
-t_check	_sphere_table(t_sphere ***map, char *line);
+t_check	_sphere_table(t_scene *scene, char *line);
 void	_free_plane(t_plane **pla);
 t_check	_check_plane(t_plane **plane, char *line);
 t_check	_init_plane(t_plane **plane, char *line);
-t_check	_plane_table(t_plane ***map, char *line);
+t_check	_plane_table(t_scene *scene, char *line);
 void	_free_cylinder(t_cylinder **cyl);
 t_check	_check_cylinder(t_cylinder **cylinder, char *line);
 t_check	_init_cylinder(t_cylinder **cylinder, char *line);
-t_check	_cylinder_table(t_cylinder ***map, char *line);
+t_check	_cylinder_table(t_scene *scene, char *line);
 
 /* *********************ENVS************************************************ */
 t_check	_check_ambient(t_amb **ambient, char *line);

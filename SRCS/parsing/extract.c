@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/12 18:51:22 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/14 03:29:00 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ static t_check	_data_loader(t_scene *scene, char *line)
 	else if (!ft_strncmp(line, "L ", 2) && !scene->light)
 		res = _init_light(&scene->light, line);
 	else if (!ft_strncmp(line, "sp ", 3))
-		res = _sphere_table(&scene->sphere, line);
+		res = _sphere_table(scene, line);
 	else if (!ft_strncmp(line, "pl ", 3))
-		res = _plane_table(&scene->plane, line);
+		res = _plane_table(scene, line);
 	else if (!ft_strncmp(line, "cy ", 3))
-		res = _cylinder_table(&scene->cylinder, line);
+		res = _cylinder_table(scene, line);
 	return (res);
 }
 

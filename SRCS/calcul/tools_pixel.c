@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:45:42 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/07 01:36:41 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/13 17:49:25 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	_looper(t_struct *g)
 void	_window(t_struct *g)
 {
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
-	mlx_loop_hook(g->vars->mlx, _looper, g);
+	// mlx_loop_hook(g->vars->mlx, _looper, g);
 	mlx_loop(g->vars->mlx);
 }
