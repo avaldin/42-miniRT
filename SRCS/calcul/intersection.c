@@ -16,15 +16,15 @@
 
 float	_inter_plane(t_scene *scene, t_plane *plane, t_coord *axis)
 {
-	if ((plane->vect->x * scene->camera->pos->x
-		+ plane->vect->y * scene->camera->pos->y
-		+ plane->vect->z * scene->camera->pos->z) <= 0)
+	if ((plane->vect->x * axis->x
+		+ plane->vect->y * axis->y
+		+ plane->vect->z * axis->z) == 0)
 		return (-1);
-	return ((plane->vect->x * plane->pos->x + plane->vect->y * plane->pos->y
-		+ plane->vect->z * plane->pos->z - axis->x - axis->y - axis->z)
-		/ (plane->vect->x * scene->camera->pos->x
-		+ plane->vect->y * scene->camera->pos->y
-		+ plane->vect->z * scene->camera->pos->z));
+	return (-(plane->vect->x * scene->camera->pos->x + plane->vect->y * scene->camera->pos->y
+		+ plane->vect->z * scene->camera->pos->z)
+		/ (plane->vect->x * axis->x
+		+ plane->vect->y * axis->y
+		+ plane->vect->z * axis->z));
 }
 
 float	_inter_sphere(t_scene *scene, t_sphere *sphere, t_coord *axis)
