@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 09:42:23 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/16 20:08:22 by tmouche          ###   ########.fr       */
+/*   Created: 2024/07/16 19:42:36 by tmouche           #+#    #+#             */
+/*   Updated: 2024/07/16 19:43:53 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HDRS/displaying.h"
-#include "../HDRS/calcul.h"
-#include "libft.h"
-#include "../HDRS/parsing.h"
-#include <stdio.h>
-#include <fcntl.h>
+#include "structure.h"
 
-int	main(int argc, char **argv)
+void	_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
-	t_glob	data;
-	t_wdw	window;
+	char	*dst;
 
-	if (_check_args(argc, argv) == FAILURE)
-		return (0);
-	data.scene = _extract_data(argv[1]);
-	if (!data.scene)
-		return (1);
-	data.window = &window;
-	_displaying(&data);
-	return (0);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

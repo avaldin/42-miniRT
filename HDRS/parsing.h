@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/14 03:28:25 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/16 19:17:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # define _NOK_ID "IDENTIFIER NOT KNOWN"
 # include "structure.h"
 # define BUFFER_SIZE 100
-# define X_SCREEN_SIZE 1920
-# define Y_SCREEN_SIZE 1080
 
 /* *********************UTILS*********************************************** */
 void	_freetab(char **tab);

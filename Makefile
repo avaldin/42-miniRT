@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/12 20:58:58 by thibaud          ###   ########.fr        #
+#    Updated: 2024/07/16 20:09:59 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= structure.h parsing.h pixel.h calcul.h\
+HDRS	:= structure.h parsing.h displaying.h calcul.h\
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
@@ -30,7 +30,9 @@ SRCS	:=	main.c\
 			calcul/calcul.c\
 			calcul/intersection.c\
 			calcul/tools_pixel.c\
-			calcul/color.c
+			calcul/color.c\
+			displaying/displaying.c\
+			displaying/pixel.c
 
 TEST_S	:=	main.c\
 			parsing.c\
@@ -72,6 +74,8 @@ $(OBJS_D):
 	@mkdir -p $(OBJS_D)
 	@mkdir -p $(OBJS_D)parsing
 	@mkdir -p $(OBJS_D)calcul
+	@mkdir -p $(OBJS_D)displaying
+
 
 $(TEST_D):
 	@mkdir -p $(TEST_D)

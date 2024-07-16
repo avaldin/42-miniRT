@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:48:35 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/07 00:14:34 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/16 20:05:09 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 	float	axis_angle[3];
 
 	temp[0] = sinf((0.0087266462599f * scene->camera->fov)
-			* (float)(2 * i - scene->x_screen) / (float)scene->x_screen)
-					* ((float)scene->x_screen / (float)scene->y_screen);
+			* (float)(2 * i - X_SSIZE) / (float)X_SSIZE)
+					* ((float)X_SSIZE / (float)Y_SSIZE);
 	temp[1] = sinf(0.6108652381980f
-			* (float)(2 * j - scene->y_screen) / (float)scene->y_screen);
+			* (float)(2 * j - Y_SSIZE) / (float)Y_SSIZE);
 	//temp[2] = sqrtf(1.0f - _sq(temp[1]) - _sq(temp[0]));
 	axis_angle[0] = temp[0] * var[2] + scene->camera->vect->x;
 	axis_angle[1] = var[0] * temp[1] + var[1] * temp[0] * var[3]
