@@ -15,6 +15,8 @@
 
 # include "structure.h"
 
+# define LENGTH_MITIGATION 1000
+
 float	*_matrix_var(t_scene *scene);
 void	_dov(t_scene *scene, float *var);
 void	_generate_image(t_scene *scene);
@@ -26,6 +28,6 @@ t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var);
 float	_sq(float x);
 float	_intensity_of_sphere(t_scene *scene, float length, void *object);
 float	_intensity_of_plane(t_scene *scene, float length, void *object);
-int		*_rgb_render(t_scene *scene, float intensity);
+int		*_rgb_render(t_scene *scene, float intensity, float length);
 
 #endif

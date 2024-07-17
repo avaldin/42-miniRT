@@ -82,26 +82,29 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object)
 // 	return (i);
 // }
 
-int	*_rgb_render(t_scene *scene, float intensity)
+int	*_rgb_render(t_scene *scene, float intensity, float length)
 {
 	int		*rgb;
 	float	temp;
 
 	rgb = ft_calloc(3, sizeof(int));
 	temp = (scene->light->color->red * intensity
-		+ scene->ambient->color->red * scene->ambient->ratio)
+		+ scene->ambient->color->red * scene->ambient->ratio
+		* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
 	rgb[0] = (int)temp;
 	if ((float)((int)temp) + 0.5 < temp)
 		rgb[0]++;
 	temp = (scene->light->color->green * intensity
-		+ scene->ambient->color->green * scene->ambient->ratio)
+		+ scene->ambient->color->green * scene->ambient->ratio
+		* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
 	rgb[1] = (int)temp;
 	if ((float)((int)temp) + 0.5 < temp)
 		rgb[1]++;
 	temp = (scene->light->color->blue * intensity
-		+ scene->ambient->color->blue * scene->ambient->ratio)
+		+ scene->ambient->color->blue * scene->ambient->ratio
+		* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
 	rgb[2] = (int)temp;
 	if ((float)((int)temp) + 0.5 < temp)
