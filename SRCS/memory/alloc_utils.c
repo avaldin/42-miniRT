@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 17:01:16 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 17:20:43 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 18:28:26 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ t_rgb	*_alloc_rgb(int red, int green, int blue)
 	res->green = green;
 	res->blue = blue;
 	return (res);
+}
+
+t_glob	*_set_n_getglob(t_glob *data)
+{
+	static t_glob	*temp = NULL;
+
+	if (data)
+		temp = data;
+	return (temp);
 }
