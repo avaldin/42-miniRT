@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/16 19:17:06 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/17 00:43:30 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define BUFFER_SIZE 100
 
 /* *********************UTILS*********************************************** */
-void	_freetab(char **tab);
 void	_strerror(char *str);
 char	*_is_space(char *line);
 t_check	check_line(char *line);
@@ -34,15 +33,12 @@ t_check	_check_coord(t_coord *coord, float range_min, float range_max);
 t_coord	*_set_coord(char *line);
 
 /* *********************OBJS************************************************ */
-void	_free_sphere(t_sphere **sph);
 t_check	_check_sphere(t_sphere **sphere, char *line);
 t_check	_init_sphere(t_sphere **sphere, char *line);
 t_check	_sphere_table(t_scene *scene, char *line);
-void	_free_plane(t_plane **pla);
 t_check	_check_plane(t_plane **plane, char *line);
 t_check	_init_plane(t_plane **plane, char *line);
 t_check	_plane_table(t_scene *scene, char *line);
-void	_free_cylinder(t_cylinder **cyl);
 t_check	_check_cylinder(t_cylinder **cylinder, char *line);
 t_check	_init_cylinder(t_cylinder **cylinder, char *line);
 t_check	_cylinder_table(t_scene *scene, char *line);

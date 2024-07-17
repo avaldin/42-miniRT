@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
+#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/16 20:09:59 by tmouche          ###   ########.fr        #
+#    Updated: 2024/07/17 02:53:35 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= structure.h parsing.h displaying.h calcul.h\
+HDRS	:= structure.h parsing.h displaying.h calcul.h memory.h\
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
@@ -24,15 +24,17 @@ SRCS	:=	main.c\
 			parsing/extract.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
-			parsing/free_obj.c\
-			parsing/free_env.c\
 			calcul/generation.c\
 			calcul/calcul.c\
 			calcul/intersection.c\
-			calcul/tools_pixel.c\
 			calcul/color.c\
 			displaying/displaying.c\
-			displaying/pixel.c
+			displaying/hooker.c\
+			displaying/pixel.c\
+			memory/free_obj.c\
+			memory/free_env.c\
+			memory/free_utils.c\
+			memory/free_disp.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
@@ -72,6 +74,7 @@ $(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
+	@mkdir -p $(OBJS_D)memory
 	@mkdir -p $(OBJS_D)parsing
 	@mkdir -p $(OBJS_D)calcul
 	@mkdir -p $(OBJS_D)displaying

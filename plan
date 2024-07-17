@@ -50,3 +50,10 @@ plan pour mini RT :
 
         - data :: pas sur, peut etre on met tout dans scene jsp.
 
+    moovement :
+
+    Le mouvement se fera grace a zqsd, un petit cross air sera mit pour ne pas etre perdu.
+    Bonus en fonction du temps : 
+        - rotation des objets avec clique droit et drag
+        - ajout d '
+

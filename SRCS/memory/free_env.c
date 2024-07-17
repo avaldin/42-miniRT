@@ -6,12 +6,13 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:45:46 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/12 18:40:05 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 02:49:11 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "parsing.h"
+#include "memory.h"
+#include "structure.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -29,6 +30,7 @@ static void	_free_camera(t_cam *camera)
 		return ;
 	free (camera->pos);
 	free (camera->vect);
+	free (camera->mvt);
 	free (camera);	
 }
 

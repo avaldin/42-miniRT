@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/16 19:27:25 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/17 02:42:22 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef enum e_type
 }			t_type;
 
 /* ************************************************************************** */
-/*               PARS DATA                                                    */
+/*               DATA                                                         */
 /* ************************************************************************** */
 
 typedef struct s_coord
@@ -74,6 +74,7 @@ typedef struct s_cam
 	int		fov;
 	t_coord	*pos;
 	t_coord	*vect;
+	t_coord	*mvt;
 }				t_cam;
 
 typedef struct s_spot
@@ -121,7 +122,6 @@ typedef struct s_img
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
-	t_scene			*scene;
 }					t_img;
 
 typedef struct s_vars

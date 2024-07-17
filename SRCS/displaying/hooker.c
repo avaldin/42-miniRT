@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   displaying.h                                       :+:      :+:    :+:   */
+/*   hooker.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 20:54:22 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 02:07:18 by thibaud          ###   ########.fr       */
+/*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
+/*   Updated: 2024/07/17 02:54:30 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIXEL_H
-# define PIXEL_H
-# include "structure.h"
-# define _MLX_ERR "MLX INIT ERROR"
+#include "structure.h"
+#include "memory.h"
 
-void	_mlx_pixel_put(t_img *data, int x, int y, int color);
-void	_displaying(t_glob *data);
+int	_key_release(void *data)
+{
+	(void)data;
+	return (SUCCESS);
+}
 
-/* *********************HOOKING********************************************* */
-int	_key_press(void *data);
-int	_button_press(void *data);
-int	_key_release(void *data);
+int	_key_press(void *data)
+{
+	(void)data;
+	return (SUCCESS);
+}
 
-#endif
+int	_button_press(void *data)
+{
+	_free_n_exit(data, NULL);
+	return (SUCCESS);
+}

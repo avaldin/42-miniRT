@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   displaying.h                                       :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 20:54:22 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 02:07:18 by thibaud          ###   ########.fr       */
+/*   Created: 2024/07/17 00:33:32 by thibaud           #+#    #+#             */
+/*   Updated: 2024/07/17 01:36:27 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIXEL_H
-# define PIXEL_H
-# include "structure.h"
-# define _MLX_ERR "MLX INIT ERROR"
+#include <stdlib.h>
+#include "structure.h"
+#include "memory.h"
 
-void	_mlx_pixel_put(t_img *data, int x, int y, int color);
-void	_displaying(t_glob *data);
+void	_freetab(char **tab)
+{
+	int	i;
 
-/* *********************HOOKING********************************************* */
-int	_key_press(void *data);
-int	_button_press(void *data);
-int	_key_release(void *data);
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+		free (tab[i++]);
+	free (tab);
+}
 
-#endif
+void	_free_n_exit(t_glob *data, char *err)
+{
+	_free_window(data->window);
+	_free_scene(data->scene, err);
+	if (!err)
+		exit (EXIT_SUCCESS);
+	exit (EXIT_FAILURE);
+}

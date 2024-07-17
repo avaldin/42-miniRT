@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/30 00:28:32 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 00:46:49 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_check	_check_rgb(t_rgb *colors)
 		return (SUCCESS);
 	return (FAILURE);
 }
-
 
 t_rgb	*_set_rgb(char *line)
 {

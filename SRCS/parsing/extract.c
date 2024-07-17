@@ -6,11 +6,12 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/14 03:29:00 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 01:41:24 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "memory.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -64,7 +65,6 @@ static void	_init_scene(t_scene *scene)
 	scene->ambient = NULL;
 	scene->light = NULL;
 	scene->camera = NULL;
-	scene->data = NULL;
 	scene->cylinder = NULL;
 	scene->sphere = NULL;
 	scene->plane = NULL;
@@ -128,7 +128,5 @@ t_scene	*_extract_data(char	*path_file)
 	_freetab(data);
 	if (!settings)
 		return (NULL);
-	settings->x_screen = X_SCREEN_SIZE;
-	settings->y_screen = Y_SCREEN_SIZE;
 	return (settings);
 }
