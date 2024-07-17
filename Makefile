@@ -6,11 +6,11 @@
 #    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/17 02:53:35 by thibaud          ###   ########.fr        #
+#    Updated: 2024/07/17 17:37:28 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= structure.h parsing.h displaying.h calcul.h memory.h\
+HDRS	:= structure.h parsing.h displaying.h calcul.h memory.h moovement.h\
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
@@ -31,10 +31,13 @@ SRCS	:=	main.c\
 			displaying/displaying.c\
 			displaying/hooker.c\
 			displaying/pixel.c\
-			memory/free_obj.c\
+			memory/alloc_utils.c\
 			memory/free_env.c\
+			memory/free_mvt.c\
+			memory/free_obj.c\
 			memory/free_utils.c\
 			memory/free_disp.c\
+			moovement/moove_cam.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
@@ -78,6 +81,7 @@ $(OBJS_D):
 	@mkdir -p $(OBJS_D)parsing
 	@mkdir -p $(OBJS_D)calcul
 	@mkdir -p $(OBJS_D)displaying
+	@mkdir -p $(OBJS_D)moovement
 
 
 $(TEST_D):

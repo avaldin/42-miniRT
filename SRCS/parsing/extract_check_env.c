@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 23:58:37 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 02:48:44 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 16:45:47 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,12 @@ t_check	_check_camera(t_cam **camera, char *line)
 	temp_cam = *camera;
 	if ((line && *line != '\n' && *line)
 		|| _check_coord(temp_cam->vect, -1., 1.)
-		|| !(temp_cam->fov >= 0 && temp_cam->fov <= 180)
-		|| !temp_cam->mvt)
+		|| !(temp_cam->fov >= 0 && temp_cam->fov <= 180))
 	{
 		if (temp_cam->pos)
 			free (temp_cam->pos);
 		if (temp_cam->vect)
 			free (temp_cam->vect);
-		if (temp_cam->mvt)
-			free (temp_cam->mvt);
 		free (*camera);
 		*camera = NULL;
 		return (FAILURE);

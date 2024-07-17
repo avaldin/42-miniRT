@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/17 02:46:57 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 16:45:17 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_check	_init_camera(t_cam **camera, char *line)
 	*camera = malloc(sizeof(t_cam));
 	if (!*camera)
 		return (FAILURE);
-	(*camera)->mvt = _set_coord(NULL);
 	(*camera)->pos = _set_coord(line);
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->vect = _set_coord(line);

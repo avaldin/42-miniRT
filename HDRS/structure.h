@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/17 02:42:22 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 16:55:34 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_cam
 	int		fov;
 	t_coord	*pos;
 	t_coord	*vect;
-	t_coord	*mvt;
 }				t_cam;
 
 typedef struct s_spot
@@ -110,6 +109,20 @@ typedef struct s_cylinder
 	t_coord	*vect;
 	t_rgb	*color;
 }				t_cylinder;
+
+/* ************************************************************************** */
+/*               MOOVEMENT                                                    */
+/* ************************************************************************** */
+
+typedef struct s_mvt
+{
+	float	mv_x;
+	float	mv_y;
+	t_coord	*dir_x;
+	t_coord	*dir_y;
+	t_coord	*dir_bx;
+	t_coord	*dir_by;
+}				t_mvt;
 
 /* ************************************************************************** */
 /*               WINDOW                                                       */
@@ -157,6 +170,7 @@ typedef struct s_glob
 {
 	t_scene	*scene;
 	t_wdw	*window;
+	t_mvt	*kinetic;
 }				t_glob;
 
 #endif

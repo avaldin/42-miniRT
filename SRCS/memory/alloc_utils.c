@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooker.c                                           :+:      :+:    :+:   */
+/*   alloc_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 17:47:08 by thibaud          ###   ########.fr       */
+/*   Created: 2024/07/17 17:01:16 by thibaud           #+#    #+#             */
+/*   Updated: 2024/07/17 17:20:43 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structure.h"
-#include "memory.h"
+#include <stdlib.h>
 
-int	_key_release(int keycode, t_glob *data)
+t_coord	*_alloc_coord(float x, float y, float z)
 {
-	if (keycode == 'w' || keycode == 's')
-		data->kinetic->mv_x = 0;
-	if (keycode == 'a' || keycode == 'd')
-		data->kinetic->mv_y = 0;
-	return (SUCCESS);
+	t_coord	*res;
+
+	res = malloc(sizeof(t_coord));
+	if (!res)
+		return (NULL);
+	res->x = x;
+	res->y = y;
+	res->z = z;
+	return (res);
 }
 
-int	_key_press(int keycode, t_glob *data)
+t_rgb	*_alloc_rgb(int red, int green, int blue)
 {
-	(void)keycode;
-	(void)data;
-	return (SUCCESS);
-}
+	t_rgb	*res;
 
-int	_button_press(int keycode, t_glob *data)
-{
-	(void)keycode;
-	_free_n_exit(data, NULL);
-	return (SUCCESS);
+	res = malloc(sizeof(t_rgb));
+	if (!res)
+		return (NULL);
+	res->red = red;
+	res->green = green;
+	res->blue = blue;
+	return (res);
 }
