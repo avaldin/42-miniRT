@@ -126,6 +126,7 @@ typedef struct s_scene
 	float			*var;
 	func_ptr		fct;
 	void			*object;
+	t_rgb			*rgb_object;
 	int				x_screen;
 	int				y_screen;
 	struct s_data	*data;

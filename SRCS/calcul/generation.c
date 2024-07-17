@@ -30,6 +30,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 			length = length_temp;
 			scene->object = scene->plane[k];
 			scene->fct = _intensity_of_plane;
+			scene->rgb_object = scene->plane[k]->color;
 		}
 	}
 	k = -1;
@@ -41,6 +42,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 			length = length_temp;
 			scene->object = scene->sphere[k];
 			scene->fct = _intensity_of_sphere;
+			scene->rgb_object = scene->sphere[k]->color;
 		}
 	}
 //	k = -1;

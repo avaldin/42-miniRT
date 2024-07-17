@@ -92,6 +92,7 @@ int	*_rgb_render(t_scene *scene, float intensity, float length)
 		+ scene->ambient->color->red * scene->ambient->ratio
 		* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
+	temp = temp * scene->rgb_object->red / 255.0f;
 	rgb[0] = (int)temp;
 	if ((float)((int)temp) + 0.5 < temp)
 		rgb[0]++;
@@ -99,6 +100,7 @@ int	*_rgb_render(t_scene *scene, float intensity, float length)
 		+ scene->ambient->color->green * scene->ambient->ratio
 		* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
+	temp = temp * scene->rgb_object->green / 255.0f;
 	rgb[1] = (int)temp;
 	if ((float)((int)temp) + 0.5 < temp)
 		rgb[1]++;
@@ -106,6 +108,7 @@ int	*_rgb_render(t_scene *scene, float intensity, float length)
 		+ scene->ambient->color->blue * scene->ambient->ratio
 		* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
+	temp = temp * scene->rgb_object->blue / 255.0f;
 	rgb[2] = (int)temp;
 	if ((float)((int)temp) + 0.5 < temp)
 		rgb[2]++;
