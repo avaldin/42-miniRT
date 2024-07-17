@@ -69,6 +69,7 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	if (intensity < 0)
 		intensity = 0;
 	rgb = _rgb_render(scene, intensity);
+	// printf("intensity= %f, r = %d, g = %d b= %d\n", intensity, rgb[0], rgb[1], rgb[2]);
 	_mlx_pixel_put(scene->data, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 

@@ -20,7 +20,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object)
 	t_coord	v_light;
 	float	i;
 
-	i = 1;
+	i = -1;
 	plane = (t_plane *)object;
 	inter.x = scene->camera->pos->x + length * scene->axis->x;
 	inter.y = scene->camera->pos->y + length * scene->axis->y;
@@ -29,7 +29,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object)
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
 	if ((plane->vect->x * scene->axis->x + plane->vect->y * scene->axis->y + plane->vect->z * scene->axis->z) <= 0)
-		i = -1;
+		i = 1;
 	//shadow here
 	return (i * scene->light->ratio * 1.0f * (plane->vect->x * v_light.x + plane->vect->y * v_light.y
 		+ plane->vect->z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)

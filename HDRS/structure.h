@@ -93,6 +93,7 @@ typedef struct s_plane
 {
 	t_coord	*pos;
 	t_coord	*vect;
+	float	cst;
 	t_rgb	*color;
 }				t_plane;
 

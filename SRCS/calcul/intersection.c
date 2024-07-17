@@ -16,12 +16,14 @@
 
 float	_inter_plane(t_scene *scene, t_plane *plane, t_coord *axis)
 {
+	plane->cst = -(plane->vect->x * plane->pos->x + plane->vect->y * plane->pos->y
+		+ plane->vect->z * plane->pos->z);
 	if ((plane->vect->x * axis->x
 		+ plane->vect->y * axis->y
 		+ plane->vect->z * axis->z) == 0)
 		return (-1);
 	return (-(plane->vect->x * scene->camera->pos->x + plane->vect->y * scene->camera->pos->y
-		+ plane->vect->z * scene->camera->pos->z)
+		+ plane->vect->z * scene->camera->pos->z + plane->cst)
 		/ (plane->vect->x * axis->x
 		+ plane->vect->y * axis->y
 		+ plane->vect->z * axis->z));
