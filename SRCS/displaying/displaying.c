@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displaying.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:48:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/19 03:29:53 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/19 18:16:24 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	_displaying(t_glob *data)
 	mlx_hook(data->window->vars->win, 03, 1L << 1, _key_release, data);
 	mlx_hook(data->window->vars->win, 02, 1L << 0, _key_press, data);
 	mlx_hook(data->window->vars->win, 06, 1L << 6, _mouse_mv, data);
-	mlx_hook(data->window->vars->win, 17, 1L << 2, _button_press, data);
-	mlx_hook(data->window->vars->win, 07, 1L << 4, _notify_in, data);
-	mlx_hook(data->window->vars->win, 8, 1L << 5, _notify_out, data);
+	mlx_hook(data->window->vars->win, 17, 1L << 2, _cross_notify, data);
+	mlx_hook(data->window->vars->win, 9, 1L << 21, _notify_in, data);
+	mlx_hook(data->window->vars->win, 10, 1L << 21, _notify_out, data);
 	mlx_loop_hook(data->window->vars->mlx, _moove_cam, data);
 	mlx_loop(data->window->vars->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove_cam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/19 04:28:21 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/19 18:33:49 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	_moove_cam(t_glob *data)
 			&data->window->img->line_length, &data->window->img->endian);
 		_generate_image(data);
 		mlx_put_image_to_window(data->window->vars->mlx, data->window->vars->win, data->window->img->img, 0, 0);
+		mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
+		mlx_mouse_move(data->window->vars->mlx, data->window->vars->win, X_SSIZE / 2, Y_SSIZE / 2);
 	}
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooker.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/19 04:28:39 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/19 18:32:43 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ int	_notify_out(void)
 	return (SUCCESS);
 }
 
-int	_mouse_mv(int keycode, int keycode2, t_glob *data)
+int	_mouse_mv(int loc_x, int loc_y, t_glob *data)
 {
-	(void)keycode;
-	(void)keycode2;
-	(void)data;
+	if (data->window->box == IN)
+	{
+		printf("loc x %d\n", loc_x);
+		printf("loc y %d\n", loc_y);
+	}
 	return (SUCCESS);
 }
 
@@ -67,11 +69,10 @@ int	_key_press(int keycode, t_glob *data)
 	return (SUCCESS);
 }
 
-int	_button_press(int keycode)
+int	_cross_notify(void)
 {
 	t_glob	*data;
 	
-	(void)keycode;
 	data = _set_n_getglob(NULL);
 	_free_n_exit(data, NULL);
 	return (SUCCESS);
