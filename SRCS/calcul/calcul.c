@@ -96,3 +96,11 @@ float	_sq(float x)
 {
 	return (x * x); // proteger l'overflow
 }
+
+float	_projection(t_coord	point, t_coord *pos, t_coord *vect)
+{
+	return (sqrtf(_sq(((point.x - pos->x) * vect->x
+		+ (point.y - pos->y) * vect->y
+		+ (point.z - pos->z) * vect->z)
+		/ sqrtf(_sq(vect->x) + _sq(vect->y) + _sq(vect->z)))));
+}

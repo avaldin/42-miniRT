@@ -98,6 +98,12 @@ typedef struct s_spot
 /*               OBJET                                                        */
 /* ************************************************************************** */
 
+// typedef struct s_line
+// {
+// 	t_coord	pos;
+// 	t_coord	vect;
+// };
+
 typedef struct s_plane
 {
 	t_coord	*pos;

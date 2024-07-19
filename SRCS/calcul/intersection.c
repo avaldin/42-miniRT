@@ -10,9 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
+
 #include "../HDRS/structure.h"
 #include "../HDRS/calcul.h"
 #include <math.h>
+
+t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length)
+{
+	t_coord	intersection;
+
+	intersection.x = pos->x + axis->x * length;
+	intersection.y = pos->y + axis->y * length;
+	intersection.z = pos->z + axis->z * length;
+	return (intersection);
+}
 
 float	_inter_plane(t_scene *scene, t_plane *plane, t_coord *axis)
 {
@@ -67,7 +79,32 @@ float	_inter_sphere(t_scene *scene, t_sphere *sphere, t_coord *axis)
 	return (result_b);
 }
 
-// void	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, int i, int j)
-// {
-//
-// }
+float	_inter_disk(t_cylinder *cylinder, t_coord *axis, t_coord *vect)
+{
+	float	length;
+
+	length = _inter_plane(scene, plane, axis);
+	if ()
+}
+
+float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, t_coord *axis)
+{
+	float	eq_var[3];
+	float	discriminant;
+	float	result[2];
+	float	d_result[2];
+
+	eq_var[0] = _sq(axis->x) + _sq(axis->y) + _sq(axis->z) - _sq(cylinder->vect->x * axis->x + cylinder->vect->y * axis->y +cylinder->vect->z * axis->z);
+	eq_var[1] = 2.0f * (axis->x * (scene->camera->pos->x - cylinder->pos->x) + axis->y * (scene->camera->pos->y - cylinder->pos->y) + axis->z * (scene->camera->pos->z - cylinder->pos->z) - (cylinder->vect->x * axis->x + cylinder->vect->y * axis->y + cylinder->vect->z * axis->z) * (cylinder->vect->x * (scene->camera->pos->x - cylinder->pos->x) + cylinder->vect->y * (scene->camera->pos->y - cylinder->pos->y) + cylinder->vect->z * (scene->camera->pos->z - cylinder->pos->z)));
+	eq_var[2] = _sq(scene->camera->pos->x - cylinder->pos->x) + _sq(scene->camera->pos->y - cylinder->pos->y) + _sq(scene->camera->pos->z - cylinder->pos->z) - _sq(axis->x * (scene->camera->pos->x - cylinder->pos->x) + axis->y * (scene->camera->pos->y - cylinder->pos->y) + axis->z * (scene->camera->pos->z - cylinder->pos->z)) - _sq(cylinder->radius);
+	discriminant = _sq(eq_var[1]) - 4 * eq_var[0] * eq_var[2];
+	result[0] = 0;
+	result[1] = 0;
+	if (discriminant >= 0)
+	{
+		result[0] = (-eq_var[1] - sqrtf(discriminant)) / (2.0f * eq_var[0]);
+		result[1] = (-eq_var[1] + sqrtf(discriminant)) / (2.0f * eq_var[0]);
+	}
+	d_result[0] = _inter_disk()
+}
+
