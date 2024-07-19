@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displaying.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:54:22 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 02:07:18 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/19 03:28:43 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void	_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	_displaying(t_glob *data);
 
 /* *********************HOOKING********************************************* */
-int	_key_press(void *data);
-int	_button_press(void *data);
-int	_key_release(void *data);
+int	_key_press(int keycode, t_glob *data);
+int	_button_press(int keycode);
+int	_key_release(int keycode, t_glob *data);
+int	_notify_out(void);
+int	_notify_in(void);
+int	_mouse_mv(int keycode, int keycode2, t_glob *data);
 
 #endif

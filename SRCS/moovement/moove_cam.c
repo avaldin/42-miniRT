@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove_cam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 19:01:58 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/19 04:28:21 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	_moove_cam(t_glob *data)
 		_change_cam_pos(cam, data->kinetic->dir_y, 0.2);
 	if (data->kinetic->mv_y < 0)
 		_change_cam_pos(cam, data->kinetic->dir_by, 0.2);
-	if (data->kinetic->mv_x || data->kinetic->mv_y)
+	if ((data->kinetic->mv_x || data->kinetic->mv_y) && data->window->box == IN)
 	{
 		mlx_destroy_image(data->window->vars->mlx, data->window->img->img);
 		data->window->img->img = mlx_new_image(data->window->vars->mlx, X_SSIZE, Y_SSIZE);

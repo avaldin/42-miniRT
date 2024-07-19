@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displaying.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:48:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/17 18:59:05 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/19 03:29:53 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ void	_displaying(t_glob *data)
 	if (_set_vars_img(data, X_SSIZE, Y_SSIZE) == FAILURE)
 		return (_free_n_exit(data, _MLX_ERR));
 	_set_n_getglob(data);
-	mlx_hook(data->window->vars->win, 3, 1L << 1, _key_release, data);
-	mlx_hook(data->window->vars->win, 2, 1L << 0, _key_press, data);
+	mlx_hook(data->window->vars->win, 03, 1L << 1, _key_release, data);
+	mlx_hook(data->window->vars->win, 02, 1L << 0, _key_press, data);
+	mlx_hook(data->window->vars->win, 06, 1L << 6, _mouse_mv, data);
 	mlx_hook(data->window->vars->win, 17, 1L << 2, _button_press, data);
+	mlx_hook(data->window->vars->win, 07, 1L << 4, _notify_in, data);
+	mlx_hook(data->window->vars->win, 8, 1L << 5, _notify_out, data);
 	mlx_loop_hook(data->window->vars->mlx, _moove_cam, data);
 	mlx_loop(data->window->vars->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/17 16:55:34 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/19 04:28:30 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef enum e_check
 	SUCCESS,
 	FAILURE
 }			t_check;
+
+typedef enum e_nwdw
+{
+	IN,
+	OUT
+}			t_nwdw;
 
 typedef enum e_type
 {
@@ -145,8 +151,9 @@ typedef struct s_vars
 
 typedef struct s_wdw
 {
-	t_vars			*vars;
-	t_img			*img;
+	t_vars	*vars;
+	t_img	*img;
+	t_nwdw	box;
 }				t_wdw;
 
 /* ************************************************************************** */

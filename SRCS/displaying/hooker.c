@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooker.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 18:58:51 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/19 04:28:39 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,35 @@
 #include "memory.h"
 #include "calcul.h"
 #include "../include/minilibx-linux/mlx.h"
+#include <stdio.h>
+
+int	_notify_in(void)
+{
+	t_glob	*data;
+	
+	data = _set_n_getglob(NULL);
+	data->window->box = IN;
+	printf("in\n");
+	return (SUCCESS);
+}
+
+int	_notify_out(void)
+{
+	t_glob	*data;
+	
+	data = _set_n_getglob(NULL);
+	data->window->box = OUT;
+	printf("out\n");
+	return (SUCCESS);
+}
+
+int	_mouse_mv(int keycode, int keycode2, t_glob *data)
+{
+	(void)keycode;
+	(void)keycode2;
+	(void)data;
+	return (SUCCESS);
+}
 
 int	_key_release(int keycode, t_glob *data)
 {
@@ -38,8 +67,10 @@ int	_key_press(int keycode, t_glob *data)
 	return (SUCCESS);
 }
 
-int	_button_press(int keycode, t_glob *data)
+int	_button_press(int keycode)
 {
+	t_glob	*data;
+	
 	(void)keycode;
 	data = _set_n_getglob(NULL);
 	_free_n_exit(data, NULL);
