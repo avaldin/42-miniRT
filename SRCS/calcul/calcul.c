@@ -75,11 +75,10 @@ t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 	float	axis_angle[3];
 
 	temp[0] = sinf((0.0087266462599f * scene->camera->fov)
-			* (float)(2 * i - X_SSIZE) / (float)X_SSIZE)
-					* ((float)X_SSIZE / (float)Y_SSIZE);
+			* (float)(2 * i - scene->x_screen) / (float)scene->x_screen)
+			* ((float)scene->x_screen / (float)scene->y_screen);
 	temp[1] = sinf(0.6108652381980f
-			* (float)(2 * j - Y_SSIZE) / (float)Y_SSIZE);
-	//temp[2] = sqrtf(1.0f - _sq(temp[1]) - _sq(temp[0]));
+			* (float)(2 * j - scene->y_screen) / (float)scene->y_screen);
 	axis_angle[0] = temp[0] * var[2] + scene->camera->vect->x;
 	axis_angle[1] = var[0] * temp[1] + var[1] * temp[0] * var[3]
 			+ scene->camera->vect->y;
@@ -95,5 +94,5 @@ t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 
 float	_sq(float x)
 {
-	return (x * x);
+	return (x * x); // proteger l'overflow
 }

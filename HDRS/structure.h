@@ -18,6 +18,10 @@
 # define Y_SSIZE 1080
 # define SET_FRM 2500
 
+struct s_scene;
+
+typedef float (*func_ptr)(struct s_scene *, float, void *);
+
 typedef enum e_check
 {
 	SUCCESS,
@@ -98,6 +102,7 @@ typedef struct s_plane
 {
 	t_coord	*pos;
 	t_coord	*vect;
+	float	cst;
 	t_rgb	*color;
 }				t_plane;
 
@@ -186,6 +191,9 @@ typedef struct s_scene
 	//t_rescam		*var;
 	t_coord			*axis;
 	float			*var;
+	func_ptr		fct;
+	void			*object;
+	t_rgb			*rgb_object;
 }				t_scene;
 
 typedef struct s_glob
@@ -194,5 +202,6 @@ typedef struct s_glob
 	t_wdw	*window;
 	t_kntc	*kinetic;
 }				t_glob;
+
 
 #endif
