@@ -6,11 +6,12 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/07 01:30:49 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 01:41:24 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "memory.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -36,12 +37,13 @@ static char **_read_file(int fd)
 			t_map = ft_stradd(res, t_str);
 			if (!t_map)
 				return (_freetab(res), free (t_str), perror(NULL), NULL);
+			free (res);
 		}
 		else
 			free (t_str);
 		res = t_map;
 	}
-	return (t_map);
+	return (res);
 }
 
 static void	_init_scene(t_scene *scene)
@@ -63,7 +65,6 @@ static void	_init_scene(t_scene *scene)
 	scene->ambient = NULL;
 	scene->light = NULL;
 	scene->camera = NULL;
-	scene->data = NULL;
 	scene->cylinder = NULL;
 	scene->sphere = NULL;
 	scene->plane = NULL;
@@ -81,11 +82,11 @@ static t_check	_data_loader(t_scene *scene, char *line)
 	else if (!ft_strncmp(line, "L ", 2) && !scene->light)
 		res = _init_light(&scene->light, line);
 	else if (!ft_strncmp(line, "sp ", 3))
-		res = _sphere_table(&scene->sphere, line);
+		res = _sphere_table(scene, line);
 	else if (!ft_strncmp(line, "pl ", 3))
-		res = _plane_table(&scene->plane, line);
+		res = _plane_table(scene, line);
 	else if (!ft_strncmp(line, "cy ", 3))
-		res = _cylinder_table(&scene->cylinder, line);
+		res = _cylinder_table(scene, line);
 	return (res);
 }
 
@@ -124,10 +125,8 @@ t_scene	*_extract_data(char	*path_file)
 	if (!data)
 		return (NULL);
 	settings = _pars_line(data);
+	_freetab(data);
 	if (!settings)
 		return (NULL);
-	_freetab(data);
-	settings->x_screen = X_SCREEN_SIZE;
-	settings->y_screen = Y_SCREEN_SIZE;
 	return (settings);
 }

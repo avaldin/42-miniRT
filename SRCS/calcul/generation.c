@@ -6,11 +6,11 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/07 00:14:46 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/16 23:08:20 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pixel.h"
+#include "displaying.h"
 #include "calcul.h"
 
 static float	_find_length(float length, t_scene *scene, int i, int j)
@@ -64,7 +64,7 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	int			*rgb;
 
 	length = -1;
-	length = _find_length(length, scene, i, j);
+	length = _find_length(length, data->scene, i, j);
 	if (length == -1)
 		return ;
 	intensity = scene->fct(scene, length, scene->object);
@@ -75,19 +75,19 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	_mlx_pixel_put(scene->data, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 
-void	_generate_image(t_scene *scene)
+void	_generate_image(t_glob *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	_matrix_var(scene);
-	while (i < scene->x_screen)
+	_matrix_var(data->scene);
+	while (i < X_SSIZE)
 	{
 		j = 0;
-		while (j < scene->y_screen)
+		while (j < Y_SSIZE)
 		{
-			_generate_pixel(scene, i, j);
+			_generate_pixel(data, i, j);
 			j++;
 		}
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/07 01:29:23 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/20 01:33:14 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define STRUCTURE_H
 # include <stddef.h>
 # include <errno.h>
+# define X_SSIZE 1920
+# define Y_SSIZE 1080
+# define SET_FRM 2500
 
 struct s_scene;
 
@@ -24,6 +27,12 @@ typedef enum e_check
 	SUCCESS,
 	FAILURE
 }			t_check;
+
+typedef enum e_nwdw
+{
+	IN,
+	OUT
+}			t_nwdw;
 
 typedef enum e_type
 {
@@ -36,7 +45,7 @@ typedef enum e_type
 }			t_type;
 
 /* ************************************************************************** */
-/*                                   TOOLS                                    */
+/*               DATA                                                         */
 /* ************************************************************************** */
 
 typedef struct s_coord
@@ -62,7 +71,7 @@ typedef struct s_rescam
 }				t_rescam;
 
 /* ************************************************************************** */
-/*                                  SETTINGS                                  */
+/*               SETTINGS                                                     */
 /* ************************************************************************** */
 
 typedef struct s_amb
@@ -86,7 +95,7 @@ typedef struct s_spot
 }				t_spot;
 
 /* ************************************************************************** */
-/*                                   OBJET                                    */
+/*               OBJET                                                        */
 /* ************************************************************************** */
 
 typedef struct s_plane
@@ -113,6 +122,64 @@ typedef struct s_cylinder
 	t_rgb	*color;
 }				t_cylinder;
 
+/* ************************************************************************** */
+/*               MOOVEMENT                                                    */
+/* ************************************************************************** */
+
+typedef struct s_rtn
+{
+	int		last_x;
+	int		last_y;
+	t_nwdw	s_input;
+}				t_rtn;
+
+typedef struct s_mvt
+{
+	float	mv_x;
+	float	mv_y;
+	t_coord	*dir_x;
+	t_coord	*dir_y;
+	t_coord	*dir_bx;
+	t_coord	*dir_by;
+}				t_mvt;
+
+typedef struct s_kntc
+{
+	t_mvt	*cam_moov;
+	t_rtn	*cam_rotate;	
+}				t_kntc;
+
+
+/* ************************************************************************** */
+/*               WINDOW                                                       */
+/* ************************************************************************** */
+
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_img;
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+typedef struct s_wdw
+{
+	t_vars	*vars;
+	t_img	*img;
+	t_nwdw	box;
+}				t_wdw;
+
+/* ************************************************************************** */
+/*               GLOBAL                                                       */
+/* ************************************************************************** */
+
 typedef struct s_scene
 {
 	t_sphere		**sphere;
@@ -127,14 +194,13 @@ typedef struct s_scene
 	func_ptr		fct;
 	void			*object;
 	t_rgb			*rgb_object;
-	int				x_screen;
-	int				y_screen;
-	struct s_data	*data;
 }				t_scene;
 
 typedef struct s_glob
 {
 	t_scene	*scene;
+	t_wdw	*window;
+	t_kntc	*kinetic;
 }				t_glob;
 
 

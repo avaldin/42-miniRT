@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils_nums.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/30 00:28:32 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/19 21:41:52 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "structure.h"
+#include "memory.h"
 #include "parsing.h"
+#include "structure.h"
 
 t_check	_check_coord(t_coord *coord, float range_min, float range_max)
 {
@@ -32,22 +33,18 @@ t_check	_check_rgb(t_rgb *colors)
 	return (FAILURE);
 }
 
-
 t_rgb	*_set_rgb(char *line)
 {
 	t_rgb	*color;
 	int		*temp[3];
 	int		i;
 	
-	color = malloc(sizeof(t_rgb));
+	color = _alloc_rgb(0, 0, 0);
 	if (!color)
 		return (NULL);
 	temp[0] = &color->red;
 	temp[1] = &color->green;
 	temp[2] = &color->blue;
-	i = -1;
-	while (++i < 3)
-		*temp[i] = 0;
 	i = -1;
 	while (++i < 3 && line && *line && *line != '\n')
 	{
@@ -67,15 +64,12 @@ t_coord	*_set_coord(char *line)
 	float	*temp[3];
 	int		i;
 	
-	vec = malloc(sizeof(t_rgb));
+	vec = _alloc_coord(0., 0., 0.);
 	if (!vec)
 		return (NULL);
 	temp[0] = &vec->x;
 	temp[1] = &vec->y;
 	temp[2] = &vec->z;
-	i = -1;
-	while (++i < 3)
-		*temp[i] = 0.;
 	i = -1;
 	while (++i < 3 && line && *line && *line != '\n')
 	{

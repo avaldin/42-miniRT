@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 23:58:37 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/30 01:24:45 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 16:45:47 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,59 @@
 #include "parsing.h"
 #include <stdlib.h>
 
-t_check	_check_ambient(t_amb *ambient, char *line)
+t_check	_check_ambient(t_amb **ambient, char *line)
 {
+	t_amb	*temp_amb;
+	
+	temp_amb = *ambient;
 	if ((line && *line != '\n' && *line) 
-		|| _check_rgb(ambient->color)
-		|| !(ambient->ratio >= 0 && ambient->ratio <= 1))
+		|| _check_rgb(temp_amb->color)
+		|| !(temp_amb->ratio >= 0 && temp_amb->ratio <= 1))
 	{
-		if (ambient->color)
-			free (ambient->color);
-		free (ambient);
+		if (temp_amb->color)
+			free (temp_amb->color);
+		free (*ambient);
+		*ambient = NULL;
 		return (FAILURE);
 	}
 	return (SUCCESS);
 }
 
-t_check	_check_camera(t_cam *camera, char *line)
+t_check	_check_camera(t_cam **camera, char *line)
 {
+	t_cam	*temp_cam;
+	
+	temp_cam = *camera;
 	if ((line && *line != '\n' && *line)
-		|| _check_coord(camera->pos, -100, 100)					//EN FONCTION DE LA TAILLE DE LA GRILLE ???
-		|| _check_coord(camera->vect, -1., 1.)
-		|| !(camera->fov >= 0 && camera->fov <= 180))
+		|| _check_coord(temp_cam->vect, -1., 1.)
+		|| !(temp_cam->fov >= 0 && temp_cam->fov <= 180))
 	{
-		if (camera->pos)
-			free (camera->pos);
-		if (camera->vect)
-			free (camera->vect);
-		free (camera);
+		if (temp_cam->pos)
+			free (temp_cam->pos);
+		if (temp_cam->vect)
+			free (temp_cam->vect);
+		free (*camera);
+		*camera = NULL;
 		return (FAILURE);
 	}
 	return (SUCCESS);
 }
 
-t_check	_check_light(t_spot *light, char *line)
+t_check	_check_light(t_spot **light, char *line)
 {
+	t_spot	*temp_light;
+
+	temp_light = *light;
 	if ((line && *line != '\n' && *line)
-		|| _check_rgb(light->color) 
-		|| _check_coord(light->pos, -100, 100)					//EN FONCTION DE LA TAILLE DE LA GRILLE ???
-		|| !(light->ratio >= 0. && light->ratio <= 1.))
+		|| _check_rgb(temp_light->color) 
+		|| !(temp_light->ratio >= 0. && temp_light->ratio <= 1.))
 	{
-		if (light->color)
-			free (light->color);
-		if (light->pos)
-			free (light->pos);
-		free (light);
+		if (temp_light->color)
+			free (temp_light->color);
+		if (temp_light->pos)
+			free (temp_light->pos);
+		free(*light);
+		*light = NULL;
 		return (FAILURE);
 	}
 	return (SUCCESS);

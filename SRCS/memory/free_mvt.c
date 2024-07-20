@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   free_mvt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 19:32:56 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/24 19:33:21 by tmouche          ###   ########.fr       */
+/*   Created: 2024/07/17 17:32:03 by thibaud           #+#    #+#             */
+/*   Updated: 2024/07/20 03:22:13 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "structure.h"
+#include <stdlib.h>
 
-size_t	ft_atol(const char *nptr)
+void	_free_mvt(t_mvt *kinetic)
 {
-	size_t	i;
-	size_t	result;
-	int		sign;
-
-	i = -1;
-	sign = 1;
-	result = 0;
-	while ((nptr[++i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		;
-	if (nptr[i] == 45 || nptr[i] == 43)
-		if (nptr[i++] == 45)
-			sign *= -1;
-	while (nptr[i] >= 48 && nptr[i] <= 57)
-		result = result * 10 + (nptr[i++] - 48);
-	return (result * sign);
+	if (!kinetic)
+		return ;
+	if (kinetic->dir_x)
+		free (kinetic->dir_x);
+	if (kinetic->dir_y)
+		free (kinetic->dir_y);
+	if (kinetic->dir_bx)
+		free (kinetic->dir_bx);
+	if (kinetic->dir_by)
+		free (kinetic->dir_by);
 }

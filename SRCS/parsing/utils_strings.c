@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/30 15:55:08 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 00:33:43 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@ void	_strerror(char *str)
 		++i;
 	write(2, str, i);
 	write(2, "\n", 1);	
-}
-
-void	_freetab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
-		free (tab[i++]);
-	free (tab);
 }
 
 char	*_until_char(char *line, char c)

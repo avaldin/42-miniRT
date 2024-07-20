@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/07 01:18:20 by thibaud          ###   ########.fr        #
+#    Updated: 2024/07/20 03:17:38 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= structure.h parsing.h pixel.h calcul.h\
+HDRS	:= structure.h parsing.h displaying.h calcul.h memory.h\
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
@@ -24,13 +24,22 @@ SRCS	:=	main.c\
 			parsing/extract.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
-			parsing/free_obj.c\
-			parsing/free_env.c\
 			calcul/generation.c\
 			calcul/calcul.c\
 			calcul/intersection.c\
-			calcul/tools_pixel.c\
-			calcul/color.c
+			calcul/color.c\
+			displaying/displaying.c\
+			displaying/hook_keyboard.c\
+			displaying/hook_mouse.c\
+			displaying/loop_frame.c\
+			displaying/moove_cam.c\
+			displaying/pixel.c\
+			memory/alloc_utils.c\
+			memory/free_env.c\
+			memory/free_mvt.c\
+			memory/free_obj.c\
+			memory/free_utils.c\
+			memory/free_disp.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
@@ -58,7 +67,7 @@ TEST_OBJS	:= $(TEST_S:%.c=$(OBJS_D)test_%.o)
 all: libft minilibx-linux $(NAME)
 
 $(NAME): $(OBJS_D) $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -I$(HDRS_D) -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft/HDRS -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -I$(HDRS_D) -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
 
 
 $(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft $(INC_D)minilibx-linux Makefile
@@ -70,8 +79,12 @@ $(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
+	@mkdir -p $(OBJS_D)memory
 	@mkdir -p $(OBJS_D)parsing
 	@mkdir -p $(OBJS_D)calcul
+	@mkdir -p $(OBJS_D)displaying
+	@mkdir -p $(OBJS_D)moovement
+
 
 $(TEST_D):
 	@mkdir -p $(TEST_D)

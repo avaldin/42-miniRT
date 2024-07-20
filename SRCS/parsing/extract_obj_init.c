@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:40:51 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/05 14:04:57 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:28:09 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_check	_init_sphere(t_sphere **sphere, char *line)
 	line = _is_space(_until_char(line, ' '));
 	(*sphere)->color = _set_rgb(line);
 	line = _is_space(_until_char(line, ' '));
-	return (_check_sphere(*sphere, line));
+	return (_check_sphere(sphere, line));
 }
 
 t_check	_init_plane(t_plane **plane, char *line)
@@ -45,7 +45,7 @@ t_check	_init_plane(t_plane **plane, char *line)
 	line = _is_space(_until_char(line, ' '));
 	(*plane)->color = _set_rgb(line);
 	line = _is_space(_until_char(line, ' '));
-	return (_check_plane(*plane, line));
+	return (_check_plane(plane, line));
 }
 
 t_check	_init_cylinder(t_cylinder **cylinder, char *line)
@@ -66,5 +66,5 @@ t_check	_init_cylinder(t_cylinder **cylinder, char *line)
 	line = _is_space(_until_char(line, ' '));
 	(*cylinder)->color = _set_rgb(line);
 	line = _is_space(_until_char(line, ' '));
-	return (_check_cylinder(*cylinder, line));
+	return (_check_cylinder(cylinder, line));
 }

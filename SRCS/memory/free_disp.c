@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   free_disp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 18:40:56 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/05 01:01:13 by thibaud          ###   ########.fr       */
+/*   Created: 2024/07/17 00:50:44 by thibaud           #+#    #+#             */
+/*   Updated: 2024/07/17 01:28:03 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structure.h"
+#include "../include/minilibx-linux/mlx.h"
+#include <stdlib.h>
 
-float	ft_atof(const char *nptr)
+void	_free_window(t_wdw *window)
 {
-	int		i;
-	float	pre;
-	float	post;
-
-	if (!nptr)
-		return (0.);
-	i = 0;
-	pre = (float)ft_atoi(nptr);
-	while (nptr[i] && nptr[i] != '.')
-		++i;
-	if (!nptr)
-		return (pre);
-	++i;
-	post = (float)ft_atoi(&nptr[i]);
-	while (post > 1)
-		post /= 10.;
-	if (pre < 0)
-		return (pre - post);
-	return (pre + post);
+	if (!window->vars->mlx)
+		return ;
+	if (window->img->img)
+		mlx_destroy_image(window->vars->mlx, window->img->img);
+	if (window->vars->win)
+		mlx_destroy_window(window->vars->mlx, window->vars->win);
+	mlx_destroy_display(window->vars->mlx);
+	free (window->vars->mlx);		
 }

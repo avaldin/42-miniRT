@@ -6,12 +6,13 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:45:46 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/30 15:45:02 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/17 16:45:53 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "parsing.h"
+#include "memory.h"
+#include "structure.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -51,4 +52,5 @@ void	_free_scene(t_scene *scene, char *err)
 	_free_light(scene->light);
 	if (err)
 		write (2, err, ft_strlen(err, 0));
+	free (scene);
 }

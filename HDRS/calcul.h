@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 18:24:16 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/07/16 20:07:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 float	*_matrix_var(t_scene *scene);
 void	_dov(t_scene *scene, float *var);
-void	_generate_image(t_scene *scene);
+void	_generate_image(t_glob *data);
 float	_eq_sec_deg(float a, float b, float c);
 float	_inter_plane(t_scene *scene, t_plane *plane, t_coord *axis);
 float	_inter_sphere(t_scene *scene, t_sphere *sphere, t_coord *axis);
