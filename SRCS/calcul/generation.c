@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/16 23:08:20 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/20 18:32:52 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 
 #include "stdio.h"
 
-static void	_generate_pixel(t_scene *scene, int i, int j)
+static void	_generate_pixel(t_glob *data, int i, int j)
 {
 	float		length;
 	float		intensity;
@@ -67,12 +67,12 @@ static void	_generate_pixel(t_scene *scene, int i, int j)
 	length = _find_length(length, data->scene, i, j);
 	if (length == -1)
 		return ;
-	intensity = scene->fct(scene, length, scene->object);
+	intensity = data->scene->fct(data->scene, length, data->scene->object);
 	if (intensity < 0)
 		intensity = 0;
 	//printf("l = %f, y = %d\n", length, j);
-	rgb = _rgb_render(scene, intensity, length);
-	_mlx_pixel_put(scene->data, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+	rgb = _rgb_render(data->scene, intensity, length);
+	_mlx_pixel_put(data->window->img, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 
 void	_generate_image(t_glob *data)
