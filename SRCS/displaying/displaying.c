@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displaying.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:48:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/19 18:16:24 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/20 03:19:39 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "displaying.h"
 #include "memory.h"
 #include "calcul.h"
-#include "moovement.h"
 #include "../../include/minilibx-linux/mlx.h"
 
 static t_check	_set_vars_img(t_glob *data, int x, int y)
@@ -47,12 +46,14 @@ void	_displaying(t_glob *data)
 	if (_set_vars_img(data, X_SSIZE, Y_SSIZE) == FAILURE)
 		return (_free_n_exit(data, _MLX_ERR));
 	_set_n_getglob(data);
-	mlx_hook(data->window->vars->win, 03, 1L << 1, _key_release, data);
 	mlx_hook(data->window->vars->win, 02, 1L << 0, _key_press, data);
-	mlx_hook(data->window->vars->win, 06, 1L << 6, _mouse_mv, data);
+	mlx_hook(data->window->vars->win, 03, 1L << 1, _key_release, data);
+	mlx_hook(data->window->vars->win, 04, 1L << 2, _button_press, data);
+	mlx_hook(data->window->vars->win, 05, 1L << 3, _button_release, data);
+	mlx_hook(data->window->vars->win, 06, 1L << 13, _mouse_mv, data);
+	mlx_hook(data->window->vars->win, 9, 1L << 21, _focus_in, data);
+	mlx_hook(data->window->vars->win, 10, 1L << 21, _focus_out, data);
 	mlx_hook(data->window->vars->win, 17, 1L << 2, _cross_notify, data);
-	mlx_hook(data->window->vars->win, 9, 1L << 21, _notify_in, data);
-	mlx_hook(data->window->vars->win, 10, 1L << 21, _notify_out, data);
-	mlx_loop_hook(data->window->vars->mlx, _moove_cam, data);
+	mlx_loop_hook(data->window->vars->mlx, _new_frame, data);
 	mlx_loop(data->window->vars->mlx);
 }

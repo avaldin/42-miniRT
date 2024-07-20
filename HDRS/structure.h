@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/19 04:28:30 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/20 01:33:14 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <errno.h>
 # define X_SSIZE 1920
 # define Y_SSIZE 1080
+# define SET_FRM 2500
 
 typedef enum e_check
 {
@@ -120,6 +121,13 @@ typedef struct s_cylinder
 /*               MOOVEMENT                                                    */
 /* ************************************************************************** */
 
+typedef struct s_rtn
+{
+	int		last_x;
+	int		last_y;
+	t_nwdw	s_input;
+}				t_rtn;
+
 typedef struct s_mvt
 {
 	float	mv_x;
@@ -129,6 +137,13 @@ typedef struct s_mvt
 	t_coord	*dir_bx;
 	t_coord	*dir_by;
 }				t_mvt;
+
+typedef struct s_kntc
+{
+	t_mvt	*cam_moov;
+	t_rtn	*cam_rotate;	
+}				t_kntc;
+
 
 /* ************************************************************************** */
 /*               WINDOW                                                       */
@@ -177,7 +192,7 @@ typedef struct s_glob
 {
 	t_scene	*scene;
 	t_wdw	*window;
-	t_mvt	*kinetic;
+	t_kntc	*kinetic;
 }				t_glob;
 
 #endif

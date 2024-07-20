@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/17 17:37:28 by thibaud          ###   ########.fr        #
+#    Updated: 2024/07/20 03:17:38 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-HDRS	:= structure.h parsing.h displaying.h calcul.h memory.h moovement.h\
+HDRS	:= structure.h parsing.h displaying.h calcul.h memory.h\
 
 SRCS	:=	main.c\
 			parsing/extract_check_args.c\
@@ -29,7 +29,10 @@ SRCS	:=	main.c\
 			calcul/intersection.c\
 			calcul/color.c\
 			displaying/displaying.c\
-			displaying/hooker.c\
+			displaying/hook_keyboard.c\
+			displaying/hook_mouse.c\
+			displaying/loop_frame.c\
+			displaying/moove_cam.c\
 			displaying/pixel.c\
 			memory/alloc_utils.c\
 			memory/free_env.c\
@@ -37,7 +40,6 @@ SRCS	:=	main.c\
 			memory/free_obj.c\
 			memory/free_utils.c\
 			memory/free_disp.c\
-			moovement/moove_cam.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
