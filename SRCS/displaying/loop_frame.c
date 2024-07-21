@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/20 03:26:08 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/21 02:16:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	_new_frame(t_glob *data)
 	{
 		cam = data->scene->camera;
 		if (data->kinetic->cam_moov->mv_x > 0)
-			_change_cam_pos(cam, data->kinetic->cam_moov->dir_x, 0.2);
+			_change_cam_pos_x(cam, data->kinetic->cam_moov->dir_x, 1);
 		if (data->kinetic->cam_moov->mv_x < 0)
-			_change_cam_pos(cam, data->kinetic->cam_moov->dir_bx, 0.2);
+			_change_cam_pos_x(cam, data->kinetic->cam_moov->dir_x, -1);
 		if (data->kinetic->cam_moov->mv_y > 0)
-			_change_cam_pos(cam, data->kinetic->cam_moov->dir_y, 0.2);
+			_change_cam_pos_y(cam, data->kinetic->cam_moov->dir_x, 1);
 		if (data->kinetic->cam_moov->mv_y < 0)
-			_change_cam_pos(cam, data->kinetic->cam_moov->dir_by, 0.2);
+			_change_cam_pos_y(cam, data->kinetic->cam_moov->dir_x, -1);
 		mlx_destroy_image(data->window->vars->mlx, data->window->img->img);
 		data->window->img->img = mlx_new_image(data->window->vars->mlx, X_SSIZE, Y_SSIZE);
 		data->window->img->addr = mlx_get_data_addr(data->window->img->img, &data->window->img->bits_per_pixel, 
@@ -40,9 +40,9 @@ int	_new_frame(t_glob *data)
 		_generate_image(data);
 		mlx_put_image_to_window(data->window->vars->mlx, data->window->vars->win, data->window->img->img, 0, 0);
 		until_new = 0;
-		printf("cam dir x %f\n", cam->vect->x);
-		printf("cam dir y %f\n", cam->vect->y);
-		printf("cam dir z %f\n", cam->vect->z);
+		printf("cam pos x %f\n", cam->pos->x);
+		printf("cam pos y %f\n", cam->pos->y);
+		printf("cam pos z %f\n", cam->pos->z);
 	}
 	++until_new;
 	return (SUCCESS);

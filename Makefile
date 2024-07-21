@@ -6,7 +6,7 @@
 #    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/20 03:17:38 by tmouche          ###   ########.fr        #
+#    Updated: 2024/07/21 00:47:40 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS	:=	main.c\
 			calcul/calcul.c\
 			calcul/intersection.c\
 			calcul/color.c\
+			calcul/rotation_matrix.c\
 			displaying/displaying.c\
 			displaying/hook_keyboard.c\
 			displaying/hook_mouse.c\
