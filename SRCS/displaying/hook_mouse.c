@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/21 03:42:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/21 04:31:38 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "structure.h"
 #include "displaying.h"
 #include "calcul.h"
+#include "libft.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -61,15 +62,15 @@ int _mouse_mv(int loc_x, int loc_y, t_glob *data)
 		data->kinetic->cam_rotate->last_x = loc_x;
 		data->kinetic->cam_rotate->last_y = loc_y;
 	}
-	axis.x = 1;
-	axis.y = 0;
-	axis.z = 1;
-	angle = acos(((data->kinetic->cam_rotate->last_x - X_SSIZE / 2) * (loc_x - X_SSIZE / 2) + (data->kinetic->cam_rotate->last_y - Y_SSIZE / 2) * (loc_y - Y_SSIZE / 2))
-				/ (sqrt(pow(data->kinetic->cam_rotate->last_x - X_SSIZE / 2, 2) + pow(data->kinetic->cam_rotate->last_y - Y_SSIZE / 2, 2)) * sqrt(pow(loc_x - X_SSIZE / 2, 2) + pow(loc_y - Y_SSIZE / 2, 2))));
-	if (loc_x > data->kinetic->cam_rotate->last_x)
-		angle = 360. - angle;
+	axis.x = 0;
+	axis.y = 1;
+	axis.z = 0;
+	angle = acos((ft_abs(data->kinetic->cam_rotate->last_x - X_SSIZE / 2) * ft_abs(loc_x - X_SSIZE / 2) + ft_abs(data->kinetic->cam_rotate->last_y - Y_SSIZE / 2) * ft_abs(loc_y - Y_SSIZE / 2))
+				/ (sqrt(pow(data->kinetic->cam_rotate->last_x - X_SSIZE / 2, 2) + pow(data->kinetic->cam_rotate->last_y - Y_SSIZE / 2, 2)) *
+				sqrt(pow(loc_x - X_SSIZE / 2, 2) + pow(loc_y - Y_SSIZE / 2, 2))));
 	printf("angle : %f\n", angle);
 	_rotate_vec_3d(data->scene->camera->vect, &axis, angle);
+	// _rotate_vec_2d(&data->scene->camera->vect->x, &data->scene->camera->vect->y, angle);
 	return (SUCCESS);
 }
 
