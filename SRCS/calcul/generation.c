@@ -45,17 +45,20 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 			scene->rgb_object = scene->sphere[k]->color;
 		}
 	}
-//	k = -1;
-//	while (scene->cylinder[++k])
-//	{
-//		length_temp = _inter_plane();
-//		if (length_temp >= 0 && length_temp < length)
-//			length = length_temp;
-//	}
+	k = -1;
+	while (scene->cylinder[++k])
+	{
+		length_temp = _inter_cylinder(scene, scene->cylinder[k], axis);
+		if (length_temp >= 0 && length_temp < length)
+		{
+			length = length_temp;
+			scene->object = scene->sphere[k];
+			scene->fct = _intensity_of_cylinder;
+			scene->rgb_object = scene->cylinder[k]->color;
+		}
+	}
 	return (length);
 }
-
-#include "stdio.h"
 
 static void	_generate_pixel(t_glob *data, int i, int j)
 {
@@ -70,7 +73,6 @@ static void	_generate_pixel(t_glob *data, int i, int j)
 	intensity = data->scene->fct(data->scene, length, data->scene->object);
 	if (intensity < 0)
 		intensity = 0;
-	//printf("l = %f, y = %d\n", length, j);
 	rgb = _rgb_render(data->scene, intensity, length);
 	_mlx_pixel_put(data->window->img, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
