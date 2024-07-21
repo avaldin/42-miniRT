@@ -123,6 +123,7 @@ typedef struct s_cylinder
 {
 	float	height;
 	float	radius;
+	int		part;
 	t_coord	*pos;
 	t_coord	*vect;
 	t_rgb	*color;
