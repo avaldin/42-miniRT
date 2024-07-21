@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/21 02:16:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/21 03:31:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	_new_frame(t_glob *data)
 		_generate_image(data);
 		mlx_put_image_to_window(data->window->vars->mlx, data->window->vars->win, data->window->img->img, 0, 0);
 		until_new = 0;
-		printf("cam pos x %f\n", cam->pos->x);
-		printf("cam pos y %f\n", cam->pos->y);
-		printf("cam pos z %f\n", cam->pos->z);
+		// printf("cam pos x %f\n", cam->pos->x);
+		// printf("cam pos y %f\n", cam->pos->y);
+		// printf("cam pos z %f\n", cam->pos->z);
 	}
 	++until_new;
 	return (SUCCESS);

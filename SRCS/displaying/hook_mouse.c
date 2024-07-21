@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/21 03:17:39 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/21 03:42:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ int _mouse_mv(int loc_x, int loc_y, t_glob *data)
 		data->kinetic->cam_rotate->last_x = loc_x;
 		data->kinetic->cam_rotate->last_y = loc_y;
 	}
-	axis.x = 0;
-	axis.y = 1;
-	axis.z = 0;
+	axis.x = 1;
+	axis.y = 0;
+	axis.z = 1;
 	angle = acos(((data->kinetic->cam_rotate->last_x - X_SSIZE / 2) * (loc_x - X_SSIZE / 2) + (data->kinetic->cam_rotate->last_y - Y_SSIZE / 2) * (loc_y - Y_SSIZE / 2))
 				/ (sqrt(pow(data->kinetic->cam_rotate->last_x - X_SSIZE / 2, 2) + pow(data->kinetic->cam_rotate->last_y - Y_SSIZE / 2, 2)) * sqrt(pow(loc_x - X_SSIZE / 2, 2) + pow(loc_y - Y_SSIZE / 2, 2))));
 	if (loc_x > data->kinetic->cam_rotate->last_x)
-		angle = 360 - angle;
+		angle = 360. - angle;
+	printf("angle : %f\n", angle);
 	_rotate_vec_3d(data->scene->camera->vect, &axis, angle);
 	return (SUCCESS);
 }
