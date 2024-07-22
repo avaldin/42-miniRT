@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 18:40:56 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/12 17:22:38 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/22 17:54:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ float	ft_atof(const char *nptr)
 		return (pre);
 	++i;
 	post = give_part(&nptr[i]);
-	while (post > 1)
+	while (post >= 1)
 		post /= 10.;
 	if (pre < 0)
 		return (pre - post);
