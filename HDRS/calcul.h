@@ -22,13 +22,18 @@ void	_generate_image(t_glob *data);
 float	_eq_sec_deg(float a, float b, float c);
 float	_inter_plane(t_scene *scene, t_plane *plane, t_coord *axis);
 float	_inter_sphere(t_scene *scene, t_sphere *sphere, t_coord *axis);
-//float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder , t_coord *axis);
+float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder , t_coord *axis);
 t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var);
 float	_sq(float x);
 float	_intensity_of_sphere(t_scene *scene, float length, void *object);
 float	_intensity_of_plane(t_scene *scene, float length, void *object);
+float	_intensity_of_cylinder(t_scene *scene, float length, void *object);
 int		*_rgb_render(t_scene *scene, float intensity, float length);
+
 void	_rotate_vec_3d(t_coord *vec, t_coord *axis, float angle);
 void	_rotate_vec_2d(float *x, float *y, float angle);
+t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length);
+float	_projection(t_coord	point, t_coord *pos, t_coord *vect);
+void	_normalized(t_coord *vect);
 
 #endif

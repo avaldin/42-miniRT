@@ -58,16 +58,15 @@ float	*_matrix_var(t_scene *scene)
 	return (var);
 }
 
-//void	_dov(t_scene *scene, float *var)
-//{
-//	scene->dov_x[0] = var[2];
-//	scene->dov_x[1] = 0;
-//	scene->dov_x[2] = -var[3];
-//	scene->dov_y[0] = var[1] * var[3];
-//	scene->dov_y[1] = var[0];
-//	scene->dov_y[2] = var[1] * var[2];
-	//printf("xx = %lf")
-//}
+void	_normalized(t_coord *vect)
+{
+	float	norm;
+
+	norm = sqrt(_sq(vect->x) + _sq(vect->y) + _sq(vect->z));
+	vect->x = vect->x / norm;
+	vect->y = vect->y / norm;
+	vect->z = vect->z / norm;
+}
 
 t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 {
@@ -95,4 +94,12 @@ t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
 float	_sq(float x)
 {
 	return (x * x); // proteger l'overflow
+}
+
+float	_projection(t_coord	point, t_coord *pos, t_coord *vect)
+{
+	return (sqrtf(_sq(((point.x - pos->x) * vect->x
+		+ (point.y - pos->y) * vect->y
+		+ (point.z - pos->z) * vect->z)
+		/ sqrtf(_sq(vect->x) + _sq(vect->y) + _sq(vect->z)))));
 }

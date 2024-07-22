@@ -22,9 +22,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object)
 
 	i = -1;
 	plane = (t_plane *)object;
-	inter.x = scene->camera->pos->x + length * scene->axis->x;
-	inter.y = scene->camera->pos->y + length * scene->axis->y;
-	inter.z = scene->camera->pos->z + length * scene->axis->z;
+	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
 	v_light.x = scene->light->pos->x - inter.x ;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
@@ -44,9 +42,7 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object)
 	t_coord		v_light;
 
 	sphere = (t_sphere *)object;
-	inter.x = scene->camera->pos->x + length * scene->axis->x;
-	inter.y = scene->camera->pos->y + length * scene->axis->y;
-	inter.z = scene->camera->pos->z + length * scene->axis->z;
+	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
 	v_normal.x = inter.x - sphere->pos->x;
 	v_normal.y = inter.y - sphere->pos->y;
 	v_normal.z = inter.z - sphere->pos->z;
@@ -59,28 +55,37 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object)
 		+ _sq(v_light.z)) * sqrtf(_sq(v_normal.x) + _sq(v_normal.y) + _sq(v_normal.z))));
 }
 
-// float	_intensity_of_cylinder(t_scene *scene, float length)
-// {
-// 	float	i;
-// 	t_coord	inter;
-// 	t_coord	v_normal;
-// 	t_coord	v_light;
-//
-// 	inter.x = scene->camera->pos->x + length * scene->axis->x;
-// 	inter.y = scene->camera->pos->y + length * scene->axis->y;
-// 	inter.z = scene->camera->pos->z + length * scene->axis->z;
-// 	v_normal.x = inter.x - scene->sphere[0]->pos->x;
-// 	v_normal.y = inter.y - scene->sphere[0]->pos->y;
-// 	v_normal.z = inter.z - scene->sphere[0]->pos->z;
-// 	v_light.x = scene->light->pos->x - inter.x ;
-// 	v_light.y = scene->light->pos->y - inter.y;
-// 	v_light.z = scene->light->pos->z - inter.z;
-// 	//shadow here
-// 	i = scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y * v_light.y
-// 		+ v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
-// 		+ _sq(v_light.z)) * sqrtf(_sq(v_normal.x) + _sq(v_normal.y) + _sq(v_normal.z)));
-// 	return (i);
-// }
+float	_intensity_of_cylinder(t_scene *scene, float length, void *object)
+{
+	t_cylinder	*cylinder;
+	t_coord		inter;
+	t_coord		v_normal;
+	t_coord		v_light;
+
+	cylinder = (t_cylinder *)object;
+	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
+	if (cylinder->part == 2)
+		v_normal = *cylinder->vect;
+	else if (cylinder->part == 3)
+	{
+		v_normal.x = -cylinder->vect->x;
+		v_normal.y = -cylinder->vect->y;
+		v_normal.z = -cylinder->vect->z;
+	}
+	else
+	{
+		v_normal.x = inter.x - cylinder->pos->x;
+		v_normal.y = inter.y - cylinder->pos->y;
+		v_normal.z = inter.z - cylinder->pos->z;
+	}
+	v_light.x = scene->light->pos->x - inter.x ;
+	v_light.y = scene->light->pos->y - inter.y;
+	v_light.z = scene->light->pos->z - inter.z;
+	//shadow here
+	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y * v_light.y
+		+ v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
+		+ _sq(v_light.z)) * sqrtf(_sq(v_normal.x) + _sq(v_normal.y) + _sq(v_normal.z))));
+}
 
 int	*_rgb_render(t_scene *scene, float intensity, float length)
 {
