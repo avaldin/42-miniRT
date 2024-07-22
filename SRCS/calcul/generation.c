@@ -49,7 +49,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 	while (scene->cylinder[++k])
 	{
 		length_temp = _inter_cylinder(scene, scene->cylinder[k], axis);
-		if (length_temp >= 0 && length_temp < length)
+		if (length_temp >= 0 && (length_temp < length || length == -1))
 		{
 			length = length_temp;
 			scene->object = scene->sphere[k];
@@ -94,4 +94,5 @@ void	_generate_image(t_glob *data)
 		}
 		i++;
 	}
+	printf("ok\n");
 }
