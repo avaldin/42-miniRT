@@ -12,39 +12,38 @@
 
 #include "displaying.h"
 #include "calcul.h"
-#include <stdio.h>
+
 static float	_find_length(float length, t_scene *scene, int i, int j)
 {
 	float		length_temp;
 	int 		k;
 	t_coord		*axis;
 
-
 	k = -1;
 	axis = _direct_axis(scene, i, j, scene->var);
-	// while (scene->plane[++k])
-	// {
-	// 	length_temp = _inter_plane(scene, scene->plane[k], axis);
-	// 	if (length_temp >= 0 && (length_temp < length || length == -1))
-	// 	{
-	// 		length = length_temp;
-	// 		scene->object = scene->plane[k];
-	// 		scene->fct = _intensity_of_plane;
-	// 		scene->rgb_object = scene->plane[k]->color;
-	// 	}
-	// }
-	// k = -1;
-	// while (scene->sphere[++k])
-	// {
-	// 	length_temp = _inter_sphere(scene, scene->sphere[k], axis);
-	// 	if (length_temp >= 0 && (length_temp < length || length == -1))
-	// 	{
-	// 		length = length_temp;
-	// 		scene->object = scene->sphere[k];
-	// 		scene->fct = _intensity_of_sphere;
-	// 		scene->rgb_object = scene->sphere[k]->color;
-	// 	}
-	// }
+	while (scene->plane[++k])
+	{
+		length_temp = _inter_plane(scene, scene->plane[k], axis);
+		if (length_temp >= 0 && (length_temp < length || length == -1))
+		{
+			length = length_temp;
+			scene->object = scene->plane[k];
+			scene->fct = _intensity_of_plane;
+			scene->rgb_object = scene->plane[k]->color;
+		}
+	}
+	k = -1;
+	while (scene->sphere[++k])
+	{
+		length_temp = _inter_sphere(scene, scene->sphere[k], axis);
+		if (length_temp >= 0 && (length_temp < length || length == -1))
+		{
+			length = length_temp;
+			scene->object = scene->sphere[k];
+			scene->fct = _intensity_of_sphere;
+			scene->rgb_object = scene->sphere[k]->color;
+		}
+	}
 	k = -1;
 	while (scene->cylinder[++k])
 	{
@@ -52,7 +51,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 		if (length_temp >= 0 && (length_temp < length || length == -1))
 		{
 			length = length_temp;
-			scene->object = scene->sphere[k];
+			scene->object = scene->cylinder[k];
 			scene->fct = _intensity_of_cylinder;
 			scene->rgb_object = scene->cylinder[k]->color;
 		}
@@ -94,5 +93,4 @@ void	_generate_image(t_glob *data)
 		}
 		i++;
 	}
-	printf("ok\n");
 }

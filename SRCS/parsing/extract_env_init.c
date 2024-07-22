@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "calcul.h"
 #include "structure.h"
 #include "parsing.h"
 #include <stdlib.h>
@@ -41,6 +42,7 @@ t_check	_init_camera(t_cam **camera, char *line)
 	(*camera)->pos = _set_coord(line);
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->vect = _set_coord(line);
+	_normalized((*camera)->vect);
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->fov = ft_atoi(line);
 	line = _is_space(_until_char(line, ' '));

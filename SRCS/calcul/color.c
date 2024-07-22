@@ -74,9 +74,9 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object)
 	}
 	else
 	{
-		v_normal.x = inter.x - scene->sphere[0]->pos->x;
-		v_normal.y = inter.y - scene->sphere[0]->pos->y;
-		v_normal.z = inter.z - scene->sphere[0]->pos->z;
+		v_normal.x = inter.x - cylinder->pos->x;
+		v_normal.y = inter.y - cylinder->pos->y;
+		v_normal.z = inter.z - cylinder->pos->z;
 	}
 	v_light.x = scene->light->pos->x - inter.x ;
 	v_light.y = scene->light->pos->y - inter.y;

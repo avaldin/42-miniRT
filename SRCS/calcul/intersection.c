@@ -87,9 +87,9 @@ float	_inter_disk(t_cylinder *cylinder, t_coord *axis, t_coord *cam_pos, float h
 		+ cylinder->vect->y * axis->y
 		+ cylinder->vect->z * axis->z) == 0)
 		return (-1);
-	pos.x = cylinder->pos->x * height;
-	pos.y = cylinder->pos->y * height;
-	pos.z = cylinder->pos->z * height;
+	pos.x = cylinder->pos->x + cylinder->vect->x * height;
+	pos.y = cylinder->pos->y + cylinder->vect->y * height;
+	pos.z = cylinder->pos->z + cylinder->vect->z * height;
 	length = -(cylinder->vect->x * cam_pos->x + cylinder->vect->y * cam_pos->y
 		+ cylinder->vect->z * cam_pos->z - (cylinder->vect->x * pos.x
 		+ cylinder->vect->y * pos.y + cylinder->vect->z * pos.z))
@@ -101,8 +101,6 @@ float	_inter_disk(t_cylinder *cylinder, t_coord *axis, t_coord *cam_pos, float h
 	else
 		return (-1);
 }
-
-#include <stdio.h>
 
 float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, t_coord *axis)
 {
@@ -121,10 +119,10 @@ float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, t_coord *axis)
 	if (discriminant >= 0)
 	{
 		result[0] = (-eq_var[1] - sqrtf(discriminant)) / (2.0f * eq_var[0]);
-		if (sqrtf(_sq(_projection(_intersection_on_line(scene->camera->pos, axis, result[0]), cylinder->pos, cylinder->vect))) > cylinder->radius / 2.0f)
+		if (sqrtf(_sq(_projection(_intersection_on_line(scene->camera->pos, axis, result[0]), cylinder->pos, cylinder->vect))) > cylinder->height / 2.0f)
 			result[0] = -1;
 		result[1] = (-eq_var[1] + sqrtf(discriminant)) / (2.0f * eq_var[0]);
-		if (sqrtf(_sq(_projection(_intersection_on_line(scene->camera->pos, axis, result[1]), cylinder->pos, cylinder->vect))) > cylinder->radius / 2.0f)
+		if (sqrtf(_sq(_projection(_intersection_on_line(scene->camera->pos, axis, result[1]), cylinder->pos, cylinder->vect))) > cylinder->height / 2.0f)
 			result[1] = -1;
 	}
 	result[2] = _inter_disk(cylinder, axis, scene->camera->pos, cylinder->height / 2.0f);
@@ -137,8 +135,6 @@ float	_inter_cylinder(t_scene *scene, t_cylinder *cylinder, t_coord *axis)
 			result[4] = result[i];
 			cylinder->part = i;
 		}
-		i++;
 	}
 	return (result[4]);
 }
-

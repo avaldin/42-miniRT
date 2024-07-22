@@ -32,5 +32,6 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object);
 int		*_rgb_render(t_scene *scene, float intensity, float length);
 t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length);
 float	_projection(t_coord	point, t_coord *pos, t_coord *vect);
+void	_normalized(t_coord *vect);
 
 #endif
