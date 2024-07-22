@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/22 20:47:46 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 22:02:44 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ void	_change_cam_pos_y(t_cam *cam, float mv)
 	return ;
 }
 
-float	_change_cam_direction(int old_pos, int new_pos)
-{
-	float	mv;
-
-	mv = old_pos - new_pos;
-	return (mv * 0.01 / 500.); 
-}
-
 t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam)
 {
 	static	t_mvt	moov;
@@ -56,6 +48,8 @@ t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam)
 	moov.dir_y = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
 	moov.dir_bx = _alloc_coord(-cam->vect->x, -cam->vect->y, -cam->vect->z);
 	moov.dir_by = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
+	rotate.mv_x = 0;
+	rotate.mv_y = 0;
 	rotate.s_input = OUT;
 	kinetic->cam_moov = &moov;
 	kinetic->cam_rotate = &rotate;

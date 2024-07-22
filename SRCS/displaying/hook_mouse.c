@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/22 20:03:12 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 22:45:55 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "libft.h"
 #include <math.h>
 #include <stdio.h>
+#include "../../include/minilibx-linux/mlx.h"
 
 int _focus_in(void)
 {
@@ -49,21 +50,17 @@ int _button_press(void)
 }
 
 int _mouse_mv(int loc_x, int loc_y, t_glob *data)
-{	
-	if (data->kinetic->cam_rotate->s_input == OUT)
-		return (FAILURE);
+{
+	printf("x %d\n", loc_x);
+	printf("y %d\n", loc_y);
 	if (loc_y == Y_SSIZE / 2)
-		data->kinetic->cam_moov->mv_y = 0;
-	else if (loc_y < Y_SSIZE)
-		data->kinetic->cam_moov->mv_y = 1;
+		data->kinetic->cam_rotate->mv_y = 0;
 	else
-		data->kinetic->cam_moov->mv_y = -1;
+		data->kinetic->cam_rotate->mv_y = loc_y - Y_SSIZE / 2;
 	if (loc_x == X_SSIZE / 2)
-		data->kinetic->cam_moov->mv_x = 0;
-	else if (loc_x < X_SSIZE)
-		data->kinetic->cam_moov->mv_x = -1;
+		data->kinetic->cam_rotate->mv_x = 0;
 	else
-		data->kinetic->cam_moov->mv_y = 1;
+		data->kinetic->cam_rotate->mv_x = loc_x - X_SSIZE / 2;
 	return (SUCCESS);
 }
 
