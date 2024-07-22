@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/22 22:45:55 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 23:03:07 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int _button_press(void)
 
 int _mouse_mv(int loc_x, int loc_y, t_glob *data)
 {
-	printf("x %d\n", loc_x);
-	printf("y %d\n", loc_y);
 	if (loc_y == Y_SSIZE / 2)
 		data->kinetic->cam_rotate->mv_y = 0;
 	else

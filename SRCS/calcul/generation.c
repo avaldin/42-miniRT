@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/20 18:32:52 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/22 23:02:12 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 
 	k = -1;
 	axis = _direct_axis(scene, i, j, scene->var);
-	while (scene->plane[++k])
+	while (scene->plane && scene->plane[++k])
 	{
 		length_temp = _inter_plane(scene, scene->plane[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
@@ -33,7 +33,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 		}
 	}
 	k = -1;
-	while (scene->sphere[++k])
+	while (scene->sphere && scene->sphere[++k])
 	{
 		length_temp = _inter_sphere(scene, scene->sphere[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
@@ -45,7 +45,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 		}
 	}
 	k = -1;
-	while (scene->cylinder[++k])
+	while (scene->cylinder && scene->cylinder[++k])
 	{
 		length_temp = _inter_cylinder(scene, scene->cylinder[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
