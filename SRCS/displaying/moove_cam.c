@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/21 02:35:23 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 20:47:46 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,23 @@
 #include "libft.h"
 #include "../../include/minilibx-linux/mlx.h"
 
-void	_change_cam_pos_x(t_cam *cam, t_coord *matrix, float mv)
+void	_change_cam_pos_z(t_cam *cam, t_coord *vect_dir, float mv)
 {
-	cam->pos->x = cam->pos->x + (mv * matrix->x);
-	cam->pos->y = cam->pos->y + (mv * matrix->y);
-	cam->pos->z = cam->pos->z + (mv * matrix->z);
+	cam->pos->x = cam->pos->x + (mv * vect_dir->x);
+	cam->pos->z = cam->pos->z + (mv * vect_dir->z);
 }
 
-void	_change_cam_pos_y(t_cam *cam, t_coord *vect_dir, float mv)
+void	_change_cam_pos_x(t_cam *cam, t_coord *vect_dir, float mv)
 {
-	cam->pos->x = cam->pos->x + (mv * (vect_dir->x * 0 + vect_dir->y * -1));
-	cam->pos->z = cam->pos->z + (mv * (vect_dir->x * 1 + vect_dir->y * 0));
+	cam->pos->x = cam->pos->x + (mv * (vect_dir->x * 0 + vect_dir->z * -1));
+	cam->pos->z = cam->pos->z + (mv * (vect_dir->x * 1 + vect_dir->z * 0));
+	return ;
+}
+
+void	_change_cam_pos_y(t_cam *cam, float mv)
+{
+	cam->pos->y += mv;
+	return ;
 }
 
 float	_change_cam_direction(int old_pos, int new_pos)
@@ -50,8 +56,6 @@ t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam)
 	moov.dir_y = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
 	moov.dir_bx = _alloc_coord(-cam->vect->x, -cam->vect->y, -cam->vect->z);
 	moov.dir_by = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
-	rotate.last_x = -1;
-	rotate.last_y = -1;
 	rotate.s_input = OUT;
 	kinetic->cam_moov = &moov;
 	kinetic->cam_rotate = &rotate;

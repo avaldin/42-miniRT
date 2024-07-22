@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/21 04:31:38 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 20:03:12 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int _button_release(void)
 
 	data = _set_n_getglob(NULL); ;
 	data->kinetic->cam_rotate->s_input = OUT;
-	data->kinetic->cam_rotate->last_x = -1;
-	data->kinetic->cam_rotate->last_y = -1;
 	return (SUCCESS);
 }
 
@@ -51,26 +49,21 @@ int _button_press(void)
 }
 
 int _mouse_mv(int loc_x, int loc_y, t_glob *data)
-{
-	t_coord axis;
-	float	angle;
-	
+{	
 	if (data->kinetic->cam_rotate->s_input == OUT)
 		return (FAILURE);
-	if (data->kinetic->cam_rotate->last_x == -1)
-	{
-		data->kinetic->cam_rotate->last_x = loc_x;
-		data->kinetic->cam_rotate->last_y = loc_y;
-	}
-	axis.x = 0;
-	axis.y = 1;
-	axis.z = 0;
-	angle = acos((ft_abs(data->kinetic->cam_rotate->last_x - X_SSIZE / 2) * ft_abs(loc_x - X_SSIZE / 2) + ft_abs(data->kinetic->cam_rotate->last_y - Y_SSIZE / 2) * ft_abs(loc_y - Y_SSIZE / 2))
-				/ (sqrt(pow(data->kinetic->cam_rotate->last_x - X_SSIZE / 2, 2) + pow(data->kinetic->cam_rotate->last_y - Y_SSIZE / 2, 2)) *
-				sqrt(pow(loc_x - X_SSIZE / 2, 2) + pow(loc_y - Y_SSIZE / 2, 2))));
-	printf("angle : %f\n", angle);
-	_rotate_vec_3d(data->scene->camera->vect, &axis, angle);
-	// _rotate_vec_2d(&data->scene->camera->vect->x, &data->scene->camera->vect->y, angle);
+	if (loc_y == Y_SSIZE / 2)
+		data->kinetic->cam_moov->mv_y = 0;
+	else if (loc_y < Y_SSIZE)
+		data->kinetic->cam_moov->mv_y = 1;
+	else
+		data->kinetic->cam_moov->mv_y = -1;
+	if (loc_x == X_SSIZE / 2)
+		data->kinetic->cam_moov->mv_x = 0;
+	else if (loc_x < X_SSIZE)
+		data->kinetic->cam_moov->mv_x = -1;
+	else
+		data->kinetic->cam_moov->mv_y = 1;
 	return (SUCCESS);
 }
 
