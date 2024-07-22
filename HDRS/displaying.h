@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:54:22 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/20 03:24:32 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 20:47:18 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	_button_press(void);
 int	_button_release(void);
 
 t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam);
-void	_change_cam_pos(t_cam *cam, t_coord *matrix, float mv);
+void	_change_cam_pos_y(t_cam *cam, float mv);
+void	_change_cam_pos_x(t_cam *cam, t_coord *vect_dir, float mv);
+void	_change_cam_pos_z(t_cam *cam, t_coord *vect_dir, float mv);
 float	_change_cam_direction(int old_pos, int new_pos);
 
 #endif

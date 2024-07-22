@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/16 20:07:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/21 02:08:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CALCUL_H
 # define CALCUL_H
-
 # include "structure.h"
-
 # define LENGTH_MITIGATION 1000
+# define _PI 3.14156
 
 float	*_matrix_var(t_scene *scene);
 void	_dov(t_scene *scene, float *var);
@@ -30,6 +29,9 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object);
 float	_intensity_of_plane(t_scene *scene, float length, void *object);
 float	_intensity_of_cylinder(t_scene *scene, float length, void *object);
 int		*_rgb_render(t_scene *scene, float intensity, float length);
+
+void	_rotate_vec_3d(t_coord *vec, t_coord *axis, float angle);
+void	_rotate_vec_2d(float *x, float *y, float angle);
 t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length);
 float	_projection(t_coord	point, t_coord *pos, t_coord *vect);
 void	_normalized(t_coord *vect);

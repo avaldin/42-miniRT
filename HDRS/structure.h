@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/20 01:33:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/22 19:58:14 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,14 +135,15 @@ typedef struct s_cylinder
 
 typedef struct s_rtn
 {
-	int		last_x;
-	int		last_y;
+	int		mv_x;
+	int		mv_y;
 	t_nwdw	s_input;
 }				t_rtn;
 
 typedef struct s_mvt
 {
 	float	mv_x;
+	float	mv_z;
 	float	mv_y;
 	t_coord	*dir_x;
 	t_coord	*dir_y;
