@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/22 23:03:07 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/23 04:29:09 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int _mouse_mv(int loc_x, int loc_y, t_glob *data)
 	if (loc_y == Y_SSIZE / 2)
 		data->kinetic->cam_rotate->mv_y = 0;
 	else
-		data->kinetic->cam_rotate->mv_y = loc_y - Y_SSIZE / 2;
+		data->kinetic->cam_rotate->mv_y = ft_abs(loc_y - Y_SSIZE / 2);
 	if (loc_x == X_SSIZE / 2)
 		data->kinetic->cam_rotate->mv_x = 0;
 	else
-		data->kinetic->cam_rotate->mv_x = loc_x - X_SSIZE / 2;
+		data->kinetic->cam_rotate->mv_x = ft_abs(loc_x - X_SSIZE / 2);
 	return (SUCCESS);
 }
 
