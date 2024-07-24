@@ -6,14 +6,15 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/20 18:32:52 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 01:15:00 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "displaying.h"
 #include "calcul.h"
+#include <stdlib.h>
 
-float	_find_length(float length, t_scene *scene,t_coord *pos, t_coord *axis)
+float	_find_length(float length, t_scene *scene, t_coord *pos, t_coord *axis)
 {
 	float		length_temp;
 	int 		k;
@@ -76,6 +77,7 @@ static void	_generate_pixel(t_glob *data, int i, int j)
 		intensity = 0;
 	rgb = _rgb_render(data->scene, intensity, length);
 	_mlx_pixel_put(data->window->img, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+	free (rgb);
 }
 
 void	_generate_image(t_glob *data)
@@ -95,4 +97,5 @@ void	_generate_image(t_glob *data)
 		}
 		i++;
 	}
+	free (data->scene->var);
 }

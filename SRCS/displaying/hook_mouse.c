@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/22 22:45:55 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/24 23:48:05 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ int _button_press(void)
 
 int _mouse_mv(int loc_x, int loc_y, t_glob *data)
 {
-	printf("x %d\n", loc_x);
-	printf("y %d\n", loc_y);
+	data->kinetic->cam_rotate->loc_x = loc_x;
+	data->kinetic->cam_rotate->loc_y = loc_y;
 	if (loc_y == Y_SSIZE / 2)
 		data->kinetic->cam_rotate->mv_y = 0;
 	else
-		data->kinetic->cam_rotate->mv_y = loc_y - Y_SSIZE / 2;
+		data->kinetic->cam_rotate->mv_y = ft_abs(loc_y - Y_SSIZE / 2);
 	if (loc_x == X_SSIZE / 2)
 		data->kinetic->cam_rotate->mv_x = 0;
 	else
-		data->kinetic->cam_rotate->mv_x = loc_x - X_SSIZE / 2;
+		data->kinetic->cam_rotate->mv_x = ft_abs(loc_x - X_SSIZE / 2);
 	return (SUCCESS);
 }
 
