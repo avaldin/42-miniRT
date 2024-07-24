@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 01:33:32 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 01:35:03 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	_new_frame(t_glob *data)
 			&data->window->img->line_length, &data->window->img->endian);
 		_generate_image(data);
 		mlx_put_image_to_window(data->window->vars->mlx, data->window->vars->win, data->window->img->img, 0, 0);
-		// mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
+		mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
 		data->kinetic->cam_rotate->mv_x = 0;
 		data->kinetic->cam_rotate->mv_y = 0;
 		mlx_mouse_move(data->window->vars->mlx, data->window->vars->win, X_SSIZE / 2, Y_SSIZE / 2);
