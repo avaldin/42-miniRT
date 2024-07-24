@@ -23,7 +23,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 	axis = _direct_axis(scene, i, j, scene->var);
 	while (scene->plane[++k])
 	{
-		length_temp = _inter_plane(scene, scene->plane[k], axis);
+		length_temp = _inter_plane(scene->camera->pos, scene->plane[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
 		{
 			length = length_temp;
@@ -35,7 +35,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 	k = -1;
 	while (scene->sphere[++k])
 	{
-		length_temp = _inter_sphere(scene, scene->sphere[k], axis);
+		length_temp = _inter_sphere(scene->camera->pos, scene->sphere[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
 		{
 			length = length_temp;
@@ -47,7 +47,7 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 	k = -1;
 	while (scene->cylinder[++k])
 	{
-		length_temp = _inter_cylinder(scene, scene->cylinder[k], axis);
+		length_temp = _inter_cylinder(scene->camera->pos, scene->cylinder[k], axis);
 		if (length_temp >= 0 && (length_temp < length || length == -1))
 		{
 			length = length_temp;

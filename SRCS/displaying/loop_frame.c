@@ -23,7 +23,8 @@ void	_change_cam_direction_x(t_glob *data)
 	float	angle;
 	t_coord	x;
 	t_coord	y;
-	
+
+	(void)y;
 	angle = acos(data->kinetic->cam_rotate->mv_x / (sqrt(powf(data->kinetic->cam_rotate->mv_x, 2.) + powf(data->kinetic->cam_rotate->mv_y, 2.))));
 	x.x = 1;
 	x.y = 0;
