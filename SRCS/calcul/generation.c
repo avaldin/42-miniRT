@@ -13,18 +13,20 @@
 #include "displaying.h"
 #include "calcul.h"
 
-static float	_find_length(float length, t_scene *scene, int i, int j)
+float	_find_length(float length, t_scene *scene,t_coord *pos, t_coord *axis)
 {
 	float		length_temp;
 	int 		k;
-	t_coord		*axis;
+	float		limit;
 
+	limit = 0.0f;
+	if (pos != scene->camera->pos)
+		limit = 0.01f;
 	k = -1;
-	axis = _direct_axis(scene, i, j, scene->var);
-	while (scene->plane[++k])
+	while (scene->plane && scene->plane[++k])
 	{
-		length_temp = _inter_plane(scene->camera->pos, scene->plane[k], axis);
-		if (length_temp >= 0 && (length_temp < length || length == -1))
+		length_temp = _inter_plane(pos, scene->plane[k], axis);
+		if (length_temp >= limit && (length_temp < length || length == -1))
 		{
 			length = length_temp;
 			scene->object = scene->plane[k];
@@ -33,10 +35,10 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 		}
 	}
 	k = -1;
-	while (scene->sphere[++k])
+	while (scene->sphere && scene->sphere[++k])
 	{
-		length_temp = _inter_sphere(scene->camera->pos, scene->sphere[k], axis);
-		if (length_temp >= 0 && (length_temp < length || length == -1))
+		length_temp = _inter_sphere(pos, scene->sphere[k], axis);
+		if (length_temp >= limit && (length_temp < length || length == -1))
 		{
 			length = length_temp;
 			scene->object = scene->sphere[k];
@@ -45,10 +47,10 @@ static float	_find_length(float length, t_scene *scene, int i, int j)
 		}
 	}
 	k = -1;
-	while (scene->cylinder[++k])
+	while (scene->cylinder && scene->cylinder[++k])
 	{
-		length_temp = _inter_cylinder(scene->camera->pos, scene->cylinder[k], axis);
-		if (length_temp >= 0 && (length_temp < length || length == -1))
+		length_temp = _inter_cylinder(pos, scene->cylinder[k], axis);
+		if (length_temp >= limit && (length_temp < length || length == -1))
 		{
 			length = length_temp;
 			scene->object = scene->cylinder[k];
@@ -66,7 +68,7 @@ static void	_generate_pixel(t_glob *data, int i, int j)
 	int			*rgb;
 
 	length = -1;
-	length = _find_length(length, data->scene, i, j);
+	length = _find_length(length, data->scene, data->scene->camera->pos, _direct_axis(data->scene, i, j, data->scene->var));
 	if (length == -1)
 		return ;
 	intensity = data->scene->fct(data->scene, length, data->scene->object);
