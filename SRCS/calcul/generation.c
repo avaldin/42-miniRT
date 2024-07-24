@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   generation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/22 23:02:12 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/24 22:59:21 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "displaying.h"
 #include "calcul.h"
+#include <stdlib.h>
 
 static float	_find_length(float length, t_scene *scene, int i, int j)
 {
@@ -74,6 +75,7 @@ static void	_generate_pixel(t_glob *data, int i, int j)
 		intensity = 0;
 	rgb = _rgb_render(data->scene, intensity, length);
 	_mlx_pixel_put(data->window->img, i, j, rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+	free (rgb);
 }
 
 void	_generate_image(t_glob *data)
@@ -93,4 +95,5 @@ void	_generate_image(t_glob *data)
 		}
 		i++;
 	}
+	free (data->scene->var);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove_cam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/22 22:02:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/24 23:47:25 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam)
 	moov.dir_by = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
 	rotate.mv_x = 0;
 	rotate.mv_y = 0;
+	rotate.loc_x = X_SSIZE / 2;
+	rotate.loc_y = Y_SSIZE / 2;
 	rotate.s_input = OUT;
 	kinetic->cam_moov = &moov;
 	kinetic->cam_rotate = &rotate;

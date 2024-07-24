@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/23 06:02:32 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 01:04:07 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,15 @@ void	_change_cam_direction_x(t_glob *data)
 	float	angle;
 	t_coord	x;
 	
-	angle = acos(data->kinetic->cam_rotate->mv_x / (sqrt(powf(data->kinetic->cam_rotate->mv_x, 2.) + powf(data->kinetic->cam_rotate->mv_y, 2.))));
-	if ((data->kinetic->cam_rotate->mv_x < X_SSIZE / 2 && data->kinetic->cam_rotate->mv_y > Y_SSIZE)
-		|| (data->kinetic->cam_rotate->mv_x > X_SSIZE / 2 && data->kinetic->cam_rotate->mv_y < Y_SSIZE))
+	angle = data->kinetic->cam_rotate->mv_x * 0.1 * (_PI / 180);
+	if (data->kinetic->cam_rotate->loc_x > X_SSIZE / 2)
 		angle = 6.283185 - angle;
 	if (angle == 0 || angle == 6.28f)
 		return ;
 	x.x = 0;
 	x.y = 1;
 	x.z = 0;
-	// printf("beforeX x:%f, y:%f, z:%f\n", data->scene->camera->vect->x, data->scene->camera->vect->y, data->scene->camera->vect->z);
 	_rotate_vec_3d(data->scene->camera->vect, &x, angle);
-	// printf("afterX x:%f, y:%f, z:%f\n", data->scene->camera->vect->x, data->scene->camera->vect->y, data->scene->camera->vect->z);
 }
 
 void	_change_cam_direction_y(t_glob *data)
@@ -42,9 +39,8 @@ void	_change_cam_direction_y(t_glob *data)
 	float	angle;
 	t_coord	y;
 	
-	angle = acos(data->kinetic->cam_rotate->mv_x / (sqrt(powf(data->kinetic->cam_rotate->mv_x, 2.) + powf(data->kinetic->cam_rotate->mv_y, 2.))));
-	if ((data->kinetic->cam_rotate->mv_x < X_SSIZE / 2 && data->kinetic->cam_rotate->mv_y < Y_SSIZE)
-		|| (data->kinetic->cam_rotate->mv_x > X_SSIZE / 2 && data->kinetic->cam_rotate->mv_y > Y_SSIZE))
+	angle = data->kinetic->cam_rotate->mv_y * 1 * (_PI / 180);
+	if (data->kinetic->cam_rotate->loc_y > Y_SSIZE / 2)
 		angle = 6.283185 - angle;
 	if (angle == 0 || angle == 6.28f)
 		return ;
@@ -77,9 +73,9 @@ int	_new_frame(t_glob *data)
 			_change_cam_pos_y(cam, -1.);
 		// printf("---------------\n");
 		// printf("before x:%f, y:%f, z:%f\n", cam->vect->x, cam->vect->y, cam->vect->z);
-		if (data->kinetic->cam_rotate->mv_x != 0)
+		if (data->kinetic->cam_rotate->loc_x != X_SSIZE / 2)
 			_change_cam_direction_x(data);
-		if (data->kinetic->cam_rotate->mv_y != 0 && data->scene->camera->vect->y == 1.f)
+		if (data->kinetic->cam_rotate->loc_y != Y_SSIZE / 2)
 			_change_cam_direction_y(data);
 		// printf("after x:%f, y:%f, z:%f\n", cam->vect->x, cam->vect->y, cam->vect->z);
 		// printf("---------------\n");
