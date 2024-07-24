@@ -20,15 +20,18 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object)
 	t_coord	v_light;
 	float	i;
 
-	i = -1;
 	plane = (t_plane *)object;
 	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
-	v_light.x = scene->light->pos->x - inter.x ;
+	v_light.x = scene->light->pos->x - inter.x;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
+	_normalized(&v_light);
+	i = _find_length(-1, scene, &inter, &v_light);
+	if (i > 0 && i < sqrt(_sq(scene->light->pos->x - inter.x) + _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z - inter.z)))
+		return (0);
+	i = -1;
 	if ((plane->vect->x * scene->axis->x + plane->vect->y * scene->axis->y + plane->vect->z * scene->axis->z) <= 0)
 		i = 1;
-	//shadow here
 	return (i * scene->light->ratio * 1.0f * (plane->vect->x * v_light.x + plane->vect->y * v_light.y
 		+ plane->vect->z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
 		+ _sq(v_light.z)) * sqrtf(_sq(plane->vect->x) + _sq(plane->vect->y) + _sq(plane->vect->z))));
@@ -49,7 +52,10 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object)
 	v_light.x = scene->light->pos->x - inter.x ;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
-	//shadow here;
+	_normalized(&v_light);
+	length = _find_length(-1, scene, &inter, &v_light);
+	if (length > 0 && length < sqrt(_sq(scene->light->pos->x - inter.x) + _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z - inter.z)))
+		return (0);
 	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y * v_light.y
 		+ v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
 		+ _sq(v_light.z)) * sqrtf(_sq(v_normal.x) + _sq(v_normal.y) + _sq(v_normal.z))));
@@ -81,7 +87,10 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object)
 	v_light.x = scene->light->pos->x - inter.x ;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
-	//shadow here
+	_normalized(&v_light);
+	length = _find_length(-1, scene, &inter, &v_light);
+	if (length > 0 && length < sqrt(_sq(scene->light->pos->x - inter.x) + _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z - inter.z)))
+		return (0);
 	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y * v_light.y
 		+ v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
 		+ _sq(v_light.z)) * sqrtf(_sq(v_normal.x) + _sq(v_normal.y) + _sq(v_normal.z))));
