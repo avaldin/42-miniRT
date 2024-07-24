@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 01:13:44 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 01:33:32 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	_change_cam_direction_x(t_glob *data)
 	t_coord	x;
 	
 	angle = data->kinetic->cam_rotate->mv_x * 0.1 * (_PI / 180);
-	if (data->kinetic->cam_rotate->loc_x > X_SSIZE / 2)
+	if (data->kinetic->cam_rotate->loc_x < X_SSIZE / 2)
 		angle = 6.283185 - angle;
 	if (angle == 0 || angle == 6.28f)
 		return ;
@@ -39,7 +39,7 @@ void	_change_cam_direction_y(t_glob *data)
 	float	angle;
 	t_coord	y;
 	
-	angle = data->kinetic->cam_rotate->mv_y * 1 * (_PI / 180);
+	angle = data->kinetic->cam_rotate->mv_y * 0.1 * (_PI / 180);
 	if (data->kinetic->cam_rotate->loc_y > Y_SSIZE / 2)
 		angle = 6.283185 - angle;
 	if (angle == 0 || angle == 6.28f)
