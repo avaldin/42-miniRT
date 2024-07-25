@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_obj_table.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:41:20 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/14 03:24:37 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:08:46 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_check	_sphere_table(t_scene *scene, char *line)
 {
 	t_sphere	**new;
 	int			i;
-	
+
 	i = 0;
 	while (scene->sphere && scene->sphere[i])
 		++i;
@@ -36,14 +36,14 @@ t_check	_sphere_table(t_scene *scene, char *line)
 	if (scene->sphere)
 		free (scene->sphere);
 	scene->sphere = new;
-	return (SUCCESS);		
+	return (SUCCESS);
 }
 
 t_check	_plane_table(t_scene *scene, char *line)
 {
 	t_plane	**new;
-	int			i;
-	
+	int		i;
+
 	i = 0;
 	while (scene->plane && scene->plane[i])
 		++i;
@@ -61,14 +61,14 @@ t_check	_plane_table(t_scene *scene, char *line)
 	if (scene->plane)
 		free (scene->plane);
 	scene->plane = new;
-	return (SUCCESS);		
+	return (SUCCESS);
 }
 
 t_check	_cylinder_table(t_scene *scene, char *line)
 {
 	t_cylinder	**new;
 	int			i;
-	
+
 	i = 0;
 	while (scene->cylinder && scene->cylinder[i])
 		++i;
@@ -86,5 +86,5 @@ t_check	_cylinder_table(t_scene *scene, char *line)
 	if (scene->cylinder)
 		free (scene->cylinder);
 	scene->cylinder = new;
-	return (SUCCESS);		
+	return (SUCCESS);
 }

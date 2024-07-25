@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:54:22 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/22 21:45:25 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:48:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	_mouse_mv(int loc_x, int loc_y, t_glob *data);
 int	_focus_in(void);
 int	_focus_out(void);
 int	_cross_notify(void);
-int	_button_press(void);
-int	_button_release(void);
 
 t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam);
 void	_change_cam_pos_y(t_cam *cam, float mv);

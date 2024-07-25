@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_check_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:54:56 by thibaud           #+#    #+#             */
-/*   Updated: 2024/06/30 15:55:25 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:58:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ t_check	check_line(char *line)
 	i = 0;
 	while (line && line[i])
 	{
-		if (line[i] == ' ' || line[i] == '\n' || (line[i] >= '0' && line[i] <= '9'))
+		if (line[i] == ' ' || line[i] == '\n'
+			|| (line[i] >= '0' && line[i] <= '9'))
 			;
 		else if (line[i] == '.' && _is_point(line, i))
 			return (FAILURE);

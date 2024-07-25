@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:48:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/22 22:43:07 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:46:27 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static t_check	_set_vars_img(t_glob *data, int x, int y)
 	img.img = mlx_new_image(vars.mlx, x, y);
 	if (!img.img)
 		return (FAILURE);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, 
-		&img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
 	if (!img.addr)
 		return (FAILURE);
 	_generate_image(data);
@@ -48,8 +48,6 @@ void	_displaying(t_glob *data)
 	_set_n_getglob(data);
 	mlx_hook(data->window->vars->win, 02, 1L << 0, _key_press, data);
 	mlx_hook(data->window->vars->win, 03, 1L << 1, _key_release, data);
-	// mlx_hook(data->window->vars->win, 04, 1L << 2, _button_press, data);
-	// mlx_hook(data->window->vars->win, 05, 1L << 3, _button_release, data);
 	mlx_hook(data->window->vars->win, 06, 1L << 6, _mouse_mv, data);
 	mlx_hook(data->window->vars->win, 9, 1L << 21, _focus_in, data);
 	mlx_hook(data->window->vars->win, 10, 1L << 21, _focus_out, data);

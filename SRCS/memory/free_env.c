@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:45:46 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 16:45:53 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:57:45 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	_free_camera(t_cam *camera)
 		return ;
 	free (camera->pos);
 	free (camera->vect);
-	free (camera);	
+	free (camera);
 }
 
 static void	_free_light(t_spot *light)

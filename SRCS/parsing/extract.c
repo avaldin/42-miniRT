@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 01:41:24 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:06:28 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,30 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-static char **_read_file(int fd)
+static char	**_read_file(int fd)
 {
 	char	**res;
 	char	**t_map;
 	char	*t_str;
-	
+
 	res = NULL;
 	t_map = NULL;
 	while (42)
 	{
-		errno = 0;
 		t_str = get_next_line(fd);
 		if (!t_str && errno)
 			return (_freetab(res), perror(NULL), NULL);
 		else if (!t_str)
 			break ;
-		if (ft_strfull(t_str, 9, 13))
+		if (!ft_strfull(t_str, 9, 13))
+			free (t_str);
+		else
 		{
 			t_map = ft_stradd(res, t_str);
 			if (!t_map)
 				return (_freetab(res), free (t_str), perror(NULL), NULL);
 			free (res);
 		}
-		else
-			free (t_str);
 		res = t_map;
 	}
 	return (res);
@@ -48,9 +47,9 @@ static char **_read_file(int fd)
 
 static void	_init_scene(t_scene *scene)
 {
-	// static t_rescam	reset;
 	static t_coord	axis;
 	static float	var[4] = {0., 0., 0., 0.};
+	// static t_rescam	reset;
 
 	// reset.cos_x = 0.;
 	// reset.cos_y = 0.;
@@ -76,7 +75,7 @@ static t_check	_data_loader(t_scene *scene, char *line)
 
 	res = FAILURE;
 	if (!ft_strncmp(line, "A ", 2) && !scene->ambient)
-		res = _init_ambient(&scene->ambient ,line);
+		res = _init_ambient(&scene->ambient, line);
 	else if (!ft_strncmp(line, "C ", 2) && !scene->camera)
 		res = _init_camera(&scene->camera, line);
 	else if (!ft_strncmp(line, "L ", 2) && !scene->light)
@@ -90,7 +89,7 @@ static t_check	_data_loader(t_scene *scene, char *line)
 	return (res);
 }
 
-static t_scene *_pars_line(char **data)
+static t_scene	*_pars_line(char **data)
 {
 	t_scene	*scene;
 	char	*temp;
@@ -108,7 +107,7 @@ static t_scene *_pars_line(char **data)
 			return (_free_scene(scene, _NOK_ID), NULL);
 		++i;
 	}
-	return (scene);	
+	return (scene);
 }
 
 t_scene	*_extract_data(char	*path_file)

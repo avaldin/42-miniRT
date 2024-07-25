@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_strings.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/17 00:33:43 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:26:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	_strerror(char *str)
 	while (str[i])
 		++i;
 	write(2, str, i);
-	write(2, "\n", 1);	
+	write(2, "\n", 1);
 }
 
 char	*_until_char(char *line, char c)
@@ -52,7 +52,7 @@ char	*_is_inrange(char *line, char r_bot, char r_top)
 char	*_is_space(char *line)
 {
 	int	i;
-	
+
 	if (!line)
 		return (NULL);
 	i = 0;

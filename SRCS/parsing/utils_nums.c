@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:57:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/19 21:41:52 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:24:28 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_check	_check_coord(t_coord *coord, float range_min, float range_max)
 		&& (coord->y >= range_min && coord->y <= range_max)
 		&& (coord->z >= range_min && coord->z <= range_max))
 		return (SUCCESS);
-	return (FAILURE);	
+	return (FAILURE);
 }
 
 t_check	_check_rgb(t_rgb *colors)
@@ -38,7 +38,7 @@ t_rgb	*_set_rgb(char *line)
 	t_rgb	*color;
 	int		*temp[3];
 	int		i;
-	
+
 	color = _alloc_rgb(0, 0, 0);
 	if (!color)
 		return (NULL);
@@ -63,7 +63,7 @@ t_coord	*_set_coord(char *line)
 	t_coord	*vec;
 	float	*temp[3];
 	int		i;
-	
+
 	vec = _alloc_coord(0., 0., 0.);
 	if (!vec)
 		return (NULL);
@@ -78,8 +78,7 @@ t_coord	*_set_coord(char *line)
 			++line;
 		line = _is_inrange(line, '0', '9');
 		if (*line == '.')
-			++line;
-		line = _is_inrange(line, '0', '9');
+			line = _is_inrange(++line, '0', '9');
 		if (!line || !*line || *line == '\n')
 			return (vec);
 		if (*line == ',')

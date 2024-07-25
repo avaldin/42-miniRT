@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_obj_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:40:51 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/12 18:28:09 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:26:44 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "calcul.h"
 
 t_check	_init_sphere(t_sphere **sphere, char *line)
-{	
+{
 	line = _is_space(&line[3]);
 	if (check_line(line) == FAILURE)
 		return (FAILURE);

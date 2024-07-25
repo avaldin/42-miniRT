@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_check_obj.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:30:03 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/12 18:08:18 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:07:48 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ t_check	_check_cylinder(t_cylinder **cylinder, char *line)
 		*cylinder = NULL;
 		return (FAILURE);
 	}
-	return (SUCCESS);	
+	return (SUCCESS);
 }

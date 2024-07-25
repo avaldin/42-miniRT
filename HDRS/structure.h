@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/24 23:46:21 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:48:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ typedef struct s_rtn
 	int		mv_y;
 	int		loc_x;
 	int		loc_y;
-	t_nwdw	s_input;
 }				t_rtn;
 
 typedef struct s_mvt
@@ -148,9 +147,6 @@ typedef struct s_mvt
 	float	mv_z;
 	float	mv_y;
 	t_coord	*dir_x;
-	t_coord	*dir_y;
-	t_coord	*dir_bx;
-	t_coord	*dir_by;
 }				t_mvt;
 
 typedef struct s_kntc

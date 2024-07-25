@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_disp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 00:50:44 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 01:28:03 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:57:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	_free_window(t_wdw *window)
 	if (window->vars->win)
 		mlx_destroy_window(window->vars->mlx, window->vars->win);
 	mlx_destroy_display(window->vars->mlx);
-	free (window->vars->mlx);		
+	free (window->vars->mlx);
 }
