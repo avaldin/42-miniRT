@@ -25,6 +25,7 @@ SRCS	:=	main.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
 			calcul/generation.c\
+			calcul/rebase_objects.c\
 			calcul/calcul.c\
 			calcul/intersection.c\
 			calcul/color.c\
@@ -36,6 +37,7 @@ SRCS	:=	main.c\
 			displaying/moove_cam.c\
 			displaying/pixel.c\
 			memory/alloc_utils.c\
+			memory/alloc_axis.c\
 			memory/free_env.c\
 			memory/free_mvt.c\
 			memory/free_obj.c\

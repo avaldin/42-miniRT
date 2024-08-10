@@ -13,7 +13,7 @@
 #include "../../HDRS/calcul.h"
 #include <math.h>
 
-float	_intensity_of_plane(t_scene *scene, float length, void *object)
+float	_intensity_of_plane(t_scene *scene, float length, void *object, t_coord *axis)
 {
 	t_plane *plane;
 	t_coord	inter;
@@ -21,7 +21,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object)
 	float	i;
 
 	plane = (t_plane *)object;
-	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
+	inter = _intersection_on_line(scene->camera->pos, axis, length);
 	v_light.x = scene->light->pos->x - inter.x;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
@@ -30,14 +30,14 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object)
 	if (i > 0 && i < sqrt(_sq(scene->light->pos->x - inter.x) + _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z - inter.z)))
 		return (0);
 	i = -1;
-	if ((plane->vect->x * scene->axis->x + plane->vect->y * scene->axis->y + plane->vect->z * scene->axis->z) <= 0)
+	if ((plane->r_vect->x * axis->x + plane->r_vect->y * axis->y + plane->r_vect->z * axis->z) <= 0)
 		i = 1;
-	return (i * scene->light->ratio * 1.0f * (plane->vect->x * v_light.x + plane->vect->y * v_light.y
-		+ plane->vect->z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
-		+ _sq(v_light.z)) * sqrtf(_sq(plane->vect->x) + _sq(plane->vect->y) + _sq(plane->vect->z))));
+	return (i * scene->light->ratio * 1.0f * (plane->r_vect->x * v_light.x + plane->r_vect->y * v_light.y
+		+ plane->r_vect->z * v_light.z) / (sqrtf(_sq(v_light.x) + _sq(v_light.y)
+		+ _sq(v_light.z)) * sqrtf(_sq(plane->r_vect->x) + _sq(plane->r_vect->y) + _sq(plane->r_vect->z))));
 }
 
-float	_intensity_of_sphere(t_scene *scene, float length, void *object)
+float	_intensity_of_sphere(t_scene *scene, float length, void *object, t_coord *axis)
 {
 	t_sphere	*sphere;
 	t_coord		inter;
@@ -45,10 +45,10 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object)
 	t_coord		v_light;
 
 	sphere = (t_sphere *)object;
-	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
-	v_normal.x = inter.x - sphere->pos->x;
-	v_normal.y = inter.y - sphere->pos->y;
-	v_normal.z = inter.z - sphere->pos->z;
+	inter = _intersection_on_line(scene->camera->pos, axis, length);
+	v_normal.x = inter.x - sphere->r_pos->x;
+	v_normal.y = inter.y - sphere->r_pos->y;
+	v_normal.z = inter.z - sphere->r_pos->z;
 	v_light.x = scene->light->pos->x - inter.x ;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
@@ -61,7 +61,7 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object)
 		+ _sq(v_light.z)) * sqrtf(_sq(v_normal.x) + _sq(v_normal.y) + _sq(v_normal.z))));
 }
 
-float	_intensity_of_cylinder(t_scene *scene, float length, void *object)
+float	_intensity_of_cylinder(t_scene *scene, float length, void *object, t_coord *axis)
 {
 	t_cylinder	*cylinder;
 	t_coord		inter;
@@ -69,20 +69,20 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object)
 	t_coord		v_light;
 
 	cylinder = (t_cylinder *)object;
-	inter = _intersection_on_line(scene->camera->pos, scene->axis, length);
+	inter = _intersection_on_line(scene->camera->pos, axis, length);
 	if (cylinder->part == 2)
-		v_normal = *cylinder->vect;
+		v_normal = *cylinder->r_vect;
 	else if (cylinder->part == 3)
 	{
-		v_normal.x = -cylinder->vect->x;
-		v_normal.y = -cylinder->vect->y;
-		v_normal.z = -cylinder->vect->z;
+		v_normal.x = -cylinder->r_vect->x;
+		v_normal.y = -cylinder->r_vect->y;
+		v_normal.z = -cylinder->r_vect->z;
 	}
 	else
 	{
-		v_normal.x = inter.x - cylinder->pos->x;
-		v_normal.y = inter.y - cylinder->pos->y;
-		v_normal.z = inter.z - cylinder->pos->z;
+		v_normal.x = inter.x - cylinder->r_pos->x;
+		v_normal.y = inter.y - cylinder->r_pos->y;
+		v_normal.z = inter.z - cylinder->r_pos->z;
 	}
 	v_light.x = scene->light->pos->x - inter.x ;
 	v_light.y = scene->light->pos->y - inter.y;
