@@ -87,20 +87,19 @@ void	_generate_image(t_glob *data)
 	int	i;
 	int	j;
 
-	i = 960;
-	j = 540;
+	i = 0;
 	//_matrix_var(data->scene);
 	_rebase_objects(data->scene);
-	_generate_pixel(data, i, j);
-	// while (i < X_SSIZE)
-	// {
-	// 	j = 0;
-	// 	while (j < Y_SSIZE)
-	// 	{
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+	while (i < X_SSIZE)
+	{
+		j = 0;
+		while (j < Y_SSIZE)
+		{
+			_generate_pixel(data, i, j);
+			j++;
+		}
+		i++;
+	}
 	// free (data->scene->var);
 }
 

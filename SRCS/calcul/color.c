@@ -49,9 +49,9 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object, t_coord *
 	v_normal.x = inter.x - sphere->r_pos->x;
 	v_normal.y = inter.y - sphere->r_pos->y;
 	v_normal.z = inter.z - sphere->r_pos->z;
-	v_light.x = scene->light->pos->x - inter.x ;
-	v_light.y = scene->light->pos->y - inter.y;
-	v_light.z = scene->light->pos->z - inter.z;
+	v_light.x = scene->light->r_pos->x - inter.x ;
+	v_light.y = scene->light->r_pos->y - inter.y;
+	v_light.z = scene->light->r_pos->z - inter.z;
 	_normalized(&v_light);
 	length = _find_length(-1, scene, &inter, &v_light);
 	if (length > 0 && length < sqrt(_sq(scene->light->pos->x - inter.x) + _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z - inter.z)))

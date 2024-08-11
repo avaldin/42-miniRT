@@ -76,8 +76,8 @@ t_coord	*_direct_axis(t_cam *camera, int i, int j)
 	t_coord	*axis;
 	float	angle[2];
 
-	angle[0] = (i / X_SSIZE - X_SSIZE / 2.0f) * camera->fov;
-	angle[1] = (j / Y_SSIZE - Y_SSIZE / 2.0f) * 90 * _PI / 180;
+	angle[0] = ((float )i / (float )X_SSIZE - 0.50f) * camera->fov;
+	angle[1] = (0.50f - (float )j / (float )Y_SSIZE) * camera->fov / (float )((float )X_SSIZE / (float )Y_SSIZE);
 	axis = _alloc_coord(sinf(angle[0]) * cosf(angle[1]), sinf(angle[1]), cosf(angle[0]) * cosf(angle[1]));
 	if (!axis)
 		return (NULL);
