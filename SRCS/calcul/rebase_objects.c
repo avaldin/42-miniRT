@@ -46,7 +46,7 @@ void	_rebase_objects(t_scene *scene)
 	while (scene->cylinder && scene->cylinder[++k])
 	{
 		_rebase_coord(scene->cylinder[k]->r_pos, scene->cylinder[k]->pos, scene->camera->vect);
-		_rebase_coord(scene->cylinder[k]->r_pos, scene->cylinder[k]->pos, scene->camera->vect);
+		_rebase_coord(scene->cylinder[k]->r_vect, scene->cylinder[k]->vect, scene->camera->vect);
 	}
 	_rebase_coord(scene->light->r_pos, scene->light->pos, scene->camera->vect);
 	_rebase_coord(scene->camera->r_pos, scene->camera->pos, scene->camera->vect);
