@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 23:51:55 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/23 05:58:13 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:44:28 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <calcul.h>
 #include <structure.h>
-#include <stdio.h>
 
 static inline void	_rotation_matrix_3d(float table[3][3], t_coord *u, float rad_ang)
 {
@@ -43,9 +42,7 @@ void	_rotate_vec_3d(t_coord *vec, t_coord *axis, float angle)
 	x_prime = r[0][0] * vec->x + r[0][1] * vec->y + r[0][2] * vec->z;
 	y_prime = r[1][0] * vec->x + r[1][1] * vec->y + r[1][2] * vec->z;
 	z_prime = r[2][0] * vec->x + r[2][1] * vec->y + r[2][2] * vec->z;
-	// printf("before x:%f, y:%f, z:%f\n", vec->x, vec->y, vec->z);
 	vec->x = x_prime;
 	vec->y = y_prime;
 	vec->z = z_prime;
-	// printf("After x:%f, y:%f, z:%f\n", vec->x, vec->y, vec->z);
 }

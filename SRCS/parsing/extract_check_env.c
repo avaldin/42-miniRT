@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_check_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 23:58:37 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 16:45:47 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:07:13 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 t_check	_check_ambient(t_amb **ambient, char *line)
 {
 	t_amb	*temp_amb;
-	
+
 	temp_amb = *ambient;
-	if ((line && *line != '\n' && *line) 
+	if ((line && *line != '\n' && *line)
 		|| _check_rgb(temp_amb->color)
 		|| !(temp_amb->ratio >= 0 && temp_amb->ratio <= 1))
 	{
@@ -35,7 +35,7 @@ t_check	_check_ambient(t_amb **ambient, char *line)
 t_check	_check_camera(t_cam **camera, char *line)
 {
 	t_cam	*temp_cam;
-	
+
 	temp_cam = *camera;
 	if ((line && *line != '\n' && *line)
 		|| _check_coord(temp_cam->vect, -1., 1.)
@@ -58,7 +58,7 @@ t_check	_check_light(t_spot **light, char *line)
 
 	temp_light = *light;
 	if ((line && *line != '\n' && *line)
-		|| _check_rgb(temp_light->color) 
+		|| _check_rgb(temp_light->color)
 		|| !(temp_light->ratio >= 0. && temp_light->ratio <= 1.))
 	{
 		if (temp_light->color)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove_cam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/24 23:47:25 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:56:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,19 @@ void	_change_cam_pos_y(t_cam *cam, float mv)
 
 t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam)
 {
-	static	t_mvt	moov;
-	static	t_rtn	rotate;
-	
+	static t_rtn	rotate;
+	static t_mvt	moov;
+
 	moov.mv_x = 0;
 	moov.mv_y = 0;
 	moov.dir_x = _alloc_coord(cam->vect->x, cam->vect->y, cam->vect->z);
-	moov.dir_y = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
-	moov.dir_bx = _alloc_coord(-cam->vect->x, -cam->vect->y, -cam->vect->z);
-	moov.dir_by = _alloc_coord(cam->vect->x, cam->vect->y, 0.);
 	rotate.mv_x = 0;
 	rotate.mv_y = 0;
 	rotate.loc_x = X_SSIZE / 2;
 	rotate.loc_y = Y_SSIZE / 2;
-	rotate.s_input = OUT;
 	kinetic->cam_moov = &moov;
 	kinetic->cam_rotate = &rotate;
-	if (moov.dir_x && moov.dir_y && moov.dir_bx && moov.dir_by)
+	if (moov.dir_x)
 		return (SUCCESS);
 	_free_mvt(&moov);
 	return (FAILURE);
