@@ -23,7 +23,7 @@ float	_find_length(float length, t_scene *scene, t_coord *pos, t_coord *axis)
 	float		limit;
 
 	limit = 0.0f;
-	if (pos != scene->camera->pos)
+	if (pos != scene->camera->r_pos)
 		limit = 0.01f;
 	k = -1;
 	while (scene->plane && scene->plane[++k])
@@ -71,7 +71,7 @@ static void	_generate_pixel(t_glob *data, int i, int j)
 	int			*rgb;
 
 	length = -1;
-	length = _find_length(length, data->scene, data->scene->camera->pos, data->scene->axis[i][j]);
+	length = _find_length(length, data->scene, data->scene->camera->r_pos, data->scene->axis[i][j]);
 	if (length == -1)
 		return ;
 	intensity = data->scene->fct(data->scene, length, data->scene->object, data->scene->axis[i][j]);
@@ -88,7 +88,6 @@ void	_generate_image(t_glob *data)
 	int	j;
 
 	i = 0;
-	//_matrix_var(data->scene);
 	_rebase_objects(data->scene);
 	while (i < X_SSIZE)
 	{
@@ -100,7 +99,6 @@ void	_generate_image(t_glob *data)
 		}
 		i++;
 	}
-	// free (data->scene->var);
 }
 
 t_coord	***_generate_axis(t_cam *camera, t_coord ***axis)

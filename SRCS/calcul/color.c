@@ -21,7 +21,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object, t_coord *a
 	float	i;
 
 	plane = (t_plane *)object;
-	inter = _intersection_on_line(scene->camera->pos, axis, length);
+	inter = _intersection_on_line(scene->camera->r_pos, axis, length);
 	v_light.x = scene->light->pos->x - inter.x;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
@@ -45,7 +45,7 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object, t_coord *
 	t_coord		v_light;
 
 	sphere = (t_sphere *)object;
-	inter = _intersection_on_line(scene->camera->pos, axis, length);
+	inter = _intersection_on_line(scene->camera->r_pos, axis, length);
 	v_normal.x = inter.x - sphere->r_pos->x;
 	v_normal.y = inter.y - sphere->r_pos->y;
 	v_normal.z = inter.z - sphere->r_pos->z;
@@ -69,7 +69,7 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object, t_coord
 	t_coord		v_light;
 
 	cylinder = (t_cylinder *)object;
-	inter = _intersection_on_line(scene->camera->pos, axis, length);
+	inter = _intersection_on_line(scene->camera->r_pos, axis, length);
 	if (cylinder->part == 2)
 		v_normal = *cylinder->r_vect;
 	else if (cylinder->part == 3)
@@ -84,7 +84,7 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object, t_coord
 		v_normal.y = inter.y - cylinder->r_pos->y;
 		v_normal.z = inter.z - cylinder->r_pos->z;
 	}
-	v_light.x = scene->light->pos->x - inter.x ;
+	v_light.x = scene->light->pos->x - inter.x;
 	v_light.y = scene->light->pos->y - inter.y;
 	v_light.z = scene->light->pos->z - inter.z;
 	_normalized(&v_light);

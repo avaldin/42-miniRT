@@ -22,7 +22,7 @@ void	_strerror(char *str)
 	while (str[i])
 		++i;
 	write(2, str, i);
-	write(2, "\n", 1);	
+	write(2, "\n", 1);
 }
 
 char	*_until_char(char *line, char c)

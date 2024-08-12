@@ -16,51 +16,6 @@
 #include "calcul.h"
 #include <memory.h>
 
-
-// float	*_matrix_var(t_scene *scene)
-// {
-// 	float	*var;
-//
-// 	var = ft_calloc(4, sizeof(float));
-// 	if (!var)
-// 		exit(50); // pas ok
-// 	if (!scene->camera->vect->z && !scene->camera->vect->x)
-// 	{
-// 		var[0] = 0;
-// 		var[1] = 1;
-// 	}
-// 	else
-// 	{
-// 		var[0] = 1 / sqrtf(1
-// 				+ _sq(scene->camera->vect->y) / (_sq(scene->camera->vect->x)
-// 				+ _sq(scene->camera->vect->z)));
-// 		var[1] = scene->camera->vect->y / (_sq(scene->camera->vect->x)
-// 				+ _sq(scene->camera->vect->y) + _sq(scene->camera->vect->z));
-// 	}
-// 	if (!scene->camera->vect->z && scene->camera->vect->x)
-// 	{
-// 		var[2] = 0;
-// 		var[3] = 1;
-// 		if (scene->camera->vect->x < 0)
-// 			var[3] = -1;
-// 	}
-// 	else if (!scene->camera->vect->z && !scene->camera->vect->x)
-// 	{
-// 		var[2] = 1;
-// 		var[3] = 0;
-// 	}
-// 	else
-// 	{
-// 		var[2] = 1 / sqrtf(1
-// 				+ _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
-// 		var[3] = (scene->camera->vect->x / scene->camera->vect->z) / sqrtf(1
-// 				+ _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
-// 	}
-// 	scene->var = var;
-// 	return (var);
-// }
-
-
 void	_normalized(t_coord *vect)
 {
 	float	norm;

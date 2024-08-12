@@ -85,6 +85,7 @@ typedef struct s_cam
 {
 	int		fov;
 	t_coord	*pos;
+	t_coord	*r_pos;
 	t_coord	*vect;
 }				t_cam;
 
@@ -99,12 +100,6 @@ typedef struct s_spot
 /* ************************************************************************** */
 /*               OBJET                                                        */
 /* ************************************************************************** */
-
-// typedef struct s_line
-// {
-// 	t_coord	pos;
-// 	t_coord	vect;
-// };
 
 typedef struct s_plane
 {

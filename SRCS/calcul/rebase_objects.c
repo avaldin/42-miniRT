@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
+/*   Updated: 2024/07/25 01:15:00 by thibaud          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <math.h>
-
 #include "structure.h"
 
 static void _rebase_coord(t_coord *r_coord,t_coord *coord, t_coord *base)
@@ -39,4 +49,5 @@ void	_rebase_objects(t_scene *scene)
 		_rebase_coord(scene->cylinder[k]->r_pos, scene->cylinder[k]->pos, scene->camera->vect);
 	}
 	_rebase_coord(scene->light->r_pos, scene->light->pos, scene->camera->vect);
+	_rebase_coord(scene->camera->r_pos, scene->camera->pos, scene->camera->vect);
 }
