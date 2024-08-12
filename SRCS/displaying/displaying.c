@@ -36,6 +36,9 @@ static t_check	_set_vars_img(t_glob *data, int x, int y)
 			&img.line_length, &img.endian);
 	if (!img.addr)
 		return (FAILURE);
+	data->scene->axis = _generate_axis(data->scene->camera, data->scene->axis);
+	if (!data->scene->axis)
+		return (FAILURE);
 	_generate_image(data);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	return (SUCCESS);

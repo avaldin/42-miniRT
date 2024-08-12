@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 22:06:28 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/12 22:02:17 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ static void	_init_scene(t_scene *scene)
 	// reset.cos_y = 0.;
 	// reset.sin_x = 0.;
 	// reset.sin_y = 0.;
-	axis.x = 0.;
-	axis.y = 0.;
-	axis.z = 0.;
-	scene->axis = &axis;
 	// scene->var = &reset;
 	scene->var = var;
 	scene->ambient = NULL;

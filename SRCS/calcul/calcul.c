@@ -14,49 +14,7 @@
 #include "structure.h"
 #include "libft.h"
 #include "calcul.h"
-
-float	*_matrix_var(t_scene *scene)
-{
-	float	*var;
-
-	var = ft_calloc(4, sizeof(float));
-	if (!var)
-		exit(50); // pas ok
-	if (!scene->camera->vect->z && !scene->camera->vect->x)
-	{
-		var[0] = 0;
-		var[1] = 1;
-	}
-	else
-	{
-		var[0] = 1 / sqrtf(1
-				+ _sq(scene->camera->vect->y) / (_sq(scene->camera->vect->x)
-				+ _sq(scene->camera->vect->z)));
-		var[1] = scene->camera->vect->y / (_sq(scene->camera->vect->x)
-				+ _sq(scene->camera->vect->y) + _sq(scene->camera->vect->z));
-	}
-	if (!scene->camera->vect->z && scene->camera->vect->x)
-	{
-		var[2] = 0;
-		var[3] = 1;
-		if (scene->camera->vect->x < 0)
-			var[3] = -1;
-	}
-	else if (!scene->camera->vect->z && !scene->camera->vect->x)
-	{
-		var[2] = 1;
-		var[3] = 0;
-	}
-	else
-	{
-		var[2] = 1 / sqrtf(1
-				+ _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
-		var[3] = (scene->camera->vect->x / scene->camera->vect->z) / sqrtf(1
-				+ _sq(scene->camera->vect->x) / _sq(scene->camera->vect->z));
-	}
-	scene->var = var;
-	return (var);
-}
+#include <memory.h>
 
 void	_normalized(t_coord *vect)
 {
@@ -68,27 +26,18 @@ void	_normalized(t_coord *vect)
 	vect->z = vect->z / norm;
 }
 
-t_coord	*_direct_axis(t_scene *scene, int i, int j, float *var)
+t_coord	*_direct_axis(t_cam *camera, int i, int j)
 {
-	float	temp[3];
-	float	axis_angle[3];
+	t_coord	*axis;
+	float	angle[2];
 
-	temp[0] = sinf((0.0087266462599f * scene->camera->fov)
-			* (float)(2 * i - X_SSIZE) / (float)X_SSIZE)
-			* ((float)X_SSIZE / (float)Y_SSIZE);
-	temp[1] = sinf(0.6108652381980f
-			* (float)(2 * j - Y_SSIZE) / (float)Y_SSIZE);
-	axis_angle[0] = temp[0] * var[2] + scene->camera->vect->x;
-	axis_angle[1] = var[0] * temp[1] + var[1] * temp[0] * var[3]
-			+ scene->camera->vect->y;
-	axis_angle[2] = var[0] * temp[0] * var[3] - temp[1] * var[1]
-			+ scene->camera->vect->z;
-	temp[0] = sqrtf(_sq(axis_angle[0]) + _sq(axis_angle[1])
-			+ _sq(axis_angle[2]));
-	scene->axis->x = axis_angle[0] / temp[0];
-	scene->axis->y = axis_angle[1] / temp[0];
-	scene->axis->z = axis_angle[2] / temp[0];
- 	return (scene->axis);
+	angle[0] = ((float )i / (float )X_SSIZE - 0.50f) * camera->fov;
+	angle[1] = (0.50f - (float )j / (float )Y_SSIZE) * camera->fov / (float )((float )X_SSIZE / (float )Y_SSIZE);
+	axis = _alloc_coord(sinf(angle[0]) * cosf(angle[1]), sinf(angle[1]), cosf(angle[0]) * cosf(angle[1]));
+	if (!axis)
+		return (NULL);
+	_normalized(axis);
+	return (axis);
 }
 
 float	_sq(float x)

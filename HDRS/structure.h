@@ -19,8 +19,9 @@
 # define SET_FRM 2500
 
 struct s_scene;
+struct s_coord;
 
-typedef float (*func_ptr)(struct s_scene *, float, void *);
+typedef float (*func_ptr)(struct s_scene *, float, void *, struct s_coord *);
 
 typedef enum e_check
 {
@@ -84,6 +85,7 @@ typedef struct s_cam
 {
 	int		fov;
 	t_coord	*pos;
+	t_coord	*r_pos;
 	t_coord	*vect;
 }				t_cam;
 
@@ -91,6 +93,7 @@ typedef struct s_spot
 {
 	float	ratio;
 	t_coord	*pos;
+	t_coord	*r_pos;
 	t_rgb	*color;
 }				t_spot;
 
@@ -98,16 +101,12 @@ typedef struct s_spot
 /*               OBJET                                                        */
 /* ************************************************************************** */
 
-// typedef struct s_line
-// {
-// 	t_coord	pos;
-// 	t_coord	vect;
-// };
-
 typedef struct s_plane
 {
 	t_coord	*pos;
+	t_coord	*r_pos;
 	t_coord	*vect;
+	t_coord	*r_vect;
 	float	cst;
 	t_rgb	*color;
 }				t_plane;
@@ -116,6 +115,7 @@ typedef struct s_sphere
 {
 	float	radius;
 	t_coord	*pos;
+	t_coord	*r_pos;
 	t_rgb	*color;
 }				t_sphere;
 
@@ -125,7 +125,9 @@ typedef struct s_cylinder
 	float	radius;
 	int		part;
 	t_coord	*pos;
+	t_coord	*r_pos;
 	t_coord	*vect;
+	t_coord	*r_vect;
 	t_rgb	*color;
 }				t_cylinder;
 
@@ -195,7 +197,7 @@ typedef struct s_scene
 	t_spot			*light;
 	t_cam			*camera;
 	//t_rescam		*var;
-	t_coord			*axis;
+	t_coord			***axis;
 	float			*var;
 	func_ptr		fct;
 	void			*object;

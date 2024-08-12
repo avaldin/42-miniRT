@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <memory.h>
 #include "displaying.h"
 #include "calcul.h"
 #include <stdlib.h>
+#include <libft.h>
 
 float	_find_length(float length, t_scene *scene, t_coord *pos, t_coord *axis)
 {
@@ -21,7 +23,7 @@ float	_find_length(float length, t_scene *scene, t_coord *pos, t_coord *axis)
 	float		limit;
 
 	limit = 0.0f;
-	if (pos != scene->camera->pos)
+	if (pos != scene->camera->r_pos)
 		limit = 0.01f;
 	k = -1;
 	while (scene->plane && scene->plane[++k])
@@ -69,10 +71,10 @@ static void	_generate_pixel(t_glob *data, int i, int j)
 	int			*rgb;
 
 	length = -1;
-	length = _find_length(length, data->scene, data->scene->camera->pos, _direct_axis(data->scene, i, j, data->scene->var));
+	length = _find_length(length, data->scene, data->scene->camera->r_pos, data->scene->axis[i][j]);
 	if (length == -1)
 		return ;
-	intensity = data->scene->fct(data->scene, length, data->scene->object);
+	intensity = data->scene->fct(data->scene, length, data->scene->object, data->scene->axis[i][j]);
 	if (intensity < 0)
 		intensity = 0;
 	rgb = _rgb_render(data->scene, intensity, length);
@@ -86,7 +88,7 @@ void	_generate_image(t_glob *data)
 	int	j;
 
 	i = 0;
-	_matrix_var(data->scene);
+	_rebase_objects(data->scene);
 	while (i < X_SSIZE)
 	{
 		j = 0;
@@ -97,5 +99,31 @@ void	_generate_image(t_glob *data)
 		}
 		i++;
 	}
-	free (data->scene->var);
+}
+
+t_coord	***_generate_axis(t_cam *camera, t_coord ***axis)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	axis = ft_calloc(X_SSIZE, sizeof(t_coord **));
+	if (!axis)
+		return (NULL);
+	while (i < X_SSIZE)
+	{
+		j = 0;
+		axis[i] = ft_calloc(Y_SSIZE, sizeof(t_coord *));
+		if (!axis[i])
+			return (_free_axis(axis, i - 1, Y_SSIZE), NULL);
+		while (j < Y_SSIZE)
+		{
+			axis[i][j] = _direct_axis(camera, i, j);
+			if (!axis[i][j])
+				return (_free_axis(axis, i, j - 1), NULL);
+			j++;
+		}
+		i++;
+	}
+	return (axis);
 }

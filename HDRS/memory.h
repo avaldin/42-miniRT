@@ -20,6 +20,7 @@ t_coord	*_alloc_coord(float x, float y, float z);
 t_rgb	*_alloc_rgb(int red, int green, int blue);
 
 void	_free_mvt(t_mvt *kinetic);
+void	_free_axis(t_coord ***axis, int i, int j);
 
 void	_free_plane(t_plane **pla);
 void	_free_sphere(t_sphere **sph);

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <memory.h>
 #include "libft.h"
 #include "calcul.h"
 #include "structure.h"
@@ -45,6 +46,7 @@ t_check	_init_camera(t_cam **camera, char *line)
 	_normalized((*camera)->vect);
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->fov = ft_atoi(line);
+	(*camera)->fov = (*camera)->fov * _PI / 180.0f;
 	line = _is_space(_until_char(line, ' '));
 	return (_check_camera(camera, line));
 }
@@ -58,6 +60,7 @@ t_check	_init_light(t_spot **light, char *line)
 	if (!*light)
 		return (FAILURE);
 	(*light)->pos = _set_coord(line);
+	(*light)->r_pos = _alloc_coord(0, 0, 0);
 	line = _is_space(_until_char(line, ' '));
 	(*light)->ratio = ft_atof(line);
 	line = _is_space(_until_char(line, ' '));
