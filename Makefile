@@ -25,9 +25,11 @@ SRCS	:=	main.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
 			calcul/generation.c\
+			calcul/nearest_object.c\
 			calcul/rebase_objects.c\
 			calcul/calcul.c\
 			calcul/intersection.c\
+			calcul/intersect_utils.c\
 			calcul/color.c\
 			calcul/rotation_matrix.c\
 			displaying/displaying.c\

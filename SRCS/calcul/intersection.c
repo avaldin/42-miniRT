@@ -11,95 +11,45 @@
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
-#include "../HDRS/calcul.h"
+#include "calcul.h"
 #include <math.h>
-
-t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length)
-{
-	t_coord	intersection;
-
-	intersection.x = pos->x + axis->x * length;
-	intersection.y = pos->y + axis->y * length;
-	intersection.z = pos->z + axis->z * length;
-	return (intersection);
-}
+#include <memory.h>
 
 float	_inter_plane(t_coord *pos, t_plane *plane, t_coord *axis)
 {
-	plane->cst = -(plane->r_vect->x * plane->r_pos->x + plane->r_vect->y * plane->r_pos->y
-		+ plane->r_vect->z * plane->r_pos->z);
+	plane->cst = -(plane->r_vect->x * plane->r_pos->x + plane->r_vect->y
+			* plane->r_pos->y + plane->r_vect->z * plane->r_pos->z);
 	if ((plane->r_vect->x * axis->x
-		+ plane->r_vect->y * axis->y
-		+ plane->r_vect->z * axis->z) == 0)
+			+ plane->r_vect->y * axis->y
+			+ plane->r_vect->z * axis->z) == 0)
 		return (-1);
 	return (-(plane->r_vect->x * pos->x + plane->r_vect->y * pos->y
-		+ plane->r_vect->z * pos->z + plane->cst)
+			+ plane->r_vect->z * pos->z + plane->cst)
 		/ (plane->r_vect->x * axis->x
-		+ plane->r_vect->y * axis->y
-		+ plane->r_vect->z * axis->z));
+			+ plane->r_vect->y * axis->y
+			+ plane->r_vect->z * axis->z));
 }
 
 float	_inter_sphere(t_coord *pos, t_sphere *sphere, t_coord *axis)
 {
-	float	result_a;
-	float	result_b;
+	float	result[2];
+	float	a;
+	float	b;
+	float	c;
 
-	if (4 * _sq((pos->x - sphere->r_pos->x) * axis->x
-		+ (pos->y - sphere->r_pos->y) * axis->y
-		+ (pos->z - sphere->r_pos->z) * axis->z)
-		- 4 * (_sq(pos->x - sphere->r_pos->x)
-		+ _sq(pos->y - sphere->r_pos->y)
-		+ _sq(pos->z - sphere->r_pos->z))
-		+ 4 * _sq(sphere->radius) < 0)
-		return (-1);
-	result_a = -(2 * ((pos->x - sphere->r_pos->x) * axis->x
+	a = 1;
+	b = 2.0f * ((pos->x - sphere->r_pos->x) * axis->x
 			+ (pos->y - sphere->r_pos->y) * axis->y
-			+ (pos->z - sphere->r_pos->z) * axis->z)
-			+ sqrtf(4 * _sq((pos->x - sphere->r_pos->x)
-			* axis->x + (pos->y - sphere->r_pos->y)
-			* axis->y + (pos->z - sphere->r_pos->z)
-			* axis->z) - 4 * (_sq(pos->x - sphere->r_pos->x)
-			+ _sq(pos->y - sphere->r_pos->y)
-			+ _sq(pos->z - sphere->r_pos->z))
-			+ 4 * _sq(sphere->radius))) / 2;
-	result_b = -(2 * ((pos->x - sphere->r_pos->x) * axis->x
-			+ (pos->y - sphere->r_pos->y) * axis->y
-			+ (pos->z - sphere->r_pos->z) * axis->z)
-			- sqrtf(4 * _sq((pos->x - sphere->r_pos->x)
-			* axis->x + (pos->y - sphere->r_pos->y)
-			* axis->y + (pos->z - sphere->r_pos->z)
-			* axis->z) - 4 * (_sq(pos->x - sphere->r_pos->x)
-			+ _sq(pos->y - sphere->r_pos->y)
-			+ _sq(pos->z - sphere->r_pos->z)) + 4
-			* _sq(sphere->radius))) / 2;
-	if ((result_a >= 0 && result_a < result_b) || result_b < 0)
-		return (result_a);
-	return (result_b);
-}
-
-static float	_inter_disk(t_cylinder *cylinder, t_coord *axis, t_coord *cam_pos, float height)
-{
-	float	length;
-	t_coord	pos;
-	t_coord	intersection;
-
-	if ((cylinder->r_vect->x * axis->x
-		+ cylinder->r_vect->y * axis->y
-		+ cylinder->r_vect->z * axis->z) == 0)
+			+ (pos->z - sphere->r_pos->z) * axis->z);
+	c = _sq(pos->x - sphere->r_pos->x) + _sq(pos->y - sphere->r_pos->y)
+		+ _sq(pos->z - sphere->r_pos->z) - _sq(sphere->radius);
+	if (_sq(b) - 4.0f * a * c < 0)
 		return (-1);
-	pos.x = cylinder->r_pos->x + cylinder->r_vect->x * height;
-	pos.y = cylinder->r_pos->y + cylinder->r_vect->y * height;
-	pos.z = cylinder->r_pos->z + cylinder->r_vect->z * height;
-	length = -(cylinder->r_vect->x * cam_pos->x + cylinder->r_vect->y * cam_pos->y
-		+ cylinder->r_vect->z * cam_pos->z - (cylinder->r_vect->x * pos.x
-		+ cylinder->r_vect->y * pos.y + cylinder->r_vect->z * pos.z))
-		/ (cylinder->r_vect->x * axis->x + cylinder->r_vect->y * axis->y
-		+ cylinder->r_vect->z * axis->z);
-	intersection = _intersection_on_line(cam_pos, axis, length);
-	if (sqrt(_sq(_sq(intersection.x - pos.x) + _sq(intersection.y - pos.y) + _sq(intersection.z - pos.z))) <= _sq(cylinder->radius))
-		return (length);
-	else
-		return (-1);
+	result[0] = _eq_sec_deg(a, b, c, 1.0f);
+	result[1] = _eq_sec_deg(a, b, c, -1.0f);
+	if ((result[0] >= 0 && result[0] < result[1]) || result[1] < 0)
+		return (result[0]);
+	return (result[1]);
 }
 
 float	_inter_cylinder(t_coord *pos, t_cylinder *cylinder, t_coord *axis)
@@ -107,34 +57,39 @@ float	_inter_cylinder(t_coord *pos, t_cylinder *cylinder, t_coord *axis)
 	float	eq_var[3];
 	float	discriminant;
 	float	result[5];
-	int		i;
 
 	result[4] = -1;
-	eq_var[0] = _sq(axis->x) + _sq(axis->y) + _sq(axis->z) - _sq(cylinder->r_vect->x * axis->x + cylinder->r_vect->y * axis->y + cylinder->r_vect->z * axis->z);
-	eq_var[1] = 2.0f * (axis->x * (pos->x - cylinder->r_pos->x) + axis->y * (pos->y - cylinder->r_pos->y) + axis->z * (pos->z - cylinder->r_pos->z) - (cylinder->r_vect->x * axis->x + cylinder->r_vect->y * axis->y + cylinder->r_vect->z * axis->z) * (cylinder->r_vect->x * (pos->x - cylinder->r_pos->x) + cylinder->r_vect->y * (pos->y - cylinder->r_pos->y) + cylinder->r_vect->z * (pos->z - cylinder->r_pos->z)));
-	eq_var[2] = _sq(pos->x - cylinder->r_pos->x) + _sq(pos->y - cylinder->r_pos->y) + _sq(pos->z - cylinder->r_pos->z) - _sq(cylinder->r_vect->x * (pos->x - cylinder->r_pos->x) + cylinder->r_vect->y * (pos->y - cylinder->r_pos->y) + cylinder->r_vect->z * (pos->z - cylinder->r_pos->z)) - _sq(cylinder->radius);
+	_calcul_var_cylinder(eq_var, axis, cylinder, pos);
 	discriminant = _sq(eq_var[1]) - 4.0f * eq_var[0] * eq_var[2];
 	result[0] = -1;
 	result[1] = -1;
-	if (discriminant >= 0)
-	{
-		result[0] = (-eq_var[1] - sqrtf(discriminant)) / (2.0f * eq_var[0]);
-		if (sqrtf(_sq(_projection(_intersection_on_line(pos, axis, result[0]), cylinder->r_pos, cylinder->r_vect))) > cylinder->height / 2.0f)
-			result[0] = -1;
-		result[1] = (-eq_var[1] + sqrtf(discriminant)) / (2.0f * eq_var[0]);
-		if (sqrtf(_sq(_projection(_intersection_on_line(pos, axis, result[1]), cylinder->r_pos, cylinder->r_vect))) > cylinder->height / 2.0f)
-			result[1] = -1;
-	}
-	result[2] = _inter_disk(cylinder, axis, pos, cylinder->height / 2.0f);
-	result[3] = _inter_disk(cylinder, axis, pos, -cylinder->height / 2.0f);
-	i = -1;
-	while (++i < 4)
-	{
-		if ((result[i] < result[4] || result[4] == -1) && result[i] >= 0)
-		{
-			result[4] = result[i];
-			cylinder->part = i;
-		}
-	}
-	return (result[4]);
+	if (discriminant < 0)
+		return (-1);
+	result[0] = (-eq_var[1] - sqrtf(discriminant)) / (2.0f * eq_var[0]);
+	if (sqrtf(_sq(_projection(_intersection_on_line(pos, axis,
+						result[0]), cylinder->r_pos, cylinder->r_vect)))
+		> cylinder->height / 2.0f)
+		result[0] = -1;
+	result[1] = (-eq_var[1] + sqrtf(discriminant)) / (2.0f * eq_var[0]);
+	if (sqrtf(_sq(_projection(_intersection_on_line(pos, axis,
+						result[1]), cylinder->r_pos, cylinder->r_vect)))
+		> cylinder->height / 2.0f)
+		result[1] = -1;
+	return (_inter_cylinder_b(pos, cylinder, axis, result));
+}
+
+t_coord	*_direct_axis(t_cam *camera, int i, int j)
+{
+	t_coord	*axis;
+	float	angle[2];
+
+	angle[0] = ((float )i / (float )X_SSIZE - 0.50f) * camera->fov;
+	angle[1] = (0.50f - (float )j / (float )Y_SSIZE) * camera->fov
+		/ ((float )X_SSIZE / (float )Y_SSIZE);
+	axis = _alloc_coord(sinf(angle[0]) * cosf(angle[1]),
+			sinf(angle[1]), cosf(angle[0]) * cosf(angle[1]));
+	if (!axis)
+		return (NULL);
+	_normalized(axis);
+	return (axis);
 }

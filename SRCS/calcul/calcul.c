@@ -26,20 +26,6 @@ void	_normalized(t_coord *vect)
 	vect->z = vect->z / norm;
 }
 
-t_coord	*_direct_axis(t_cam *camera, int i, int j)
-{
-	t_coord	*axis;
-	float	angle[2];
-
-	angle[0] = ((float )i / (float )X_SSIZE - 0.50f) * camera->fov;
-	angle[1] = (0.50f - (float )j / (float )Y_SSIZE) * camera->fov / (float )((float )X_SSIZE / (float )Y_SSIZE);
-	axis = _alloc_coord(sinf(angle[0]) * cosf(angle[1]), sinf(angle[1]), cosf(angle[0]) * cosf(angle[1]));
-	if (!axis)
-		return (NULL);
-	_normalized(axis);
-	return (axis);
-}
-
 float	_sq(float x)
 {
 	return (x * x); // proteger l'overflow
@@ -48,7 +34,22 @@ float	_sq(float x)
 float	_projection(t_coord	point, t_coord *pos, t_coord *vect)
 {
 	return (sqrtf(_sq(((point.x - pos->x) * vect->x
-		+ (point.y - pos->y) * vect->y
-		+ (point.z - pos->z) * vect->z)
-		/ sqrtf(_sq(vect->x) + _sq(vect->y) + _sq(vect->z)))));
+					+ (point.y - pos->y) * vect->y
+					+ (point.z - pos->z) * vect->z)
+				/ sqrtf(_sq(vect->x) + _sq(vect->y) + _sq(vect->z)))));
+}
+
+float	_eq_sec_deg(float a, float b, float c, float sign)
+{
+	return ((-b + sign * sqrtf(_sq(b) - 4.0f * a * c)) / (2.0f * a));
+}
+
+int	_float_to_int(float f)
+{
+	int	i;
+
+	i = (int)f;
+	if ((float)((int)f) + 0.5 < f)
+		i++;
+	return (i);
 }

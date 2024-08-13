@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <math.h>
-#include <stdlib.h>
 #include <calcul.h>
 #include <structure.h>
 
