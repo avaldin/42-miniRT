@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/12 22:47:11 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/13 05:04:39 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ typedef enum e_type
 	ENV_CAM,
 	ENV_SPT
 }			t_type;
+
+typedef enum e_interface
+{
+	SCENE,
+	MENU
+}				t_interface;
+
+typedef enum e_smenu
+{
+	FIRST_SCREEN,
+	OBJET_SCREEN,
+	CHANGE_SCREEN
+}				t_smenu;
 
 /* ************************************************************************** */
 /*               DATA                                                         */
@@ -161,6 +174,7 @@ typedef struct s_kntc
 /*               MENU                                                         */
 /* ************************************************************************** */
 
+
 typedef struct s_button
 {
 	char	*name;
@@ -173,7 +187,8 @@ typedef struct s_button
 typedef struct s_menu
 {
 	t_button	**menu;
-}
+	t_smenu		screen;
+}				t_menu;
 
 /* ************************************************************************** */
 /*               WINDOW                                                       */
@@ -196,9 +211,12 @@ typedef struct s_vars
 
 typedef struct s_wdw
 {
-	t_vars	*vars;
-	t_img	*img;
-	t_nwdw	box;
+	t_vars		*vars;
+	t_img		*img;
+	t_nwdw		box;
+	t_interface	interf;
+	int			mouse_posx;
+	int			mouse_posy;
 }				t_wdw;
 
 /* ************************************************************************** */
@@ -224,6 +242,7 @@ typedef struct s_scene
 typedef struct s_glob
 {
 	t_scene	*scene;
+	t_menu	*menu;
 	t_wdw	*window;
 	t_kntc	*kinetic;
 }				t_glob;

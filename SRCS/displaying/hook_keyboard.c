@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_keyboard.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:33 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/22 20:43:26 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/13 05:29:16 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ int	_key_press(int keycode, t_glob *data)
 		data->kinetic->cam_moov->mv_y = 1.;
 	else if (keycode == 65505)
 		data->kinetic->cam_moov->mv_y = -1.;
+	else if (keycode == 65307 && data->window->interf == SCENE)
+		data->window->interf = MENU;
+	else if (keycode == 65307 && data->window->interf == MENU)
+		data->window->interf = SCENE;
 	return (SUCCESS);
 }
