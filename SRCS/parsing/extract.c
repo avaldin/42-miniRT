@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/13 04:40:37 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/14 01:09:40 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	**_read_file(int fd)
 
 static void	_init_scene(t_scene *scene)
 {
-	static t_coord	axis;
+	// static t_coord	axis;
 	static float	var[4] = {0., 0., 0., 0.};
 	// static t_rescam	reset;
 

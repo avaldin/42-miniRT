@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/13 05:08:27 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/14 02:20:32 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ int	_new_frame(t_glob *data)
 			mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
 			mlx_mouse_move(data->window->vars->mlx, data->window->vars->win,
 				X_SSIZE / 2, Y_SSIZE / 2);
+			mlx_put_image_to_window(data->window->vars->mlx,
+				data->window->vars->win, data->window->img->img, 0, 0);
 		}
 		else
 			_menu(data);
-		mlx_put_image_to_window(data->window->vars->mlx,
-			data->window->vars->win, data->window->img->img, 0, 0);
 		until_new = 0;
 	}
 	++until_new;
