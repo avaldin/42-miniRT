@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/13 05:04:39 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/16 04:39:26 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,8 +215,6 @@ typedef struct s_wdw
 	t_img		*img;
 	t_nwdw		box;
 	t_interface	interf;
-	int			mouse_posx;
-	int			mouse_posy;
 }				t_wdw;
 
 /* ************************************************************************** */

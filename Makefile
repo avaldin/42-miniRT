@@ -6,7 +6,7 @@
 #    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/08/14 01:09:01 by thibaud          ###   ########.fr        #
+#    Updated: 2024/08/16 04:55:25 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS	:=	main.c\
 			parsing/extract_obj_init.c\
 			parsing/extract_obj_table.c\
 			parsing/extract.c\
+			parsing/menu_selection.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
 			calcul/generation.c\
@@ -43,8 +44,6 @@ SRCS	:=	main.c\
 			memory/free_obj.c\
 			memory/free_utils.c\
 			memory/free_disp.c\
-			menuing/first_screen.c\
-			menuing/menu.c\
 
 TEST_S	:=	main.c\
 			parsing.c\
@@ -89,7 +88,6 @@ $(OBJS_D):
 	@mkdir -p $(OBJS_D)calcul
 	@mkdir -p $(OBJS_D)displaying
 	@mkdir -p $(OBJS_D)moovement
-	@mkdir -p $(OBJS_D)menuing
 
 $(TEST_D):
 	@mkdir -p $(TEST_D)

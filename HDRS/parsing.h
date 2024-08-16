@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/17 00:43:30 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/16 04:53:07 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ t_check	_init_camera(t_cam **camera, char *line);
 t_check	_check_light(t_spot **light, char *line);
 t_check	_init_light(t_spot **light, char *line);
 void	_free_scene(t_scene *scene, char *err);
+
+/* *********************ENVS************************************************ */
+t_check	_menu(t_glob *data);
+
 
 char	*get_next_line(int fd);
 t_scene	*_extract_data(char	*path_file);

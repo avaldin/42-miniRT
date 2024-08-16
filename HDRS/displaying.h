@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:54:22 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/14 01:07:55 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/16 03:08:05 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	_change_cam_pos_y(t_cam *cam, float mv);
 void	_change_cam_pos_x(t_cam *cam, t_coord *vect_dir, float mv);
 void	_change_cam_pos_z(t_cam *cam, t_coord *vect_dir, float mv);
 
-t_check	_first_screen(t_glob *data);
 t_check	_menu(t_glob *data);
 
 #endif

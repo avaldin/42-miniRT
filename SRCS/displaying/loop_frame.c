@@ -6,12 +6,13 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/14 02:20:32 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/16 04:53:40 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math.h"
 #include "memory.h"
+#include "parsing.h"
 #include "calcul.h"
 #include "structure.h"
 #include "displaying.h"
