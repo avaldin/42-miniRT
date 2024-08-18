@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   menu_cylinder.c                                    :+:      :+:    :+:   */
+/*   menu_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 09:46:27 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/18 15:13:31 by tmouche          ###   ########.fr       */
+/*   Created: 2024/08/18 15:15:27 by tmouche           #+#    #+#             */
+/*   Updated: 2024/08/18 15:21:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-static t_mstate	_cylinder_change(t_cylinder *cylinder)
+static t_mstate	_plane_change(t_plane *plane)
 {
 	char		*buff;
 	t_mstate	state;
@@ -33,9 +33,9 @@ static t_mstate	_cylinder_change(t_cylinder *cylinder)
 		if (!ft_strncmp(buff, "BACK\n", 6))
 			return (free(buff), CONTINUE);
 		else if (!ft_strncmp(buff, "POSITION\n", 10))
-			state = _change_select(cylinder->pos, POS);
+			state = _change_select(plane->pos, POS);
 		else if (!ft_strncmp(buff, "VECTOR\n", 8))
-			state = _change_select(cylinder->vect, VEC);
+			state = _change_select(plane->vect, VEC);
 		else if (write(1, "unrecognized token, retry\n", 27) == -1)
 			state = ERROR;
 		free (buff);
@@ -43,7 +43,7 @@ static t_mstate	_cylinder_change(t_cylinder *cylinder)
 	return (state);
 }
 
-t_mstate	_select_cylinder(t_cylinder **cylinder)
+t_mstate	_select_plane(t_plane **plane)
 {
 	char		*buff;
 	int			i;
@@ -51,11 +51,11 @@ t_mstate	_select_cylinder(t_cylinder **cylinder)
 	t_mstate	state;
 
 	state = CONTINUE;
-	if (!cylinder && write(1, "token is not existing in the current scene\n", 44) == -1)
+	if (!plane && write(1, "token is not existing in the current scene\n", 44) == -1)
 		state = ERROR;
-	while (cylinder && state == CONTINUE)
+	while (plane && state == CONTINUE)
 	{	
-		if (write(1, "N° of the cylinder asked : ", 29) == -1)
+		if (write(1, "N° of the plane asked : ", 26) == -1)
 			return (ERROR);
 		buff = get_next_line(0);
 		if (!buff)
@@ -67,10 +67,10 @@ t_mstate	_select_cylinder(t_cylinder **cylinder)
 		n_cyl = ft_atol(buff);
 		free (buff);
 		i = 0;
-		while (cylinder[i] && i < n_cyl - 1)
+		while (plane[i] && i < n_cyl - 1)
 			++i;
-		if (n_cyl > 0 && cylinder[i])
-			state = _cylinder_change(cylinder[i]);
+		if (n_cyl > 0 && plane[i])
+			state = _plane_change(plane[i]);
 		else if (write(1, "unrecognized id, retry\n", 24) == -1)
 			state = ERROR;
 	}

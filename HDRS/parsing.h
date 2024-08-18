@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/18 11:41:01 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/18 15:18:00 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ t_check	_check_light(t_spot **light, char *line);
 t_check	_init_light(t_spot **light, char *line);
 void	_free_scene(t_scene *scene, char *err);
 
-/* *********************ENVS************************************************ */
+/* *********************MENU************************************************ */
 t_check	_menu(t_glob *data);
 t_mstate	_select_cylinder(t_cylinder **cylinder);
+t_mstate	_select_plane(t_plane **plane);
+t_mstate	_change_select(t_coord *vec, t_coordtype type);
 
 
 char	*get_next_line(int fd);

@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 04:36:45 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/18 09:53:38 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/18 15:22:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static t_mstate	_menu_select(t_scene *scene)
 		if (!ft_strncmp(buff, "CYLINDER\n", 11))
 			state = _select_cylinder(scene->cylinder);
 		else if (!ft_strncmp(buff, "SPHERE\n", 8))
-			state = _select_cylinder(scene->cylinder);
+			state = _select_sphere(scene->cylinder);
 		else if (!ft_strncmp(buff, "PLANE\n", 7))
-			state = _select_cylinder(scene->cylinder);
+			state = _select_plane(scene->cylinder);
 		else if (!ft_strncmp(buff, "QUIT\n", 6))
 			state = STOP;
 		else if (!ft_strncmp(buff, "BACK\n", 6))
