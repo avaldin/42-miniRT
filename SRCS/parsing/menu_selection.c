@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_selection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 04:36:45 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/16 05:52:24 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/18 09:53:38 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,74 +16,61 @@
 #include <unistd.h>
 #include <stdio.h>
 
-t_check	_select_cylinder(t_cylinder **cylinder)
+static t_mstate	_menu_select(t_scene *scene)
 {
-	char	*buff;
-	int			i;
-	ssize_t		n_cyl;
+	char		*buff;
+	t_mstate	state;
 
-	if (!cylinder)
+	state = CONTINUE;
+	while (state == CONTINUE)
 	{
-		if (write(1, "token is not existing in the current scene\n", 41) == -1)
-			return (FAILURE);
-		return (SUCCESS);
+		if (write(1, "[CYLINDER - SPHERE - PLANE] : ", 30) == -1)
+			return (ERROR);
+		buff = get_next_line(0);
+		if (!buff)
+			return (ERROR);
+		if (!ft_strncmp(buff, "CYLINDER\n", 11))
+			state = _select_cylinder(scene->cylinder);
+		else if (!ft_strncmp(buff, "SPHERE\n", 8))
+			state = _select_cylinder(scene->cylinder);
+		else if (!ft_strncmp(buff, "PLANE\n", 7))
+			state = _select_cylinder(scene->cylinder);
+		else if (!ft_strncmp(buff, "QUIT\n", 6))
+			state = STOP;
+		else if (!ft_strncmp(buff, "BACK\n", 6))
+			state = CONTINUE;
+		else if (write(1, "token not known, retry\n", 24) == -1)
+			state = ERROR;
+		free (buff);
 	}
-	if (write(1, "N° of the cylinder asked : ", 29) == -1)
-		return (FAILURE);
-	buff = get_next_line(0);
-	if (!buff)
-		return (FAILURE);
-	n_cyl = ft_atol(buff);
-	i = 0;
-	while (cylinder[i] && i < n_cyl - 1)
-		++i;
-	if (!cylinder[i])
-	{
-		if (write(1, "no token at this id\n", 21) == -1)
-			return (FAILURE);
-		return (SUCCESS);
-	}
-	else
-		printf("trouvé\n");
-	return (SUCCESS);
-}
-
-t_check _menu_select(t_scene *scene)
-{
-	char	*buff;
-
-	if (write(1, "CYLINDER - SPHERE - PLANE] : ", 30) == -1)
-		return (FAILURE);
-	buff = get_next_line(0);
-	if (!ft_strncmp(buff, "CYLINDER\n", 11))
-		_select_cylinder(scene->cylinder);
-	else if (!ft_strncmp(buff, "SPHERE\n", 8))
-		_select_cylinder(scene->cylinder);
-	else if (!ft_strncmp(buff, "PLANE\n", 7))
-		_select_cylinder(scene->cylinder);
-	else if (!buff || write(1, "token not known\n", 14) == -1)
-		return (FAILURE);
-	free (buff);
-	return (SUCCESS);
+	return (state);
 }
 
 t_check	_menu(t_glob *data)
 {
-	char	*buff;
+	char		*buff;
 	t_check		res;
+	t_mstate	state;
 	
 	res = FAILURE;
-	if (write(1, "[MENU]\n\n", 9) == -1)
+	if (write(1, "[MENU]\nQUIT to exit menu | BACK to return to the precedent screen\n", 67) == -1)
 		return (FAILURE);
-	if (write(1, "[QUIT - SELECT] : ", 19) == -1)
-		return (FAILURE);
-	buff = get_next_line(0);
-	if (!ft_strncmp(buff, "QUIT\n", 6))
+	state = CONTINUE;
+	while (state == CONTINUE)
 	{
-		data->menu = SCENE;
-		res = SUCCESS;
+		if (write(1, "[QUIT - SELECT] : ", 19) == -1)
+			return (FAILURE);
+		buff = get_next_line(0);
+		if (!buff)
+			return (FAILURE);
+		if (!ft_strncmp(buff, "QUIT\n", 6) || !ft_strncmp(buff, "BACK\n", 6))
+			state = STOP;
+		else if (!ft_strncmp(buff, "SELECT\n", 8))
+			state = _menu_select(data->scene);
+		else if (write(1, "token not known, retry\n", 24) == -1)
+			state = ERROR;
+		free (buff);
 	}
-	if (!ft_strncmp(buff, "SELECT\n", 8))
-		_menu_select(data->scene);
-	return (res); //hardquit
+	data->window->interf = SCENE;
+	return (res);
 }

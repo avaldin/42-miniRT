@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/16 04:53:07 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/18 11:41:01 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	_free_scene(t_scene *scene, char *err);
 
 /* *********************ENVS************************************************ */
 t_check	_menu(t_glob *data);
+t_mstate	_select_cylinder(t_cylinder **cylinder);
 
 
 char	*get_next_line(int fd);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/08/16 04:55:25 by thibaud          ###   ########.fr        #
+#    Updated: 2024/08/18 11:42:10 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS	:=	main.c\
 			parsing/extract_obj_init.c\
 			parsing/extract_obj_table.c\
 			parsing/extract.c\
+			parsing/menu_cylinder.c\
 			parsing/menu_selection.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\

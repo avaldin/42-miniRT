@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/16 04:39:26 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/18 11:05:51 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define X_SSIZE 1920
 # define Y_SSIZE 1080
 # define SET_FRM 2500
+# define TRUE 1
+# define FALSE 0
 
 struct s_scene;
 struct s_coord;
@@ -57,6 +59,19 @@ typedef enum e_smenu
 	OBJET_SCREEN,
 	CHANGE_SCREEN
 }				t_smenu;
+
+typedef enum e_mstate
+{
+	CONTINUE,
+	STOP,
+	ERROR
+}			t_mstate;
+
+typedef enum e_coordtype
+{
+	POS,
+	VEC
+}			t_coordtype;
 
 /* ************************************************************************** */
 /*               DATA                                                         */
