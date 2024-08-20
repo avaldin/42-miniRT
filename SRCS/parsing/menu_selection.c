@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_selection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 04:36:45 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/18 15:22:32 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 03:56:00 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static t_mstate	_menu_select(t_scene *scene)
+static t_mstate	_menu_select(t_scene *scene, t_mstate state)
 {
 	char		*buff;
-	t_mstate	state;
 
-	state = CONTINUE;
 	while (state == CONTINUE)
 	{
 		if (write(1, "[CYLINDER - SPHERE - PLANE] : ", 30) == -1)
@@ -46,31 +44,30 @@ static t_mstate	_menu_select(t_scene *scene)
 	return (state);
 }
 
-t_check	_menu(t_glob *data)
+t_mstate	_menu(t_glob *data)
 {
 	char		*buff;
-	t_check		res;
 	t_mstate	state;
-	
-	res = FAILURE;
-	if (write(1, "[MENU]\nQUIT to exit menu | BACK to return to the precedent screen\n", 67) == -1)
-		return (FAILURE);
+
+	if (write(1, "[MENU]\nQUIT to exit menu | \
+		BACK to return to the precedent screen\n", 67) == -1)
+		return (ERROR);
 	state = CONTINUE;
 	while (state == CONTINUE)
 	{
 		if (write(1, "[QUIT - SELECT] : ", 19) == -1)
-			return (FAILURE);
+			return (ERROR);
 		buff = get_next_line(0);
 		if (!buff)
-			return (FAILURE);
+			return (ERROR);
 		if (!ft_strncmp(buff, "QUIT\n", 6) || !ft_strncmp(buff, "BACK\n", 6))
 			state = STOP;
 		else if (!ft_strncmp(buff, "SELECT\n", 8))
-			state = _menu_select(data->scene);
+			state = _menu_select(data->scene, CONTINUE);
 		else if (write(1, "token not known, retry\n", 24) == -1)
 			state = ERROR;
 		free (buff);
 	}
 	data->window->interf = SCENE;
-	return (res);
+	return (state);
 }

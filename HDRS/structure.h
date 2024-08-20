@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/18 11:05:51 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 04:02:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define TRUE 1
 # define FALSE 0
 
-struct s_scene;
-struct s_coord;
+struct	s_scene;
+struct	s_coord;
 
 typedef float (*func_ptr)(struct s_scene *, float, void *, struct s_coord *);
 
@@ -84,7 +84,7 @@ typedef struct s_coord
 	float	z;
 }				t_coord;
 
-typedef	struct s_rgb
+typedef struct s_rgb
 {
 	int	red;
 	int	green;
@@ -189,7 +189,6 @@ typedef struct s_kntc
 /*               MENU                                                         */
 /* ************************************************************************** */
 
-
 typedef struct s_button
 {
 	char	*name;
@@ -259,6 +258,5 @@ typedef struct s_glob
 	t_wdw	*window;
 	t_kntc	*kinetic;
 }				t_glob;
-
 
 #endif

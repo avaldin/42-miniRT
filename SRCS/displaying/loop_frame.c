@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/16 04:53:40 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/08/20 03:57:03 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,15 @@ int	_new_frame(t_glob *data)
 		if (data->window->interf == SCENE)
 		{
 			_update_cam(data->scene->camera, data->kinetic);
-			_generate_image(data);	
+			_generate_image(data);
 			mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
 			mlx_mouse_move(data->window->vars->mlx, data->window->vars->win,
 				X_SSIZE / 2, Y_SSIZE / 2);
 			mlx_put_image_to_window(data->window->vars->mlx,
 				data->window->vars->win, data->window->img->img, 0, 0);
 		}
-		else
-			_menu(data);
+		else if (_menu(data) == ERROR)
+			_free_n_exit(data, "error : menu issue\n");
 		until_new = 0;
 	}
 	++until_new;

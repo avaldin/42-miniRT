@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_change.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:12:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/18 15:13:52 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 03:43:48 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_mstate	_change_coord(float *num, t_coordtype ctype)
 	if (_check_coord_buff(buff) == FAILURE)
 		if (write(1, "unrecognized token, retry\n", 27) == -1)
 			state = ERROR;
-	free (buff);	
+	free (buff);
 	if (ctype == VEC && !(updated >= -1. && updated <= 1.))
 		if (write(1, "value not in range, retry\n", 27) == -1)
 			state = ERROR;
@@ -64,12 +64,10 @@ static t_mstate	_change_coord(float *num, t_coordtype ctype)
 	return (state);
 }
 
-t_mstate	_change_select(t_coord *vec, t_coordtype type)
+t_mstate	_change_select(t_coord *vec, t_coordtype type, t_mstate state)
 {
 	char		*buff;
-	t_mstate	state;
 
-	state = CONTINUE;
 	while (state == CONTINUE)
 	{
 		if (write(1, "[X - Y - Z] : ", 15) == -1)
