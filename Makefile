@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/21 00:47:40 by tmouche          ###   ########.fr        #
+#    Updated: 2024/08/18 15:21:04 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ SRCS	:=	main.c\
 			parsing/extract_obj_init.c\
 			parsing/extract_obj_table.c\
 			parsing/extract.c\
+			parsing/menu_change.c\
+			parsing/menu_cylinder.c\
+			parsing/menu_plane.c\
+			parsing/menu_selection.c\
+			parsing/menu_sphere.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
 			calcul/generation.c\
@@ -89,7 +94,6 @@ $(OBJS_D):
 	@mkdir -p $(OBJS_D)calcul
 	@mkdir -p $(OBJS_D)displaying
 	@mkdir -p $(OBJS_D)moovement
-
 
 $(TEST_D):
 	@mkdir -p $(TEST_D)

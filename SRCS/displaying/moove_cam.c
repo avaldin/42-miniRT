@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove_cam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 21:56:34 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/13 04:47:53 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	_change_cam_pos_z(t_cam *cam, t_coord *vect_dir, float mv)
 {
 	cam->pos->x = cam->pos->x + (mv * vect_dir->x);
 	cam->pos->z = cam->pos->z + (mv * vect_dir->z);
+	return ;
 }
 
 void	_change_cam_pos_x(t_cam *cam, t_coord *vect_dir, float mv)

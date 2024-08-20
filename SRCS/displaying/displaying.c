@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displaying.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:48:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/25 21:46:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/13 04:41:31 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static t_check	_set_vars_img(t_glob *data, int x, int y)
 
 	data->window->vars = &vars;
 	data->window->img = &img;
+	data->window->interf = SCENE;
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 		return (FAILURE);

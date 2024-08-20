@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:42:23 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/20 03:19:26 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/14 01:20:01 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	t_glob	data;
 	t_wdw	window;
 	t_kntc	kinetic;
+	t_menu	menu;
 
 	if (_check_args(argc, argv) == FAILURE)
 		return (0);
@@ -32,6 +33,7 @@ int	main(int argc, char **argv)
 	if (_init_mvt_struct(&kinetic, data.scene->camera) == FAILURE)
 		return (1);
 	data.kinetic = &kinetic;
+	data.menu = &menu;
 	_displaying(&data);
 	return (0);
 }

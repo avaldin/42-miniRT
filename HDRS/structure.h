@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/25 21:48:37 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 04:02:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # define X_SSIZE 1920
 # define Y_SSIZE 1080
 # define SET_FRM 2500
+# define TRUE 1
+# define FALSE 0
 
-struct s_scene;
-struct s_coord;
+struct	s_scene;
+struct	s_coord;
 
 typedef float (*func_ptr)(struct s_scene *, float, void *, struct s_coord *);
 
@@ -45,6 +47,32 @@ typedef enum e_type
 	ENV_SPT
 }			t_type;
 
+typedef enum e_interface
+{
+	SCENE,
+	MENU
+}				t_interface;
+
+typedef enum e_smenu
+{
+	FIRST_SCREEN,
+	OBJET_SCREEN,
+	CHANGE_SCREEN
+}				t_smenu;
+
+typedef enum e_mstate
+{
+	CONTINUE,
+	STOP,
+	ERROR
+}			t_mstate;
+
+typedef enum e_coordtype
+{
+	POS,
+	VEC
+}			t_coordtype;
+
 /* ************************************************************************** */
 /*               DATA                                                         */
 /* ************************************************************************** */
@@ -56,7 +84,7 @@ typedef struct s_coord
 	float	z;
 }				t_coord;
 
-typedef	struct s_rgb
+typedef struct s_rgb
 {
 	int	red;
 	int	green;
@@ -157,6 +185,24 @@ typedef struct s_kntc
 	t_rtn	*cam_rotate;	
 }				t_kntc;
 
+/* ************************************************************************** */
+/*               MENU                                                         */
+/* ************************************************************************** */
+
+typedef struct s_button
+{
+	char	*name;
+	int		csl_x;
+	int		csl_y;
+	int		cir_x;
+	int		cir_y;
+}				t_button;
+
+typedef struct s_menu
+{
+	t_button	**menu;
+	t_smenu		screen;
+}				t_menu;
 
 /* ************************************************************************** */
 /*               WINDOW                                                       */
@@ -179,9 +225,10 @@ typedef struct s_vars
 
 typedef struct s_wdw
 {
-	t_vars	*vars;
-	t_img	*img;
-	t_nwdw	box;
+	t_vars		*vars;
+	t_img		*img;
+	t_nwdw		box;
+	t_interface	interf;
 }				t_wdw;
 
 /* ************************************************************************** */
@@ -207,9 +254,9 @@ typedef struct s_scene
 typedef struct s_glob
 {
 	t_scene	*scene;
+	t_menu	*menu;
 	t_wdw	*window;
 	t_kntc	*kinetic;
 }				t_glob;
-
 
 #endif
