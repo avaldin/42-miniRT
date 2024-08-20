@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 04:36:45 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/20 03:56:00 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 04:20:16 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static t_mstate	_menu_select(t_scene *scene, t_mstate state)
 		if (!ft_strncmp(buff, "CYLINDER\n", 11))
 			state = _select_cylinder(scene->cylinder);
 		else if (!ft_strncmp(buff, "SPHERE\n", 8))
-			state = _select_sphere(scene->cylinder);
+			state = _select_sphere(scene->sphere);
 		else if (!ft_strncmp(buff, "PLANE\n", 7))
-			state = _select_plane(scene->cylinder);
+			state = _select_plane(scene->plane);
 		else if (!ft_strncmp(buff, "QUIT\n", 6))
 			state = STOP;
 		else if (!ft_strncmp(buff, "BACK\n", 6))
@@ -49,8 +49,8 @@ t_mstate	_menu(t_glob *data)
 	char		*buff;
 	t_mstate	state;
 
-	if (write(1, "[MENU]\nQUIT to exit menu | \
-		BACK to return to the precedent screen\n", 67) == -1)
+	if (write(1, "[MENU]\nQUIT to exit menu | "
+			"BACK to return to the precedent screen\n", 67) == -1)
 		return (ERROR);
 	state = CONTINUE;
 	while (state == CONTINUE)

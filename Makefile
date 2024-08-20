@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/08/18 15:21:04 by tmouche          ###   ########.fr        #
+#    Updated: 2024/08/20 04:09:03 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,20 +29,20 @@ SRCS	:=	main.c\
 			parsing/menu_sphere.c\
 			parsing/utils_nums.c\
 			parsing/utils_strings.c\
-			calcul/generation.c\
-			calcul/nearest_object.c\
-			calcul/rebase_objects.c\
 			calcul/calcul.c\
-			calcul/intersection.c\
-			calcul/intersect_utils.c\
 			calcul/color.c\
+			calcul/generation.c\
+			calcul/intersect_utils.c\
+			calcul/intersection.c\
+			calcul/nearest_object.c\
+			calcul/pixel.c\
+			calcul/rebase_objects.c\
 			calcul/rotation_matrix.c\
 			displaying/displaying.c\
 			displaying/hook_keyboard.c\
 			displaying/hook_mouse.c\
 			displaying/loop_frame.c\
 			displaying/moove_cam.c\
-			displaying/pixel.c\
 			memory/alloc_utils.c\
 			memory/alloc_axis.c\
 			memory/free_env.c\

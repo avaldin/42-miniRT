@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:18:13 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/20 03:56:39 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 04:05:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_mstate	_sphere_change(t_sphere *sphere)
 	return (state);
 }
 
-static t_mstate	_sphere_choice(t_sphere **sphere, t_check state)
+static t_mstate	_sphere_choice(t_sphere **sphere, t_mstate state)
 {
 	char		*buff;
 	ssize_t		n_cyl;

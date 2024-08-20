@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:15:27 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/20 03:54:38 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/08/20 04:05:42 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_mstate	_plane_change(t_plane *plane)
 	return (state);
 }
 
-static t_mstate	_plane_choice(t_plane **plane, t_check state)
+static t_mstate	_plane_choice(t_plane **plane, t_mstate state)
 {
 	char		*buff;
 	ssize_t		n_cyl;
