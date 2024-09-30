@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generation.c                                       :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 18:24:16 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/09/25 09:55:15 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
@@ -28,7 +28,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object,
 	v_light.z = scene->light->pos->z - inter.z;
 	_normalized(&v_light);
 	i = _find_length(-1, scene, &inter, &v_light);
-	if (i > 0 && i < sqrt(_sq(scene->light->pos->x - inter.x)
+	if (i > 0 && i < sqrtf(_sq(scene->light->pos->x - inter.x)
 			+ _sq(scene->light->pos->y - inter.y)
 			+ _sq(scene->light->pos->z - inter.z)))
 		return (0);
@@ -61,7 +61,7 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object,
 	v_light.z = scene->light->r_pos->z - inter.z;
 	_normalized(&v_light);
 	length = _find_length(-1, scene, &inter, &v_light);
-	if (length > 0 && length < sqrt(_sq(scene->light->pos->x - inter.x)
+	if (length > 0 && length < sqrtf(_sq(scene->light->pos->x - inter.x)
 			+ _sq(scene->light->pos->y - inter.y)
 			+ _sq(scene->light->pos->z - inter.z)))
 		return (0);
@@ -105,7 +105,7 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
 	v_light.z = scene->light->pos->z - inter.z;
 	_normalized(&v_light);
 	length = _find_length(-1, scene, &inter, &v_light);
-	if (length > 0 && length < sqrt(_sq(scene->light->pos->x - inter.x)
+	if (length > 0 && length < sqrtf(_sq(scene->light->pos->x - inter.x)
 			+ _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z
 				- inter.z)))
 		return (0);
@@ -120,22 +120,22 @@ int	_rgb_render(t_scene *scene, float intensity, float length)
 	int		rgb;
 	float	temp;
 
-	temp = (scene->light->color->red * intensity
-			+ scene->ambient->color->red * scene->ambient->ratio
+	temp = ((float )scene->light->color->red * intensity
+			+ (float )scene->ambient->color->red * scene->ambient->ratio
 			* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
-	temp = temp * scene->rgb_object->red / 255.0f;
+	temp = temp * (float )scene->rgb_object->red / 255.0f;
 	rgb = _float_to_int(temp) << 16;
-	temp = (scene->light->color->green * intensity
-			+ scene->ambient->color->green * scene->ambient->ratio
+	temp = ((float )scene->light->color->green * intensity
+			+ (float )scene->ambient->color->green * scene->ambient->ratio
 			* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
-	temp = temp * scene->rgb_object->green / 255.0f;
+	temp = temp * (float )scene->rgb_object->green / 255.0f;
 	rgb = rgb | _float_to_int(temp) << 8;
-	temp = (scene->light->color->blue * intensity
-			+ scene->ambient->color->blue * scene->ambient->ratio
+	temp = ((float )scene->light->color->blue * intensity
+			+ (float )scene->ambient->color->blue * scene->ambient->ratio
 			* LENGTH_MITIGATION / (length + LENGTH_MITIGATION))
 		/ (scene->light->ratio + scene->ambient->ratio);
-	temp = temp * scene->rgb_object->blue / 255.0f;
+	temp = temp * (float )scene->rgb_object->blue / 255.0f;
 	return (rgb | _float_to_int(temp));
 }

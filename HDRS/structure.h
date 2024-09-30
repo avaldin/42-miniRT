@@ -14,8 +14,8 @@
 # define STRUCTURE_H
 # include <stddef.h>
 # include <errno.h>
-# define X_SSIZE 1920
-# define Y_SSIZE 1080
+# define X_SSIZE 800
+# define Y_SSIZE 600
 # define SET_FRM 2500
 # define TRUE 1
 # define FALSE 0

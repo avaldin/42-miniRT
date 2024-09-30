@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generation.c                                       :+:      :+:    :+:   */
+/*   nearest_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/25 01:15:00 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/09/30 12:52:12 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float	_nearest_plane(float length, t_coord *pos, t_scene *scene,
 	temp = -1;
 	limit = 0.0f;
 	if (pos != scene->camera->r_pos)
-		limit = 0.01f;
+		limit = 0.001f;
 	k = -1;
 	while (scene->plane && scene->plane[++k])
 	{
@@ -31,9 +31,12 @@ float	_nearest_plane(float length, t_coord *pos, t_scene *scene,
 		if (temp >= limit && (temp < length || length == -1))
 		{
 			length = temp;
-			scene->object = scene->plane[k];
-			scene->fct = _intensity_of_plane;
-			scene->rgb_object = scene->plane[k]->color;
+			if (pos == scene->camera->r_pos)
+			{
+				scene->object = scene->plane[k];
+				scene->fct = _intensity_of_plane;
+				scene->rgb_object = scene->plane[k]->color;
+			}
 		}
 	}
 	return (length);
@@ -57,9 +60,12 @@ float	_nearest_sphere(float length, t_coord *pos, t_scene *scene,
 		if (temp >= limit && (temp < length || length == -1))
 		{
 			length = temp;
-			scene->object = scene->sphere[k];
-			scene->fct = _intensity_of_sphere;
-			scene->rgb_object = scene->sphere[k]->color;
+			if (pos == scene->camera->r_pos)
+			{
+				scene->object = scene->sphere[k];
+				scene->fct = _intensity_of_sphere;
+				scene->rgb_object = scene->sphere[k]->color;
+			}
 		}
 	}
 	return (length);
@@ -83,9 +89,12 @@ float	_nearest_cylinder(float length, t_coord *pos, t_scene *scene,
 		if (temp >= limit && (temp < length || length == -1))
 		{
 			length = temp;
-			scene->object = scene->cylinder[k];
-			scene->fct = _intensity_of_cylinder;
-			scene->rgb_object = scene->cylinder[k]->color;
+			if (pos == scene->camera->r_pos)
+			{
+				scene->object = scene->cylinder[k];
+				scene->fct = _intensity_of_cylinder;
+				scene->rgb_object = scene->cylinder[k]->color;
+			}
 		}
 	}
 	return (length);
