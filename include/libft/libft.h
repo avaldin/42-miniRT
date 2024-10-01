@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/12 17:13:35 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:04:23 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void	*s, int c, size_t n);
 float	ft_atof(const char *nptr);
+float	ft_float_abs(float num);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_bzero(void	*s, size_t n);
 void	ft_putchar_fd(char c, int fd);
@@ -44,6 +45,7 @@ void	ft_putnbr_fd(int n, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_atoi(const char *nptr);
+int		ft_int_abs(int num);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -51,7 +53,6 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		ft_abs(int num);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s, char c);

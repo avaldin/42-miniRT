@@ -3,21 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 13:32:16 by tmouche           #+#    #+#              #
-#    Updated: 2024/07/12 21:22:20 by thibaud          ###   ########.fr        #
+#    Updated: 2024/10/01 14:50:31 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HDRS    := libft.h
 
-SRCS    := ft_abs.c\
-           ft_atof.c\
+SRCS    := ft_atof.c\
            ft_atoi.c\
            ft_atol.c\
            ft_bzero.c\
            ft_calloc.c\
+		   ft_float_abs.c\
+		   ft_int_abs.c\
            ft_isalnum.c\
            ft_isalpha.c\
            ft_isascii.c\
