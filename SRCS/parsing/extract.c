@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/14 01:09:40 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:08:29 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,8 @@ static char	**_read_file(int fd)
 
 static void	_init_scene(t_scene *scene)
 {
-	// static t_coord	axis;
 	static float	var[4] = {0., 0., 0., 0.};
-	// static t_rescam	reset;
 
-	// reset.cos_x = 0.;
-	// reset.cos_y = 0.;
-	// reset.sin_x = 0.;
-	// reset.sin_y = 0.;
-	// scene->var = &reset;
 	scene->var = var;
 	scene->ambient = NULL;
 	scene->light = NULL;

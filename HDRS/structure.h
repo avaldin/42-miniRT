@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/20 04:02:10 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:08:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,6 @@ typedef struct s_scene
 	t_amb			*ambient;
 	t_spot			*light;
 	t_cam			*camera;
-	//t_rescam		*var;
 	t_coord			***axis;
 	float			*var;
 	func_ptr		fct;

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/20 03:57:03 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:20:14 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static inline void	_change_cam_direction_y(t_cam *camera, t_rtn *cam_rotate)
 	y.x = 1;
 	y.y = 0;
 	y.z = 0;
-	_rotate_vec_3d(camera->vect, &y, angle);
+	_rotate_vec_3d(camera->vect, &y, -angle);
 }
 
 static inline void	_update_cam(t_cam *cam, t_kntc *kinetic)
