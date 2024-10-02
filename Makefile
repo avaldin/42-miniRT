@@ -6,7 +6,7 @@
 #    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/10/01 13:25:45 by tmouche          ###   ########.fr        #
+#    Updated: 2024/10/02 17:08:09 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRCS	:=	main.c\
 			displaying/loop_frame.c\
 			displaying/moove_cam.c\
 			memory/alloc_utils.c\
-			memory/alloc_axis.c\
+			memory/free_axis.c\
 			memory/free_env.c\
 			memory/free_mvt.c\
 			memory/free_obj.c\
@@ -62,7 +62,7 @@ HDRS_D	:= HDRS/
 OBJS_D	:= OBJS/
 INC_D	:= include/
 
-CFLAGS	:= -Wall -Wextra -Werror -g
+CFLAGS	:= -Wall -Wextra -Werror -O3 -g
 CC		:= cc
 AR		:= ar rcs
 RM		:= rm -rf

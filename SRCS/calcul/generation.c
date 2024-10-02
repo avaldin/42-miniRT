@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/09/30 12:19:12 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/02 17:23:05 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,20 @@ t_coord	***_generate_axis(t_cam *camera, t_coord ***axis)
 	int	j;
 
 	i = 0;
-	axis = ft_calloc(X_SSIZE, sizeof(t_coord **));
+	axis = ft_calloc(X_SSIZE + 1, sizeof(t_coord **));
 	if (!axis)
 		return (NULL);
 	while (i < X_SSIZE)
 	{
 		j = 0;
-		axis[i] = ft_calloc(Y_SSIZE, sizeof(t_coord *));
+		axis[i] = ft_calloc(Y_SSIZE + 1, sizeof(t_coord *));
 		if (!axis[i])
-			return (_free_axis(axis, i - 1, Y_SSIZE), NULL);
+			return (_free_axis(axis), NULL);
 		while (j < Y_SSIZE)
 		{
 			axis[i][j] = _direct_axis(camera, i, j);
 			if (!axis[i][j])
-				return (_free_axis(axis, i, j - 1), NULL);
+				return (_free_axis(axis), NULL);
 			j++;
 		}
 		i++;

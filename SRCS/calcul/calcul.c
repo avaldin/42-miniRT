@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:48:35 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/20 18:30:30 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:53:43 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	_normalized(t_coord *vect)
 
 float	_sq(float x)
 {
-	return (x * x); // proteger l'overflow
+	return (x * x);
 }
 
 float	_projection(t_coord	point, t_coord *pos, t_coord *vect)

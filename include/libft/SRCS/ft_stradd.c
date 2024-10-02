@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stradd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:11:41 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 23:39:02 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:50:13 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**ft_stradd(char **map, char *add)
 {
 	char	**new;
 	int		i;
-	
+
 	i = 0;
 	while (map && map[i])
 		++i;

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   hook_keyboard.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:33 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/18 09:14:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 17:04:33 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structure.h"
-#include <stdio.h>
+#include "memory.h"
 
 int	_key_release(int keycode, t_glob *data)
 {
@@ -38,9 +38,9 @@ int	_key_press(int keycode, t_glob *data)
 		data->kinetic->cam_moov->mv_y = 1.;
 	else if (keycode == 65505)
 		data->kinetic->cam_moov->mv_y = -1.;
-	else if (keycode == 65307 && data->window->interf == SCENE)
+	else if (keycode == 'm' && data->window->interf == SCENE)
 		data->window->interf = MENU;
-	else if (keycode == 65307 && data->window->interf == MENU)
-		data->window->interf = SCENE;
+	else if (keycode == 65307)
+		_free_n_exit(data, NULL);
 	return (SUCCESS);
 }

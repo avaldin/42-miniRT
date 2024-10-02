@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/01 12:08:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 16:41:05 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define STRUCTURE_H
 # include <stddef.h>
 # include <errno.h>
-# define X_SSIZE 800
-# define Y_SSIZE 600
+# define X_SSIZE 1500
+# define Y_SSIZE 1000
 # define SET_FRM 2500
 # define TRUE 1
 # define FALSE 0

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/01 13:38:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:53:20 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_check	_init_ambient(t_amb **ambient, char *line)
 t_check	_init_camera(t_cam **camera, char *line)
 {
 	static t_coord	r_coord;
-	
+
 	line = _is_space(&line[2]);
 	if (check_line(line) == FAILURE)
 		return (FAILURE);

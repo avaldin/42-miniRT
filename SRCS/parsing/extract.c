@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/01 12:08:29 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:48:53 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "memory.h"
 #include "libft.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 static char	**_read_file(int fd)
 {
