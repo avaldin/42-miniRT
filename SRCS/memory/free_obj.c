@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:17:23 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/02 18:48:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 19:28:54 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void	_free_plane(t_plane **pla)
 	while (pla[i])
 	{
 		free ((pla[i])->pos);
+		free ((pla[i])->r_pos);
 		free ((pla[i])->vect);
+		free ((pla[i])->r_vect);
 		free ((pla[i])->color);
 		free (pla[i]);
 		++i;
@@ -59,7 +61,9 @@ void	_free_cylinder(t_cylinder **cyl)
 	while (cyl[i])
 	{
 		free ((cyl[i])->pos);
+		free ((cyl[i])->r_pos);
 		free ((cyl[i])->vect);
+		free ((cyl[i])->r_vect);
 		free ((cyl[i])->color);
 		free (cyl[i]);
 		++i;
