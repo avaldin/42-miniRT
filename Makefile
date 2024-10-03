@@ -6,7 +6,7 @@
 #    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/10/02 17:08:09 by tmouche          ###   ########.fr        #
+#    Updated: 2024/10/03 13:03:36 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ HDRS_D	:= HDRS/
 OBJS_D	:= OBJS/
 INC_D	:= include/
 
-CFLAGS	:= -Wall -Wextra -Werror -O3 -g
+CFLAGS	:= -Wall -Wextra -Werror -g
 CC		:= cc
 AR		:= ar rcs
 RM		:= rm -rf

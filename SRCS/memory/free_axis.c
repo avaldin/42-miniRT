@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 03:58:18 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/02 17:25:16 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/03 12:57:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	_free_axis(t_coord ***axis)
 	int	i;
 	int	j;
 
+	if (!axis)
+		return ;
 	i = 0;
 	while (axis[i])
 	{

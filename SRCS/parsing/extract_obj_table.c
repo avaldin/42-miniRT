@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:41:20 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 22:08:46 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:13:47 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_check	_sphere_table(t_scene *scene, char *line)
 		++i;
 	}
 	if (_init_sphere(&new[i], line) == FAILURE)
-		return (FAILURE);
+		return (free(new), FAILURE);
 	if (scene->sphere)
 		free (scene->sphere);
 	scene->sphere = new;
@@ -57,7 +57,7 @@ t_check	_plane_table(t_scene *scene, char *line)
 		++i;
 	}
 	if (_init_plane(&new[i], line) == FAILURE)
-		return (FAILURE);
+		return (free(new), FAILURE);
 	if (scene->plane)
 		free (scene->plane);
 	scene->plane = new;
@@ -82,7 +82,7 @@ t_check	_cylinder_table(t_scene *scene, char *line)
 		++i;
 	}
 	if (_init_cylinder(&new[i], line) == FAILURE)
-		return (FAILURE);
+		return (free(new), FAILURE);
 	if (scene->cylinder)
 		free (scene->cylinder);
 	scene->cylinder = new;
