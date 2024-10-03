@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alloc_axis.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 03:58:18 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/20 03:58:20 by tmouche          ###   ########.fr       */
+/*   Created: 2024/01/08 11:03:09 by tmouche           #+#    #+#             */
+/*   Updated: 2024/10/01 14:47:51 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "structure.h"
-
-void	_free_axis(t_coord ***axis, int i, int j)
+int	ft_int_abs(int num)
 {
-	while (i > -1)
-	{
-		while (j > 0)
-			free(axis[i][j--]);
-		free(axis[i]);
-		i--;
-	}
-	free(axis);
+	if (num < 0)
+		num *= -1;
+	return (num);
 }

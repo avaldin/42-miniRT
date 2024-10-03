@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 04:36:45 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/20 04:20:16 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:48:57 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "parsing.h"
 #include "libft.h"
 #include <unistd.h>
-#include <stdio.h>
 
 static t_mstate	_menu_select(t_scene *scene, t_mstate state)
 {

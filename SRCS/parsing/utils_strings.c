@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/25 22:26:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/03 12:58:16 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	_strerror(char *str)
 	i = 0;
 	while (str[i])
 		++i;
+	write(2, "Error: ", 8);
 	write(2, str, i);
 	write(2, "\n", 1);
 }

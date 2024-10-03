@@ -6,11 +6,12 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/01 12:20:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:54:04 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math.h"
+#include "libft.h"
 #include "memory.h"
 #include "parsing.h"
 #include "calcul.h"
@@ -23,10 +24,10 @@ static inline void	_change_cam_direction_x(t_cam *camera, t_rtn *cam_rotate)
 	float	angle;
 	t_coord	x;
 
-	angle = cam_rotate->mv_x * 0.1 * (_PI / 180);
+	angle = cam_rotate->mv_x * 0.1f * (_PI / 180);
 	if (cam_rotate->loc_x < X_SSIZE / 2)
 		angle = 6.283185 - angle;
-	if (angle == 0 || angle == 6.28f)
+	if (angle == 0 || angle == 6.283185f)
 		return ;
 	x.x = 0;
 	x.y = 1;
@@ -36,18 +37,20 @@ static inline void	_change_cam_direction_x(t_cam *camera, t_rtn *cam_rotate)
 
 static inline void	_change_cam_direction_y(t_cam *camera, t_rtn *cam_rotate)
 {
-	float	angle;
-	t_coord	y;
+	float			angle;
+	t_coord			y;
+	t_coord const	axis_y = {0.0, 1.0, 0.0};
 
 	angle = cam_rotate->mv_y * 0.1 * (_PI / 180);
 	if (cam_rotate->loc_y > Y_SSIZE / 2)
 		angle = 6.283185 - angle;
-	if (angle == 0 || angle == 6.28f)
+	if (angle == 0 || angle == 6.283185f)
 		return ;
-	y.x = 1;
-	y.y = 0;
-	y.z = 0;
-	_rotate_vec_3d(camera->vect, &y, -angle);
+	y.x = camera->vect->x;
+	y.y = camera->vect->y;
+	y.z = camera->vect->z;
+	_rotate_vec_3d(&y, &axis_y, 1.5708f);
+	_rotate_vec_3d(camera->vect, &y, angle);
 }
 
 static inline void	_update_cam(t_cam *cam, t_kntc *kinetic)

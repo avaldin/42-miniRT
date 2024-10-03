@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 23:51:55 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/01 12:18:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 16:21:13 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <structure.h>
 
 static inline void	_rotation_matrix_3d(float table[3][3],
-			t_coord *u, float rad_ang)
+			t_coord const *u, float rad_ang)
 {
 	const float	c = cos(rad_ang);
 	const float	s = sin(rad_ang);
@@ -31,7 +31,7 @@ static inline void	_rotation_matrix_3d(float table[3][3],
 	table[2][2] = (u->z * u->z) + (1 - u->z * u->z) * c;
 }
 
-void	_rotate_vec_3d(t_coord *vec, t_coord *axis, float angle)
+void	_rotate_vec_3d(t_coord *vec, t_coord const *axis, float angle)
 {
 	float	r[3][3];
 	float	x_prime;

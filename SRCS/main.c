@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:42:23 by avaldin           #+#    #+#             */
-/*   Updated: 2024/09/30 12:47:26 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:52:20 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../HDRS/calcul.h"
 #include "libft.h"
 #include "../HDRS/parsing.h"
-#include <stdio.h>
 #include <fcntl.h>
 
 int	main(int argc, char **argv)

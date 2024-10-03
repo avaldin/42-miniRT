@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 00:39:55 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/17 18:28:45 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/02 17:23:16 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_coord	*_alloc_coord(float x, float y, float z);
 t_rgb	*_alloc_rgb(int red, int green, int blue);
 
 void	_free_mvt(t_mvt *kinetic);
-void	_free_axis(t_coord ***axis, int i, int j);
+void	_free_axis(t_coord ***axis);
 
 void	_free_plane(t_plane **pla);
 void	_free_sphere(t_sphere **sph);

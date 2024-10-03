@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
-/*   Updated: 2024/07/21 02:08:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/02 16:21:26 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
 			t_coord *axis);
 int		_rgb_render(t_scene *scene, float intensity, float length);
 
-void	_rotate_vec_3d(t_coord *vec, t_coord *axis, float angle);
+void	_rotate_vec_3d(t_coord *vec, t_coord const *axis, float angle);
 void	_rotate_vec_2d(float *x, float *y, float angle);
 t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length);
 float	_projection(t_coord	point, t_coord *pos, t_coord *vect);

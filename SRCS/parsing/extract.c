@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/01 12:08:29 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/03 12:57:03 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "memory.h"
 #include "libft.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 static char	**_read_file(int fd)
 {
@@ -56,6 +55,7 @@ static void	_init_scene(t_scene *scene)
 	scene->cylinder = NULL;
 	scene->sphere = NULL;
 	scene->plane = NULL;
+	scene->axis = NULL;
 }
 
 static t_check	_data_loader(t_scene *scene, char *line)
