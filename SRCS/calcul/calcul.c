@@ -12,18 +12,16 @@
 
 #include <math.h>
 #include "structure.h"
-#include "libft.h"
 #include "calcul.h"
-#include <memory.h>
 
 void	_normalized(t_coord *vect)
 {
 	float	norm;
 
-	norm = sqrt(_sq(vect->x) + _sq(vect->y) + _sq(vect->z));
-	vect->x = vect->x / norm;
-	vect->y = vect->y / norm;
-	vect->z = vect->z / norm;
+	norm = f_isqrt(_sq(vect->x) + _sq(vect->y) + _sq(vect->z));
+	vect->x = vect->x * norm;
+	vect->y = vect->y * norm;
+	vect->z = vect->z * norm;
 }
 
 float	_sq(float x)
@@ -36,7 +34,7 @@ float	_projection(t_coord	point, t_coord *pos, t_coord *vect)
 	return (sqrtf(_sq(((point.x - pos->x) * vect->x
 					+ (point.y - pos->y) * vect->y
 					+ (point.z - pos->z) * vect->z)
-				/ sqrtf(_sq(vect->x) + _sq(vect->y) + _sq(vect->z)))));
+				* f_isqrt(_sq(vect->x) + _sq(vect->y) + _sq(vect->z)))));
 }
 
 float	_eq_sec_deg(float a, float b, float c, float sign)

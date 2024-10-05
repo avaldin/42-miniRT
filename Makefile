@@ -38,6 +38,7 @@ SRCS	:=	main.c\
 			calcul/pixel.c\
 			calcul/rebase_objects.c\
 			calcul/rotation_matrix.c\
+			calcul/fast_inverse_square_root.c\
 			displaying/displaying.c\
 			displaying/hook_keyboard.c\
 			displaying/hook_mouse.c\

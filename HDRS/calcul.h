@@ -55,5 +55,6 @@ void	_rotate_vec_2d(float *x, float *y, float angle);
 t_coord	_intersection_on_line(t_coord *pos, t_coord *axis, float length);
 float	_projection(t_coord	point, t_coord *pos, t_coord *vect);
 void	_normalized(t_coord *vect);
+float	f_isqrt(float number);
 
 #endif
