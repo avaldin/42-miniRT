@@ -49,7 +49,7 @@ static t_mstate	_plane_choice(t_plane **plane, t_mstate state)
 	ssize_t		n_cyl;
 	int			i;
 
-	if (write(1, "N° of the plane asked : ", 29) == -1)
+	if (write(1, "N° of the plane asked : ", 25) == -1)
 		return (ERROR);
 	buff = get_next_line(0);
 	if (!buff)

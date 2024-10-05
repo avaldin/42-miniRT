@@ -38,9 +38,9 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object,
 		i = 1;
 	return (i * scene->light->ratio * 1.0f * (plane->r_vect->x * v_light.x
 			+ plane->r_vect->y * v_light.y + plane->r_vect->z * v_light.z)
-		* f_isqrt(_sq(v_light.x) + _sq(v_light.y) + _sq(v_light.z))
-			* f_isqrt(_sq(plane->r_vect->x) + _sq(plane->r_vect->y)
-				+ _sq(plane->r_vect->z)));
+		/ (sqrtf(_sq(v_light.x) + _sq(v_light.y) + _sq(v_light.z))
+			* sqrtf(_sq(plane->r_vect->x) + _sq(plane->r_vect->y)
+				+ _sq(plane->r_vect->z))));
 }
 
 float	_intensity_of_sphere(t_scene *scene, float length, void *object,
@@ -66,9 +66,9 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object,
 			+ _sq(scene->light->pos->z - inter.z)))
 		return (0);
 	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y
-			* v_light.y + v_normal.z * v_light.z) * f_isqrt(_sq(v_light.x)
-				+ _sq(v_light.y) + _sq(v_light.z)) * f_isqrt(_sq(v_normal.x)
-				+ _sq(v_normal.y) + _sq(v_normal.z)));
+			* v_light.y + v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x)
+				+ _sq(v_light.y) + _sq(v_light.z)) * sqrtf(_sq(v_normal.x)
+				+ _sq(v_normal.y) + _sq(v_normal.z))));
 }
 
 void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal, t_coord inter)
@@ -110,9 +110,9 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
 				- inter.z)))
 		return (0);
 	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y
-			* v_light.y + v_normal.z * v_light.z) * f_isqrt(_sq(v_light.x)
-				+ _sq(v_light.y) + _sq(v_light.z)) * f_isqrt(_sq(v_normal.x)
-				+ _sq(v_normal.y) + _sq(v_normal.z)));
+			* v_light.y + v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x)
+				+ _sq(v_light.y) + _sq(v_light.z)) * sqrtf(_sq(v_normal.x)
+				+ _sq(v_normal.y) + _sq(v_normal.z))));
 }
 
 int	_rgb_render(t_scene *scene, float intensity, float length)

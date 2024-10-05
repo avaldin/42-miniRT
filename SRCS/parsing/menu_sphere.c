@@ -47,7 +47,7 @@ static t_mstate	_sphere_choice(t_sphere **sphere, t_mstate state)
 	ssize_t		n_cyl;
 	int			i;
 
-	if (write(1, "N° of the sphere asked : ", 29) == -1)
+	if (write(1, "N° of the sphere asked : ", 26) == -1)
 		return (ERROR);
 	buff = get_next_line(0);
 	if (!buff)
