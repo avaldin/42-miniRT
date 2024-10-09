@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
+#    By: avaldin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 13:32:16 by tmouche           #+#    #+#              #
-#    Updated: 2024/10/01 14:50:31 by tmouche          ###   ########.fr        #
+#    Updated: 2024/10/09 14:33:23 by avaldin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ NAME    := libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS_D) $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+
 
 $(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS_D)/$(HDRS)
 	$(CC) $(CFLAGS) -I$(HDRS_D) -c $< -o $@
@@ -88,10 +89,10 @@ $(OBJS_D):
 	@mkdir -p $(OBJS_D)
 
 bonus: $(OBJS) $(B_OBJS)
-	$(AR) $(NAME) $(OBJS) $(B_OBJS)
+	@$(AR) $(NAME) $(OBJS) $(B_OBJS)
 
 clean:
-	$(RM) -r $(OBJS_D)
+	@$(RM) -r $(OBJS_D)
 
 fclean: clean
 	$(RM) $(NAME)

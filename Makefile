@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
+#    By: avaldin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/10/03 13:03:36 by tmouche          ###   ########.fr        #
+#    Updated: 2024/10/09 14:53:52 by avaldin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,16 +76,12 @@ TEST_OBJS	:= $(TEST_S:%.c=$(OBJS_D)test_%.o)
 
 all: libft minilibx-linux $(NAME)
 
-$(NAME): $(OBJS_D) $(OBJS) 
+$(NAME): $(OBJS_D) $(OBJS)  include/libft/libft.a  include/minilibx-linux/libmlx.a include/minilibx-linux/libmlx_Linux.a
 	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft/HDRS -L$(INC_D)libft  -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -I$(HDRS_D) -L/usr/lib -lXext -lX11 -lz -lft -lm -o $(NAME)
+	@echo "\033[1;32m[$(NAME)] compiled. !!!\033[0m."
 
-
-$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft $(INC_D)minilibx-linux Makefile
+$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%) Makefile HDRS/calcul.h HDRS/displaying.h HDRS/memory.h HDRS/parsing.h HDRS/structure.h include/minilibx-linux/mlx.h include/minilibx-linux/mlx_int.h
 	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(HDRS_D)  -c $< -o $@
-
-
-$(OBJS_D)test_%.o: $(TEST_D)%.c $(HDRS:%=$(HDRS_D)%) $(INC_D)libft Makefile TEST/test.h
-	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(INC_D)minilibx-linux -I$(HDRS_D) -c $< -o $@
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
@@ -99,27 +95,27 @@ $(TEST_D):
 	@mkdir -p $(TEST_D)
 
 libft:
-	$(MAKE) -C $(INC_D)libft
-	$(MAKE) bonus -C $(INC_D)libft
-
+	@echo "Libft ...."
+	@make --no-print-directory -C $(INC_D)libft
+	@echo "\033[1;32m[Libft Make] !!!\033[0m."
 minilibx-linux:
-	$(MAKE) -C $(INC_D)minilibx-linux
+	@echo "minilibx ...."
+	@$(MAKE) -C $(INC_D)minilibx-linux
+	@echo "\033[1;32m[minilibx Make] !!!\033[0m."
 
 clean:
-	$(RM) -r $(OBJS_D)
-
+	@make --no-print-directory -C $(INC_D)libft clean
+	@echo "[Libft deleted] !!!."
+	@make --no-print-directory -C $(INC_D)minilibx-linux clean
+	@echo "[minilibx deleted] !!!."
+	@rm -rf ${OBJ_D}
+	@echo "[all deleted] !!!."
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(TEST_EXE)
-	$(MAKE) -C $(INC_D)libft fclean
-	$(MAKE) -C $(INC_D)minilibx-linux clean
-
-t : $(TEST_D) $(TEST_OBJS) TEST/test.h
-	$(MAKE)
-	$(CC) $(CFLAGS) $(TEST_OBJS) $(filter-out OBJS/main.o, $(OBJS)) -I$(INC_D)libft -L$(INC_D)libft -lm -lft -o $(TEST_EXE)
+	@$(RM) $(NAME)
+	@$(RM) $(TEST_EXE)
+	@echo "[$(NAME)] deleted!!!."
+	@echo "[$(TEST_EXE)] deleted!!!."
 
 re: fclean all
 
 .PHONY: all clean fclean re libft
-
-test : all t
