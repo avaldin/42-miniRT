@@ -20,7 +20,7 @@ void	_normalized(t_coord *vect)
 {
 	float	norm;
 
-	norm = sqrt(_sq(vect->x) + _sq(vect->y) + _sq(vect->z));
+	norm = sqrtf(_sq(vect->x) + _sq(vect->y) + _sq(vect->z));
 	vect->x = vect->x / norm;
 	vect->y = vect->y / norm;
 	vect->z = vect->z / norm;
