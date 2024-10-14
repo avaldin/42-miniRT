@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/02 16:41:05 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/14 10:38:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 struct	s_scene;
 struct	s_coord;
 
-typedef float (*func_ptr)(struct s_scene *, float, void *, struct s_coord *);
+// typedef float	(*func_ptr)(struct s_scene *, float, void *, struct s_coord *);
 
 typedef enum e_check
 {
@@ -245,7 +245,7 @@ typedef struct s_scene
 	t_cam			*camera;
 	t_coord			***axis;
 	float			*var;
-	func_ptr		fct;
+	float			(*fct)(struct s_scene *, float, void *, struct s_coord *);
 	void			*object;
 	t_rgb			*rgb_object;
 }				t_scene;

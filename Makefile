@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avaldin <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/10/09 14:53:52 by avaldin          ###   ########.fr        #
+#    Updated: 2024/10/14 10:39:30 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ HDRS_D	:= HDRS/
 OBJS_D	:= OBJS/
 INC_D	:= include/
 
-CFLAGS	:= -Wall -Wextra -Werror -g
+CFLAGS	:= -Wall -Wextra -Werror -g -O3
 CC		:= cc
 AR		:= ar rcs
 RM		:= rm -rf
