@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersection.c                                     :+:      :+:    :+:   */
+/*   intersect_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:03:00 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 18:55:26 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:28:23 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ float	_inter_cylinder_b(t_coord *pos, t_cylinder *cylinder, t_coord *axis,
 	i = -1;
 	while (++i < 4)
 	{
-		if ((result[i] < result[4] || result[4] == -1) && result[i] >= 0)
+		if ((result[i] < result[4] || result[4] == -1.0f) && result[i] >= 0.01f)
 		{
 			result[4] = result[i];
 			cylinder->part = i;

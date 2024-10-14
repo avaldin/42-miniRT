@@ -6,7 +6,7 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/09/25 09:55:15 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/14 16:15:42 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
@@ -23,14 +23,14 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object,
 
 	plane = (t_plane *)object;
 	inter = _intersection_on_line(scene->camera->r_pos, axis, length);
-	v_light.x = scene->light->pos->x - inter.x;
-	v_light.y = scene->light->pos->y - inter.y;
-	v_light.z = scene->light->pos->z - inter.z;
+	v_light.x = scene->light->r_pos->x - inter.x;
+	v_light.y = scene->light->r_pos->y - inter.y;
+	v_light.z = scene->light->r_pos->z - inter.z;
 	_normalized(&v_light);
 	i = _find_length(-1, scene, &inter, &v_light);
-	if (i > 0 && i < sqrtf(_sq(scene->light->pos->x - inter.x)
-			+ _sq(scene->light->pos->y - inter.y)
-			+ _sq(scene->light->pos->z - inter.z)))
+	if (i > 0 && i < sqrtf(_sq(scene->light->r_pos->x - inter.x)
+			+ _sq(scene->light->r_pos->y - inter.y)
+			+ _sq(scene->light->r_pos->z - inter.z)))
 		return (0);
 	i = -1;
 	if ((plane->r_vect->x * axis->x + plane->r_vect->y * axis->y
@@ -61,9 +61,9 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object,
 	v_light.z = scene->light->r_pos->z - inter.z;
 	_normalized(&v_light);
 	length = _find_length(-1, scene, &inter, &v_light);
-	if (length > 0 && length < sqrtf(_sq(scene->light->pos->x - inter.x)
-			+ _sq(scene->light->pos->y - inter.y)
-			+ _sq(scene->light->pos->z - inter.z)))
+	if (length > 0 && length < sqrtf(_sq(scene->light->r_pos->x - inter.x)
+			+ _sq(scene->light->r_pos->y - inter.y)
+			+ _sq(scene->light->r_pos->z - inter.z)))
 		return (0);
 	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y
 			* v_light.y + v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x)
@@ -74,7 +74,11 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object,
 void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal, t_coord inter)
 {
 	if (cylinder->part == 2)
-		v_normal = cylinder->r_vect;
+	{
+		v_normal->x = cylinder->r_vect->x;
+		v_normal->y = cylinder->r_vect->y;
+		v_normal->z = cylinder->r_vect->z;
+	}
 	else if (cylinder->part == 3)
 	{
 		v_normal->x = -cylinder->r_vect->x;
@@ -83,9 +87,9 @@ void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal, t_coord inter)
 	}
 	else
 	{
-		v_normal->x = inter.x - cylinder->r_pos->x;
-		v_normal->y = inter.y - cylinder->r_pos->y;
-		v_normal->z = inter.z - cylinder->r_pos->z;
+		v_normal->x = inter.x - cylinder->r_pos->x - (inter.x - cylinder->r_pos->x) * cylinder->r_vect->x;
+		v_normal->y = inter.y - cylinder->r_pos->y - (inter.y - cylinder->r_pos->y) * cylinder->r_vect->y;
+		v_normal->z = inter.z - cylinder->r_pos->z - (inter.z - cylinder->r_pos->z) * cylinder->r_vect->z;
 	}
 }
 
@@ -100,13 +104,13 @@ float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
 	cylinder = (t_cylinder *)object;
 	inter = _intersection_on_line(scene->camera->r_pos, axis, length);
 	_normal_cylinder(cylinder, &v_normal, inter);
-	v_light.x = scene->light->pos->x - inter.x;
-	v_light.y = scene->light->pos->y - inter.y;
-	v_light.z = scene->light->pos->z - inter.z;
+	v_light.x = scene->light->r_pos->x - inter.x;
+	v_light.y = scene->light->r_pos->y - inter.y;
+	v_light.z = scene->light->r_pos->z - inter.z;
 	_normalized(&v_light);
 	length = _find_length(-1, scene, &inter, &v_light);
-	if (length > 0 && length < sqrtf(_sq(scene->light->pos->x - inter.x)
-			+ _sq(scene->light->pos->y - inter.y) + _sq(scene->light->pos->z
+	if (length > 0 && length < sqrtf(_sq(scene->light->r_pos->x - inter.x)
+			+ _sq(scene->light->r_pos->y - inter.y) + _sq(scene->light->r_pos->z
 				- inter.z)))
 		return (0);
 	return (scene->light->ratio * 1.0f * (v_normal.x * v_light.x + v_normal.y
