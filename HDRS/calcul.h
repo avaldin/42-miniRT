@@ -48,6 +48,7 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object,
 			t_coord *axis);
 float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
 			t_coord *axis);
+void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal, t_coord inter);
 int		_rgb_render(t_scene *scene, float intensity, float length);
 
 void	_rotate_vec_3d(t_coord *vec, t_coord const *axis, float angle);

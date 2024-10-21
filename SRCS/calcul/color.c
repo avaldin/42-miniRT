@@ -6,10 +6,9 @@
 /*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/14 16:15:42 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/21 11:25:55 by avaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <libft.h>
 #include "../../HDRS/calcul.h"
 #include <math.h>
 
@@ -69,28 +68,6 @@ float	_intensity_of_sphere(t_scene *scene, float length, void *object,
 			* v_light.y + v_normal.z * v_light.z) / (sqrtf(_sq(v_light.x)
 				+ _sq(v_light.y) + _sq(v_light.z)) * sqrtf(_sq(v_normal.x)
 				+ _sq(v_normal.y) + _sq(v_normal.z))));
-}
-
-void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal, t_coord inter)
-{
-	if (cylinder->part == 2)
-	{
-		v_normal->x = cylinder->r_vect->x;
-		v_normal->y = cylinder->r_vect->y;
-		v_normal->z = cylinder->r_vect->z;
-	}
-	else if (cylinder->part == 3)
-	{
-		v_normal->x = -cylinder->r_vect->x;
-		v_normal->y = -cylinder->r_vect->y;
-		v_normal->z = -cylinder->r_vect->z;
-	}
-	else
-	{
-		v_normal->x = inter.x - cylinder->r_pos->x - (inter.x - cylinder->r_pos->x) * cylinder->r_vect->x;
-		v_normal->y = inter.y - cylinder->r_pos->y - (inter.y - cylinder->r_pos->y) * cylinder->r_vect->y;
-		v_normal->z = inter.z - cylinder->r_pos->z - (inter.z - cylinder->r_pos->z) * cylinder->r_vect->z;
-	}
 }
 
 float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
