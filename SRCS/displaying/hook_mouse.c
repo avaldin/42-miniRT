@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/01 14:51:24 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 17:03:28 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,24 @@
 
 int	_focus_in(void)
 {
+	if (_set_n_getglob(NULL)->scene->state == -1)
+		return (SUCCESS);
 	_set_n_getglob(NULL)->window->box = IN;
 	return (SUCCESS);
 }
 
 int	_focus_out(void)
 {
+	if (_set_n_getglob(NULL)->scene->state == -1)
+		return (SUCCESS);
 	_set_n_getglob(NULL)->window->box = OUT;
 	return (SUCCESS);
 }
 
 int	_mouse_mv(int loc_x, int loc_y, t_glob *data)
 {
+	if (data->scene->state == -1)
+		return (SUCCESS);
 	data->kinetic->cam_rotate->loc_x = loc_x;
 	data->kinetic->cam_rotate->loc_y = loc_y;
 	if (loc_y == Y_SSIZE / 2)

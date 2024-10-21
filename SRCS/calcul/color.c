@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/21 11:25:55 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:45:24 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../HDRS/calcul.h"
+
+#include "calcul.h"
 #include <math.h>
 
 float	_intensity_of_plane(t_scene *scene, float length, void *object,

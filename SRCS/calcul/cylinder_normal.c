@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_normal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:22:24 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/21 11:30:30 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:45:27 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../HDRS/calcul.h"
+#include "calcul.h"
 
 void	_lateral_normal_cylinder(t_cylinder *cylinder,
 							t_coord *v_normal, t_coord inter)

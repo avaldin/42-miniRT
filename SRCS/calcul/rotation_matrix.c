@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 23:51:55 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/02 16:21:13 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:39:53 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include <calcul.h>
-#include <structure.h>
+#include "calcul.h"
+#include "structure.h"
 
 static inline void	_rotation_matrix_3d(float table[3][3],
 			t_coord const *u, float rad_ang)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:48:35 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/02 18:53:43 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:40:13 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "structure.h"
 #include "libft.h"
 #include "calcul.h"
-#include <memory.h>
+#include "memory.h"
 
 void	_normalized(t_coord *vect)
 {

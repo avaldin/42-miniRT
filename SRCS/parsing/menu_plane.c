@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:15:27 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/20 04:05:42 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:32:57 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_mstate	_plane_choice(t_plane **plane, t_mstate state)
 	ssize_t		n_cyl;
 	int			i;
 
-	if (write(1, "N° of the plane asked : ", 29) == -1)
+	if (write(1, "N° of the plane asked : ", 26) == -1)
 		return (ERROR);
 	buff = get_next_line(0);
 	if (!buff)

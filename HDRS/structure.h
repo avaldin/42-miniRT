@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/14 10:38:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 17:02:55 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,7 @@ typedef struct s_scene
 	float			(*fct)(struct s_scene *, float, void *, struct s_coord *);
 	void			*object;
 	t_rgb			*rgb_object;
+	int				state;
 }				t_scene;
 
 typedef struct s_glob

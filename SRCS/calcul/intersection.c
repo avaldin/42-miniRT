@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:03:00 by avaldin           #+#    #+#             */
-/*   Updated: 2024/06/19 18:55:26 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:39:37 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "calcul.h"
 #include <math.h>
-#include <memory.h>
+#include "memory.h"
 
 float	_inter_plane(t_coord *pos, t_plane *plane, t_coord *axis)
 {

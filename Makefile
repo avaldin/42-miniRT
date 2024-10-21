@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+         #
+#    By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/10/14 10:39:30 by tmouche          ###   ########.fr        #
+#    Updated: 2024/10/21 15:49:55 by thibaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS	:=	main.c\
 			parsing/utils_strings.c\
 			calcul/calcul.c\
 			calcul/color.c\
+			calcul/cylinder_normal.c\
 			calcul/generation.c\
 			calcul/intersect_utils.c\
 			calcul/intersection.c\
@@ -113,6 +114,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(TEST_EXE)
+	@$(RM) $(OBJS_D)
 	@echo "[$(NAME)] deleted!!!."
 	@echo "[$(TEST_EXE)] deleted!!!."
 

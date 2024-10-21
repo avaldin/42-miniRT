@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   generation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/21 10:42:08 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:40:05 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <memory.h>
+#include "memory.h"
 #include "displaying.h"
 #include "calcul.h"
 #include <stdlib.h>

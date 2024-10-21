@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avaldin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:03:00 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/14 15:28:23 by avaldin          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:39:25 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <calcul.h>
+#include "calcul.h"
 #include "structure.h"
 #include <math.h>
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/02 18:54:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 17:03:09 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,12 @@ int	_new_frame(t_glob *data)
 		{
 			_update_cam(data->scene->camera, data->kinetic);
 			_generate_image(data);
-			mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
-			mlx_mouse_move(data->window->vars->mlx, data->window->vars->win,
-				X_SSIZE / 2, Y_SSIZE / 2);
+			if (data->scene->state == 1)
+			{
+				mlx_mouse_hide(data->window->vars->mlx, data->window->vars->win);
+				mlx_mouse_move(data->window->vars->mlx, data->window->vars->win,
+					X_SSIZE / 2, Y_SSIZE / 2);
+			}
 			mlx_put_image_to_window(data->window->vars->mlx,
 				data->window->vars->win, data->window->img->img, 0, 0);
 		}

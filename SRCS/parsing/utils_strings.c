@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_strings.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/03 12:58:16 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:36:02 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,20 @@
 void	_strerror(char *str)
 {
 	int	i;
+	int	err[3];
 
 	i = 0;
 	while (str[i])
 		++i;
-	write(2, "Error: ", 8);
-	write(2, str, i);
-	write(2, "\n", 1);
-}
+	err[0] = write(2, "Error: ", 8);
+	err[1] = write(2, str, i);
+	err[2] = write(2, "\n", 1);
+	i = 0;
+	while (i < 3) {
+		if (err[i] == -1)
+			return ;	
+	}
+} 
 
 char	*_until_char(char *line, char c)
 {
