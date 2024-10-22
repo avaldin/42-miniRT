@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_keyboard.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:33 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/21 17:04:22 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:35:35 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 int	_key_release(int keycode, t_glob *data)
 {
-	if (data->scene->state == -1)
-		return (SUCCESS);
 	if (keycode == 'w' || keycode == 's')
 		data->kinetic->cam_moov->mv_z = 0;
 	if (keycode == 'a' || keycode == 'd')
 		data->kinetic->cam_moov->mv_x = 0;
 	if (keycode == ' ' || keycode == 65505)
 		data->kinetic->cam_moov->mv_y = 0;
+	if (data->scene->state == -1)
+		return (SUCCESS);
 	return (SUCCESS);
 }
 

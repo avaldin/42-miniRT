@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/21 17:03:28 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:04:05 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,12 @@
 
 int	_focus_in(void)
 {
-	if (_set_n_getglob(NULL)->scene->state == -1)
-		return (SUCCESS);
 	_set_n_getglob(NULL)->window->box = IN;
 	return (SUCCESS);
 }
 
 int	_focus_out(void)
 {
-	if (_set_n_getglob(NULL)->scene->state == -1)
-		return (SUCCESS);
 	_set_n_getglob(NULL)->window->box = OUT;
 	return (SUCCESS);
 }

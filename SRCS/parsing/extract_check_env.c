@@ -6,12 +6,13 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 23:58:37 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 22:07:13 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/22 13:43:09 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structure.h"
 #include "parsing.h"
+#include "calcul.h"
 #include <stdlib.h>
 
 t_check	_check_ambient(t_amb **ambient, char *line)
@@ -39,7 +40,7 @@ t_check	_check_camera(t_cam **camera, char *line)
 	temp_cam = *camera;
 	if ((line && *line != '\n' && *line)
 		|| _check_coord(temp_cam->vect, -1., 1.)
-		|| !(temp_cam->fov >= 0 && temp_cam->fov <= 180))
+		|| temp_cam->fov < 0 || temp_cam->fov > 180)
 	{
 		if (temp_cam->pos)
 			free (temp_cam->pos);
@@ -49,6 +50,7 @@ t_check	_check_camera(t_cam **camera, char *line)
 		*camera = NULL;
 		return (FAILURE);
 	}
+	(*camera)->fov = (*camera)->fov * _PI / 180.0f;
 	return (SUCCESS);
 }
 

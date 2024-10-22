@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/02 18:53:20 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:25:40 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_check	_init_camera(t_cam **camera, char *line)
 	_normalized((*camera)->vect);
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->fov = ft_atoi(line);
-	(*camera)->fov = (*camera)->fov * _PI / 180.0f;
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->r_pos = &r_coord;
 	return (_check_camera(camera, line));

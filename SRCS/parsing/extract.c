@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/21 17:03:02 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:06:42 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	**_read_file(int fd)
 			return (_freetab(res), perror(NULL), NULL);
 		else if (!t_str)
 			break ;
-		if (!ft_strfull(t_str, 9, 13))
+		if (!_is_space(t_str)[0] || t_str[0] == '#')
 			free (t_str);
 		else
 		{
