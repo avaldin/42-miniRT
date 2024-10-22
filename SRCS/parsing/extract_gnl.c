@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_extract_gnl.c                              :+:      :+:    :+:   */
+/*   extract_gnl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:30:02 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/27 13:28:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/22 22:05:44 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+#include <stdio.h>
 
 static void	_reset_buff(char *buff, _Bool all)
 {
@@ -63,7 +65,7 @@ static char	*_setbuff(char *act_line, char *buff)
 
 	size = ft_strlen(buff, '\n') + 1;
 	stop = 0;
-	if (size != BUFFER_SIZE && buff[BUFFER_SIZE - 1] != '\n')
+	if (size != BUFFER_SIZE)
 	{
 		temp = buff[size];
 		buff[size] = 0;

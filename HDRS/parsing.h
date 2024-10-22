@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/22 15:30:10 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/22 22:06:56 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define _NOK_A "ARGUMENT NOT KNOWN"
 # define _NOK_ID "IDENTIFIER NOT KNOWN"
 # include "structure.h"
-# define BUFFER_SIZE 1000
+# define BUFFER_SIZE 100000
 
 /* *********************UTILS*********************************************** */
 void		_strerror(char *str);
