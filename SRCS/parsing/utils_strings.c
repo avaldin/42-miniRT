@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/22 14:03:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:04:00 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ void	_strerror(char *str)
 	err[1] = write(2, str, i);
 	err[2] = write(2, "\n", 1);
 	i = 0;
-	while (i < 3) {
+	while (i < 3)
+	{
 		if (err[i] == -1)
 			return ;
-		++i;	
+		++i;
 	}
-} 
+}
 
 char	*_until_char(char *line, char c)
 {
@@ -65,7 +66,7 @@ char	*_is_space(char *line)
 		return (NULL);
 	i = 0;
 	while (line[i] && ((line[i] == 32
-			|| (line[i] >= 9 && line[i] <= 13))))
+				|| (line[i] >= 9 && line[i] <= 13))))
 		++i;
 	return (&line[i]);
 }

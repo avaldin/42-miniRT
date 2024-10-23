@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:37:33 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/22 11:35:35 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:03:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	_key_release(int keycode, t_glob *data)
 
 int	_key_press(int keycode, t_glob *data)
 {
-	
 	if (keycode == 'm' && data->window->interf == SCENE)
 		data->window->interf = MENU;
 	else if (keycode == 65307)

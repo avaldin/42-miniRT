@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/02 16:21:26 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:00:24 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ float	_intensity_of_plane(t_scene *scene, float length, void *object,
 			t_coord *axis);
 float	_intensity_of_cylinder(t_scene *scene, float length, void *object,
 			t_coord *axis);
-void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal, t_coord inter);
+void	_normal_cylinder(t_cylinder *cylinder, t_coord *v_normal,
+			t_coord inter);
 int		_rgb_render(t_scene *scene, float intensity, float length);
 
 void	_rotate_vec_3d(t_coord *vec, t_coord const *axis, float angle);
