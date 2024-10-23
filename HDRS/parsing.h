@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/22 22:06:56 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/23 18:04:44 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define _2BIG_A "TOO MUCH ARGUMENTS"
 # define _NOK_A "ARGUMENT NOT KNOWN"
 # define _NOK_ID "IDENTIFIER NOT KNOWN"
+# define _LACK_T "LACK OF ENVIRONNEMENT TOKEN"
 # include "structure.h"
 # define BUFFER_SIZE 100000
 
@@ -50,6 +51,7 @@ t_check		_check_camera(t_cam **camera, char *line);
 t_check		_init_camera(t_cam **camera, char *line);
 t_check		_check_light(t_spot **light, char *line);
 t_check		_init_light(t_spot **light, char *line);
+t_check		_check_scene(t_scene *settings);
 void		_free_scene(t_scene *scene, char *err);
 
 /* *********************MENU************************************************ */

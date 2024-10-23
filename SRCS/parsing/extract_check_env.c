@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 23:58:37 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/22 13:43:09 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/23 18:06:07 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,16 @@ t_check	_check_light(t_spot **light, char *line)
 			free (temp_light->pos);
 		free(*light);
 		*light = NULL;
+		return (FAILURE);
+	}
+	return (SUCCESS);
+}
+
+t_check	_check_scene(t_scene *settings)
+{
+	if (!settings->camera || !settings->ambient || !settings->light)
+	{
+		_free_scene(settings, _LACK_T);
 		return (FAILURE);
 	}
 	return (SUCCESS);

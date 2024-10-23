@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/22 20:37:54 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/23 18:05:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ t_scene	*_extract_data(char	*path_file)
 		return (NULL);
 	settings = _pars_line(data);
 	_freetab(data);
-	if (!settings)
+	if (!settings || _check_scene(settings))
 		return (NULL);
 	settings->state = -1;
 	return (settings);

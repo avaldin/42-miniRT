@@ -6,14 +6,18 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:12:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/02 18:52:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/23 19:20:01 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structure.h"
 #include "parsing.h"
 #include "libft.h"
+#include "calcul.h"
 #include <unistd.h>
+
+#include <stdio.h>
+#include <fcntl.h>
 
 static t_check	_check_coord_buff(char *buff)
 {
@@ -56,9 +60,10 @@ static t_mstate	_change_coord(float *num, t_coordtype ctype)
 		if (write(1, "unrecognized token, retry\n", 27) == -1)
 			state = ERROR;
 	free (buff);
-	if (ctype == VEC && !(updated >= -1. && updated <= 1.))
+	if (ctype == VEC && (updated <= -1. || updated >= 1.))
 		if (write(1, "value not in range, retry\n", 27) == -1)
 			state = ERROR;
+	printf("update: %f\n", updated);
 	if (state == CONTINUE)
 		*num = updated;
 	return (state);
@@ -88,6 +93,7 @@ t_mstate	_change_select(t_coord *vec, t_coordtype type, t_mstate state)
 		else if (write(1, "unrecognized token, retry\n", 27) == -1)
 			state = ERROR;
 		free (buff);
+		_normalized(vec);
 	}
 	return (state);
 }
