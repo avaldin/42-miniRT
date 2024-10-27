@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/27 20:34:56 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 21:26:25 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,34 @@ static inline void	_update_cam(t_cam *cam, t_kntc *kinetic)
 	kinetic->cam_rotate->mv_y = 0;
 }
 
+// inline static void	_reset_window(t_glob *data)
+// {
+// 	mlx_destroy_image(data->window->vars->mlx, data->window->img->img);
+// 	data->window->img->img = mlx_new_image(data->window->vars->mlx,
+// 			X_SSIZE, Y_SSIZE);
+// 	data->window->img->addr = mlx_get_data_addr(data->window->img->img,
+// 			&data->window->img->bits_per_pixel,
+// 			&data->window->img->line_length,
+// 			&data->window->img->endian);
+// }
+
 inline static void	_reset_window(t_glob *data)
 {
-	mlx_destroy_image(data->window->vars->mlx, data->window->img->img);
-	data->window->img->img = mlx_new_image(data->window->vars->mlx,
-			X_SSIZE, Y_SSIZE);
-	data->window->img->addr = mlx_get_data_addr(data->window->img->img,
-			&data->window->img->bits_per_pixel,
-			&data->window->img->line_length,
-			&data->window->img->endian);
+	int	i;
+	int	j;
+
+	mlx_clear_window(data->window->vars->mlx, data->window->vars->win);
+	i = 0;
+	while (i < X_SSIZE)
+	{
+		j = 0;
+		while (j < Y_SSIZE)
+		{
+			_mlx_pixel_put(data->window->img, i, j, 0);
+			j++;
+		}
+		i++;
+	}
 }
 
 int	_new_frame(t_glob *data)
