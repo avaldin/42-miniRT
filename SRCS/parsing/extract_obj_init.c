@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:40:51 by tmouche           #+#    #+#             */
-/*   Updated: 2024/07/25 22:26:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 19:50:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_check	_init_sphere(t_sphere **sphere, char *line)
 	*sphere = malloc(sizeof(t_sphere));
 	if (!*sphere)
 		return (FAILURE);
+	ft_memset(*sphere, 0, sizeof(t_sphere));
 	(*sphere)->pos = _set_coord(line);
 	(*sphere)->r_pos = _alloc_coord(0, 0, 0);
 	line = _is_space(_until_char(line, ' '));
@@ -43,6 +44,7 @@ t_check	_init_plane(t_plane **plane, char *line)
 	*plane = malloc(sizeof(t_plane));
 	if (!*plane)
 		return (FAILURE);
+	ft_memset(*plane, 0, sizeof(t_plane));
 	(*plane)->pos = _set_coord(line);
 	(*plane)->r_pos = _alloc_coord(0, 0, 0);
 	line = _is_space(_until_char(line, ' '));
@@ -63,6 +65,7 @@ t_check	_init_cylinder(t_cylinder **cylinder, char *line)
 	*cylinder = malloc(sizeof(t_cylinder));
 	if (!*cylinder)
 		return (FAILURE);
+	ft_memset(*cylinder, 0, sizeof(t_cylinder));
 	(*cylinder)->pos = _set_coord(line);
 	(*cylinder)->r_pos = _alloc_coord(0, 0, 0);
 	line = _is_space(_until_char(line, ' '));

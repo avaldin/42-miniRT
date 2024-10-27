@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/23 18:05:06 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 20:21:40 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,6 @@ static char	**_read_file(int fd)
 	return (res);
 }
 
-static void	_init_scene(t_scene *scene)
-{
-	static float	var[4] = {0., 0., 0., 0.};
-
-	scene->var = var;
-	scene->ambient = NULL;
-	scene->light = NULL;
-	scene->camera = NULL;
-	scene->cylinder = NULL;
-	scene->sphere = NULL;
-	scene->plane = NULL;
-	scene->axis = NULL;
-}
-
 static t_check	_data_loader(t_scene *scene, char *line)
 {
 	t_check	res;
@@ -80,6 +66,7 @@ static t_check	_data_loader(t_scene *scene, char *line)
 
 static t_scene	*_pars_line(char **data)
 {
+	static float	var[4] = {0., 0., 0., 0.};
 	t_scene	*scene;
 	char	*temp;
 	int		i;
@@ -88,7 +75,8 @@ static t_scene	*_pars_line(char **data)
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
-	_init_scene(scene);
+	ft_memset(scene, 0, sizeof(t_scene));
+	scene->var = var;
 	while (data[i])
 	{
 		temp = _is_space(data[i]);

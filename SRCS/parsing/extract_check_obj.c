@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:30:03 by thibaud           #+#    #+#             */
-/*   Updated: 2024/07/25 22:07:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 19:22:56 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ t_check	_check_sphere(t_sphere **sphere, char *line)
 			free (temp_sph->color);
 		if (temp_sph->pos)
 			free (temp_sph->pos);
+		if (temp_sph->r_pos)
+			free (temp_sph->r_pos);
+		free (temp_sph);
 		*sphere = NULL;
 		return (FAILURE);
 	}
@@ -46,8 +49,13 @@ t_check	_check_plane(t_plane **plane, char *line)
 			free (temp_pln->color);
 		if (temp_pln->pos)
 			free (temp_pln->pos);
+		if (temp_pln->r_pos)
+			free (temp_pln->r_pos);
 		if (temp_pln->vect)
 			free (temp_pln->vect);
+		if (temp_pln->r_vect)
+			free (temp_pln->r_vect);
+		free (temp_pln);
 		*plane = NULL;
 		return (FAILURE);
 	}
@@ -69,8 +77,13 @@ t_check	_check_cylinder(t_cylinder **cylinder, char *line)
 			free (temp_cyl->color);
 		if (temp_cyl->pos)
 			free (temp_cyl->pos);
+		if (temp_cyl->r_pos)
+			free (temp_cyl->r_pos);
 		if (temp_cyl->vect)
 			free (temp_cyl->vect);
+		if (temp_cyl->r_vect)
+			free (temp_cyl->r_vect);
+		free (temp_cyl);
 		*cylinder = NULL;
 		return (FAILURE);
 	}

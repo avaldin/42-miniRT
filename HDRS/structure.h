@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/23 14:01:53 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 20:06:57 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,17 +235,17 @@ typedef struct s_wdw
 
 typedef struct s_scene
 {
+	t_cylinder		**cylinder;
 	t_sphere		**sphere;
 	t_plane			**plane;
-	t_cylinder		**cylinder;
-	t_amb			*ambient;
-	t_spot			*light;
-	t_cam			*camera;
 	t_coord			***axis;
+	t_spot			*light;
+	t_amb			*ambient;
+	t_cam			*camera;
+	t_rgb			*rgb_object;
 	float			*var;
 	float			(*fct)(struct s_scene *, float, void *, struct s_coord *);
 	void			*object;
-	t_rgb			*rgb_object;
 	int				state;
 }				t_scene;
 

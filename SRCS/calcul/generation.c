@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/21 15:40:05 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/27 20:41:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ void	_generate_image(t_glob *data)
 	}
 }
 
-t_coord	***_generate_axis(t_cam *camera, t_coord ***axis)
+t_coord	***_generate_axis(t_cam *camera)
 {
+	t_coord ***axis;
 	int	i;
 	int	j;
 

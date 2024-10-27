@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove_cam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:54:14 by thibaud           #+#    #+#             */
-/*   Updated: 2024/08/13 04:47:53 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/27 19:58:52 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ t_check	_init_mvt_struct(t_kntc *kinetic, t_cam *cam)
 	kinetic->cam_rotate = &rotate;
 	if (moov.dir_x)
 		return (SUCCESS);
-	_free_mvt(&moov);
 	return (FAILURE);
 }

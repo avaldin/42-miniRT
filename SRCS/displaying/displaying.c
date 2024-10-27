@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displaying.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:48:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/13 04:41:31 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/27 20:40:30 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static t_check	_set_vars_img(t_glob *data, int x, int y)
 			&img.line_length, &img.endian);
 	if (!img.addr)
 		return (FAILURE);
-	data->scene->axis = _generate_axis(data->scene->camera, data->scene->axis);
+	data->scene->axis = _generate_axis(data->scene->camera);
 	if (!data->scene->axis)
 		return (FAILURE);
 	_generate_image(data);

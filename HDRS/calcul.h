@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:55:28 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/23 14:00:24 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 20:27:04 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 float	*_matrix_var(t_scene *scene);
 void	_dov(t_scene *scene, float *var);
-t_coord	***_generate_axis(t_cam *camera, t_coord ***axis);
+t_coord	***_generate_axis(t_cam *camera);
 void	_generate_image(t_glob *data);
 void	_rebase_objects(t_scene *scene);
 float	_inter_plane(t_coord *pos, t_plane *plane, t_coord *axis);

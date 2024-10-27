@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:22:31 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/22 11:25:40 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 19:47:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_check	_init_ambient(t_amb **ambient, char *line)
 	*ambient = malloc(sizeof(t_amb));
 	if (!*ambient)
 		return (FAILURE);
+	ft_memset(*ambient, 0, sizeof(t_amb));
 	(*ambient)->ratio = ft_atof(line);
 	line = _is_space(_until_char(line, ' '));
 	(*ambient)->color = _set_rgb(line);
@@ -42,6 +43,7 @@ t_check	_init_camera(t_cam **camera, char *line)
 	*camera = malloc(sizeof(t_cam));
 	if (!*camera)
 		return (FAILURE);
+	ft_memset(*camera, 0, sizeof(t_cam));
 	(*camera)->pos = _set_coord(line);
 	line = _is_space(_until_char(line, ' '));
 	(*camera)->vect = _set_coord(line);
@@ -61,6 +63,7 @@ t_check	_init_light(t_spot **light, char *line)
 	*light = malloc(sizeof(t_spot));
 	if (!*light)
 		return (FAILURE);
+	ft_memset(*light, 0, sizeof(t_spot));
 	(*light)->pos = _set_coord(line);
 	(*light)->r_pos = _alloc_coord(0, 0, 0);
 	line = _is_space(_until_char(line, ' '));
