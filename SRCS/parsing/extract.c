@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:11:58 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/27 20:21:40 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 21:36:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static t_check	_data_loader(t_scene *scene, char *line)
 static t_scene	*_pars_line(char **data)
 {
 	static float	var[4] = {0., 0., 0., 0.};
-	t_scene	*scene;
-	char	*temp;
-	int		i;
+	t_scene			*scene;
+	char			*temp;
+	int				i;
 
 	i = 0;
 	scene = malloc(sizeof(t_scene));

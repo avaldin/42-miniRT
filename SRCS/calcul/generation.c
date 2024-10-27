@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:49:47 by avaldin           #+#    #+#             */
-/*   Updated: 2024/10/27 20:41:37 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/27 21:37:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	_generate_image(t_glob *data)
 
 t_coord	***_generate_axis(t_cam *camera)
 {
-	t_coord ***axis;
-	int	i;
-	int	j;
+	t_coord	***axis;
+	int		i;
+	int		j;
 
 	i = 0;
 	axis = ft_calloc(X_SSIZE + 1, sizeof(t_coord **));
