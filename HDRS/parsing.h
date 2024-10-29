@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:02:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/23 18:04:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:05:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@
 # define _NOK_A "ARGUMENT NOT KNOWN"
 # define _NOK_ID "IDENTIFIER NOT KNOWN"
 # define _LACK_T "LACK OF ENVIRONNEMENT TOKEN"
+# define _UNK_T "Unrecognized token, retry"
+# define _NO_T "Token is not existing in the current scene"
+# define _OUT_RG "Value not in range, retry"
+# define _NULL_VEC "Vector can not be set has 0, retry"
 # include "structure.h"
 # define BUFFER_SIZE 100000
 
 /* *********************UTILS*********************************************** */
-void		_strerror(char *str);
+t_mstate	_strerror(char *str);
 char		*_is_space(char *line);
 t_check		check_line(char *line);
 char		*_until_char(char *line, char c);

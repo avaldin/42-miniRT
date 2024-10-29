@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:21:44 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/27 20:06:57 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:57:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ typedef enum e_mstate
 {
 	CONTINUE,
 	STOP,
-	ERROR
+	ERROR,
+	PASS
 }			t_mstate;
 
 typedef enum e_coordtype

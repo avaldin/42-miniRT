@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:15:27 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/21 15:32:57 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/29 18:49:24 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_mstate	_plane_change(t_plane *plane)
 	t_mstate	state;
 
 	state = CONTINUE;
-	while (state == CONTINUE)
+	while (state == CONTINUE || state == PASS)
 	{
 		if (write(1, "[POSITION - VECTOR] : ", 23) == -1)
 			return (ERROR);
@@ -36,8 +36,8 @@ static t_mstate	_plane_change(t_plane *plane)
 			state = _change_select(plane->pos, POS, CONTINUE);
 		else if (!ft_strncmp(buff, "VECTOR\n", 8))
 			state = _change_select(plane->vect, VEC, CONTINUE);
-		else if (write(1, "unrecognized token, retry\n", 27) == -1)
-			state = ERROR;
+		else
+			state = _strerror(_UNK_T);
 		free (buff);
 	}
 	return (state);
@@ -65,8 +65,8 @@ static t_mstate	_plane_choice(t_plane **plane, t_mstate state)
 		++i;
 	if (n_cyl > 0 && plane[i])
 		state = _plane_change(plane[i]);
-	else if (write(1, "unrecognized id, retry\n", 24) == -1)
-		state = ERROR;
+	else
+		state = _strerror(_NO_T);
 	return (state);
 }
 
@@ -75,10 +75,9 @@ t_mstate	_select_plane(t_plane **plane)
 	t_mstate	state;
 
 	state = CONTINUE;
-	if (!plane
-		&& write(1, "token is not existing in the current scene\n", 44) == -1)
-		state = ERROR;
-	while (plane && state == CONTINUE)
+	if (!plane)
+		state = _strerror(_NO_T);
+	while (state == CONTINUE)
 		state = _plane_choice(plane, state);
 	return (state);
 }

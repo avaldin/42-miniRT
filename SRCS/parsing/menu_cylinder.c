@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 09:46:27 by tmouche           #+#    #+#             */
-/*   Updated: 2024/08/20 04:05:34 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/29 18:49:29 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_mstate	_cylinder_change(t_cylinder *cylinder)
 	t_mstate	state;
 
 	state = CONTINUE;
-	while (state == CONTINUE)
+	while (state == CONTINUE || state == PASS)
 	{
 		if (write(1, "[POSITION - VECTOR] : ", 23) == -1)
 			return (ERROR);
@@ -36,8 +36,8 @@ static t_mstate	_cylinder_change(t_cylinder *cylinder)
 			state = _change_select(cylinder->pos, POS, CONTINUE);
 		else if (!ft_strncmp(buff, "VECTOR\n", 8))
 			state = _change_select(cylinder->vect, VEC, CONTINUE);
-		else if (write(1, "unrecognized token, retry\n", 27) == -1)
-			state = ERROR;
+		else
+			state = _strerror(_UNK_T);
 		free (buff);
 	}
 	return (state);
@@ -65,8 +65,8 @@ static t_mstate	_cylinder_choice(t_cylinder **cylinder, t_mstate state)
 		++i;
 	if (n_cyl > 0 && cylinder[i])
 		state = _cylinder_change(cylinder[i]);
-	else if (write(1, "unrecognized id, retry\n", 24) == -1)
-		state = ERROR;
+	else
+		state = _strerror(_NO_T);
 	return (state);
 }
 
@@ -75,10 +75,9 @@ t_mstate	_select_cylinder(t_cylinder **cylinder)
 	t_mstate	state;
 
 	state = CONTINUE;
-	if (!cylinder
-		&& write(1, "token is not existing in the current scene\n", 44) == -1)
-		state = ERROR;
-	while (cylinder && state == CONTINUE)
+	if (!cylinder)
+		state = _strerror(_NO_T);
+	while (state == CONTINUE)
 		state = _cylinder_choice(cylinder, state);
 	return (state);
 }

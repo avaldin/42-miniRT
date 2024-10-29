@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:56:25 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/27 21:30:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:24:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ int	_new_frame(t_glob *data)
 
 	if (data->window->box == IN && until_new >= SET_FRM)
 	{
-		_reset_window(data);
 		if (data->window->interf == SCENE)
 		{
+			_reset_window(data);
 			_update_cam(data->scene->camera, data->kinetic);
 			_generate_image(data);
 			if (data->scene->state == 1)

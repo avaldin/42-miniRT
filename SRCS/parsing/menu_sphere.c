@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:18:13 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/21 15:33:16 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/10/29 18:49:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_mstate	_sphere_change(t_sphere *sphere)
 	t_mstate	state;
 
 	state = CONTINUE;
-	while (state == CONTINUE)
+	while (state == CONTINUE || state == PASS)
 	{
 		if (write(1, "[POSITION] : ", 14) == -1)
 			return (ERROR);
@@ -34,8 +34,8 @@ static t_mstate	_sphere_change(t_sphere *sphere)
 			return (free(buff), CONTINUE);
 		else if (!ft_strncmp(buff, "POSITION\n", 10))
 			state = _change_select(sphere->pos, POS, CONTINUE);
-		else if (write(1, "unrecognized token, retry\n", 27) == -1)
-			state = ERROR;
+		else
+			state = _strerror(_UNK_T);
 		free (buff);
 	}
 	return (state);
@@ -63,8 +63,8 @@ static t_mstate	_sphere_choice(t_sphere **sphere, t_mstate state)
 		++i;
 	if (n_cyl > 0 && sphere[i])
 		state = _sphere_change(sphere[i]);
-	else if (write(1, "unrecognized id, retry\n", 24) == -1)
-		state = ERROR;
+	else
+		state = _strerror(_NO_T);
 	return (state);
 }
 
@@ -73,10 +73,9 @@ t_mstate	_select_sphere(t_sphere **sphere)
 	t_mstate	state;
 
 	state = CONTINUE;
-	if (!sphere
-		&& write(1, "token is not existing in the current scene\n", 44) == -1)
-		state = ERROR;
-	while (sphere && state == CONTINUE)
+	if (!sphere)
+		state = _strerror(_NO_T);
+	while (state == CONTINUE)
 		state = _sphere_choice(sphere, state);
 	return (state);
 }

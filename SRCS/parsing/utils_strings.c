@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:26:25 by tmouche           #+#    #+#             */
-/*   Updated: 2024/10/23 14:04:00 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:54:23 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	_strerror(char *str)
+t_mstate	_strerror(char *str)
 {
 	int	i;
 	int	err[3];
@@ -29,9 +29,10 @@ void	_strerror(char *str)
 	while (i < 3)
 	{
 		if (err[i] == -1)
-			return ;
+			return (ERROR);
 		++i;
 	}
+	return (PASS);
 }
 
 char	*_until_char(char *line, char c)

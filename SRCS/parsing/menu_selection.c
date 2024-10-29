@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 04:36:45 by thibaud           #+#    #+#             */
-/*   Updated: 2024/10/02 18:48:57 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:19:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_mstate	_menu_select(t_scene *scene, t_mstate state)
 {
 	char		*buff;
 
-	while (state == CONTINUE)
+	while (state == CONTINUE || state == PASS)
 	{
 		if (write(1, "[CYLINDER - SPHERE - PLANE] : ", 30) == -1)
 			return (ERROR);
@@ -36,8 +36,8 @@ static t_mstate	_menu_select(t_scene *scene, t_mstate state)
 			state = STOP;
 		else if (!ft_strncmp(buff, "BACK\n", 6))
 			state = CONTINUE;
-		else if (write(1, "token not known, retry\n", 24) == -1)
-			state = ERROR;
+		else
+			state = _strerror(_UNK_T);
 		free (buff);
 	}
 	return (state);
@@ -52,7 +52,7 @@ t_mstate	_menu(t_glob *data)
 			"BACK to return to the precedent screen\n", 67) == -1)
 		return (ERROR);
 	state = CONTINUE;
-	while (state == CONTINUE)
+	while (state == CONTINUE || state == PASS)
 	{
 		if (write(1, "[QUIT - SELECT] : ", 19) == -1)
 			return (ERROR);
@@ -63,8 +63,8 @@ t_mstate	_menu(t_glob *data)
 			state = STOP;
 		else if (!ft_strncmp(buff, "SELECT\n", 8))
 			state = _menu_select(data->scene, CONTINUE);
-		else if (write(1, "token not known, retry\n", 24) == -1)
-			state = ERROR;
+		else
+			state = _strerror(_UNK_T);
 		free (buff);
 	}
 	data->window->interf = SCENE;
